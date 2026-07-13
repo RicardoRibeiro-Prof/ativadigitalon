@@ -22,6 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Aplicar correções de logo e rodapé
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          page = Path('index.html')
+          html = page.read_text(encoding='utf-8')
+          script = '<script src="./fixes.js" defer></script>'
+          if script not in html:
+              html = html.replace('</body>', f'{script}</body>')
+          page.write_text(html, encoding='utf-8')
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
