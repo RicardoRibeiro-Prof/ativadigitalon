@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar logo, rodapé e portfólio com imagens
+      - name: Aplicar logo, rodapé, portfólio e contatos
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -30,17 +30,21 @@ jobs:
           html = page.read_text(encoding='utf-8')
 
           css_links = [
-              '<link rel="stylesheet" href="./fixes.css?v=3">',
-              '<link rel="stylesheet" href="./portfolio.css?v=3">'
+              '<link rel="stylesheet" href="./fixes.css?v=4">',
+              '<link rel="stylesheet" href="./portfolio.css?v=4">'
           ]
+          for old in ['<link rel="stylesheet" href="./fixes.css?v=3">','<link rel="stylesheet" href="./portfolio.css?v=3">']:
+              html = html.replace(old, '')
           for link in css_links:
               if link not in html:
                   html = html.replace('</head>', f'{link}</head>')
 
           scripts = [
-              '<script src="./fixes.js?v=3" defer></script>',
-              '<script src="./portfolio.js?v=3" defer></script>'
+              '<script src="./fixes.js?v=4" defer></script>',
+              '<script src="./portfolio.js?v=4" defer></script>'
           ]
+          for old in ['<script src="./fixes.js?v=3" defer></script>','<script src="./portfolio.js?v=3" defer></script>']:
+              html = html.replace(old, '')
           for script in scripts:
               if script not in html:
                   html = html.replace('</body>', f'{script}</body>')
