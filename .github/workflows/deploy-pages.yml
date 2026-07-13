@@ -22,15 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar correções de logo e rodapé
+      - name: Aplicar correções visuais e portfólio
         run: |
           python - <<'PY'
           from pathlib import Path
           page = Path('index.html')
           html = page.read_text(encoding='utf-8')
-          script = '<script src="./fixes.js" defer></script>'
-          if script not in html:
-              html = html.replace('</body>', f'{script}</body>')
+          css = '<link rel="stylesheet" href="./portfolio.css">'
+          fixes = '<script src="./fixes.js" defer></script>'
+          portfolio = '<script src="./portfolio.js" defer></script>'
+          if css not in html:
+              html = html.replace('</head>', f'{css}</head>')
+          if fixes not in html:
+              html = html.replace('</body>', f'{fixes}</body>')
+          if portfolio not in html:
+              html = html.replace('</body>', f'{portfolio}</body>')
           page.write_text(html, encoding='utf-8')
           PY
       - uses: actions/configure-pages@v5
