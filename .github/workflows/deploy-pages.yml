@@ -22,21 +22,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar correções visuais e portfólio
+      - name: Aplicar logo, rodapé e portfólio com imagens
         run: |
           python - <<'PY'
           from pathlib import Path
           page = Path('index.html')
           html = page.read_text(encoding='utf-8')
-          css = '<link rel="stylesheet" href="./portfolio.css">'
-          fixes = '<script src="./fixes.js" defer></script>'
-          portfolio = '<script src="./portfolio.js" defer></script>'
-          if css not in html:
-              html = html.replace('</head>', f'{css}</head>')
-          if fixes not in html:
-              html = html.replace('</body>', f'{fixes}</body>')
-          if portfolio not in html:
-              html = html.replace('</body>', f'{portfolio}</body>')
+
+          css_links = [
+              '<link rel="stylesheet" href="./fixes.css?v=3">',
+              '<link rel="stylesheet" href="./portfolio.css?v=3">'
+          ]
+          for link in css_links:
+              if link not in html:
+                  html = html.replace('</head>', f'{link}</head>')
+
+          scripts = [
+              '<script src="./fixes.js?v=3" defer></script>',
+              '<script src="./portfolio.js?v=3" defer></script>'
+          ]
+          for script in scripts:
+              if script not in html:
+                  html = html.replace('</body>', f'{script}</body>')
+
           page.write_text(html, encoding='utf-8')
           PY
       - uses: actions/configure-pages@v5
