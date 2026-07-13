@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     img.alt='Logo da AtivaDigitalOn';
   });
 
+  const mainNav=document.querySelector('.links');
+  if(mainNav && ![...mainNav.querySelectorAll('a')].some(link=>link.textContent.trim().toLowerCase()==='início')){
+    const homeLink=document.createElement('a');
+    homeLink.href='#inicio';
+    homeLink.textContent='Início';
+    homeLink.setAttribute('aria-label','Voltar ao início da página');
+    mainNav.prepend(homeLink);
+  }
+
   const contactItems=document.querySelectorAll('.contact-box > div');
   contactItems.forEach(item=>{
     const label=item.querySelector('strong')?.textContent?.trim().toLowerCase();
