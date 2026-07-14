@@ -45,13 +45,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 
+  const revealElement=element=>{
+    element.classList.add('is-visible');
+    element.querySelectorAll?.('.section-title').forEach(title=>title.classList.add('is-visible'));
+  };
+
   if(prefersReducedMotion || !('IntersectionObserver' in window)){
-    revealElements.forEach(element=>element.classList.add('is-visible'));
+    revealElements.forEach(revealElement);
   }else{
     const revealObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(!entry.isIntersecting)return;
-        entry.target.classList.add('is-visible');
+        revealElement(entry.target);
         revealObserver.unobserve(entry.target);
       });
     },{threshold:.12,rootMargin:'0px 0px -42px'});
