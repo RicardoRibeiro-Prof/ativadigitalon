@@ -48,7 +48,7 @@
     .hero>*{min-width:0}
     @media(max-width:1080px){.hero{grid-template-columns:minmax(0,1fr)}}
     @media(max-width:760px){.hero-copy{width:100%;max-width:100%;min-width:0}.hero h1,.hero-copy>p:not(.eyebrow){width:100%;max-width:100%}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.strip-track{animation:none;transform:none}.reveal,.problem-card.reveal h3,.problem-card.reveal p,.benefit.reveal span{opacity:1;transform:none;filter:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*:not(.strip-track),*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.strip-track{animation-duration:32s}.reveal,.problem-card.reveal h3,.problem-card.reveal p,.benefit.reveal span{opacity:1;transform:none;filter:none}}
   </style>
 </head>
 <body>
