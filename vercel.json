@@ -93,18 +93,6 @@
   ],
   "rewrites": [
     {
-      "source": "/demos/almeida-castro-advocacia",
-      "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/"
-    },
-    {
-      "source": "/demos/almeida-castro-advocacia/",
-      "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/"
-    },
-    {
-      "source": "/demos/almeida-castro-advocacia/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/:path*"
-    },
-    {
       "source": "/demos/moura-vasconcelos-advocacia",
       "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
     },
