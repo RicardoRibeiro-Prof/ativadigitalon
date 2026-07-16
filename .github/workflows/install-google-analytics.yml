@@ -1,0 +1,56 @@
+name: Instalar Google Analytics
+
+on:
+  push:
+    paths:
+      - '.github/workflows/install-google-analytics.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install-ga4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Inserir tag do Google Analytics
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          content = path.read_text(encoding='utf-8')
+          measurement_id = 'G-4ZJG8BBWVZ'
+
+          snippet = '''  <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZJG8BBWVZ"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4ZJG8BBWVZ');
+          </script>
+          '''
+
+          if measurement_id not in content:
+              if '<head>' not in content:
+                  raise SystemExit('A tag <head> não foi encontrada no index.html.')
+              content = content.replace('<head>', '<head>\n' + snippet, 1)
+              path.write_text(content, encoding='utf-8')
+
+      - name: Remover workflow temporário
+        run: rm .github/workflows/install-google-analytics.yml
+
+      - name: Salvar alteração
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/install-google-analytics.yml
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária."
+          else
+            git commit -m "Instala Google Analytics no site"
+            git push
+          fi
