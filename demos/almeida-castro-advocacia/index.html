@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101820">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Almeida & Castro Advocacia | Projeto demonstrativo</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f5f1ea}
+    iframe{display:block;width:100%;height:100dvh;border:0;background:#f5f1ea}
+    .loading{position:fixed;z-index:2;inset:0;display:grid;place-items:center;background:#f5f1ea;color:#172033;font:600 14px/1.5 Arial,sans-serif;transition:opacity .3s}
+    .loading.hide{opacity:0;pointer-events:none}
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">Carregando projeto...</div>
+  <iframe
+    src="https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/"
+    title="Projeto Almeida & Castro Advocacia"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="clipboard-write"
+  ></iframe>
+  <script>
+    const frame=document.querySelector('iframe');
+    frame.addEventListener('load',()=>document.getElementById('loading').classList.add('hide'));
+  </script>
+</body>
+</html>
