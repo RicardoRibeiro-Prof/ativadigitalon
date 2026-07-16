@@ -6,12 +6,22 @@
       "permanent": false
     },
     {
+      "source": "/almeida-castro-advocacia/",
+      "destination": "/demos/almeida-castro-advocacia/",
+      "permanent": false
+    },
+    {
       "source": "/almeida-castro-advocacia/:path*",
       "destination": "/demos/almeida-castro-advocacia/:path*",
       "permanent": false
     },
     {
       "source": "/moura-vasconcelos-advocacia",
+      "destination": "/demos/moura-vasconcelos-advocacia/",
+      "permanent": false
+    },
+    {
+      "source": "/moura-vasconcelos-advocacia/",
       "destination": "/demos/moura-vasconcelos-advocacia/",
       "permanent": false
     },
@@ -26,12 +36,22 @@
       "permanent": false
     },
     {
+      "source": "/vertice-contabilidade/",
+      "destination": "/demos/vertice-contabilidade/",
+      "permanent": false
+    },
+    {
       "source": "/vertice-contabilidade/:path*",
       "destination": "/demos/vertice-contabilidade/:path*",
       "permanent": false
     },
     {
       "source": "/nexo-contabilidade",
+      "destination": "/demos/nexo-contabilidade/",
+      "permanent": false
+    },
+    {
+      "source": "/nexo-contabilidade/",
       "destination": "/demos/nexo-contabilidade/",
       "permanent": false
     },
@@ -46,12 +66,22 @@
       "permanent": false
     },
     {
+      "source": "/atlas-engenharia/",
+      "destination": "/demos/atlas-engenharia/",
+      "permanent": false
+    },
+    {
       "source": "/atlas-engenharia/:path*",
       "destination": "/demos/atlas-engenharia/:path*",
       "permanent": false
     },
     {
       "source": "/prisma-engenharia-projetos",
+      "destination": "/demos/prisma-engenharia-projetos/",
+      "permanent": false
+    },
+    {
+      "source": "/prisma-engenharia-projetos/",
       "destination": "/demos/prisma-engenharia-projetos/",
       "permanent": false
     },
@@ -67,11 +97,19 @@
       "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/"
     },
     {
+      "source": "/demos/almeida-castro-advocacia/",
+      "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/"
+    },
+    {
       "source": "/demos/almeida-castro-advocacia/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/almeida-castro-advocacia/:path*"
     },
     {
       "source": "/demos/moura-vasconcelos-advocacia",
+      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
+    },
+    {
+      "source": "/demos/moura-vasconcelos-advocacia/",
       "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
     },
     {
@@ -83,11 +121,19 @@
       "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/"
     },
     {
+      "source": "/demos/vertice-contabilidade/",
+      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/"
+    },
+    {
       "source": "/demos/vertice-contabilidade/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/:path*"
     },
     {
       "source": "/demos/nexo-contabilidade",
+      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/"
+    },
+    {
+      "source": "/demos/nexo-contabilidade/",
       "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/"
     },
     {
@@ -99,11 +145,19 @@
       "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/"
     },
     {
+      "source": "/demos/atlas-engenharia/",
+      "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/"
+    },
+    {
       "source": "/demos/atlas-engenharia/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/:path*"
     },
     {
       "source": "/demos/prisma-engenharia-projetos",
+      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/"
+    },
+    {
+      "source": "/demos/prisma-engenharia-projetos/",
       "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/"
     },
     {
