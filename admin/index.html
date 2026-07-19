@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#050505">
+  <title>Painel do Blog | Ativa Digital ON</title>
+  <link rel="icon" href="../logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="loginView" class="login-view">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <a class="admin-brand" href="../" aria-label="Voltar ao site">
+        <img src="../logo.svg" alt="Logo Ativa Digital ON">
+        <span><strong>Ativa Digital <b>ON</b></strong><small>PAINEL DO BLOG</small></span>
+      </a>
+      <div id="loginFormWrap">
+        <span class="eyebrow">Acesso administrativo</span>
+        <h1 id="loginTitle">Bem-vindo de volta.</h1>
+        <p class="muted">Entre para criar, revisar e publicar matérias no blog.</p>
+        <form id="loginForm" class="login-form">
+          <label>E-mail<input id="loginEmail" type="email" autocomplete="username" required placeholder="seu@email.com"></label>
+          <label>Senha<input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="Sua senha"></label>
+          <button class="button primary full" type="submit"><span>Entrar no painel</span><b>→</b></button>
+          <p id="loginError" class="form-error" role="alert"></p>
+        </form>
+      </div>
+      <div id="setupView" class="setup-view" hidden>
+        <span class="eyebrow">Configuração necessária</span>
+        <h1>O painel está instalado.</h1>
+        <p>Agora adicione estas quatro variáveis em <strong>Vercel → Settings → Environment Variables</strong>:</p>
+        <ul><li><code>ADMIN_EMAIL</code></li><li><code>ADMIN_PASSWORD</code></li><li><code>SESSION_SECRET</code></li><li><code>GITHUB_TOKEN</code></li></ul>
+        <p class="small">Depois faça um novo <em>Redeploy</em>. A senha e o token não aparecem no código do site.</p>
+        <button id="checkSetup" class="button outline full" type="button">Verificar novamente</button>
+      </div>
+      <a class="back-link" href="../blog/">← Voltar para o blog</a>
+    </section>
+  </div>
+
+  <div id="appView" class="app" hidden>
+    <aside class="sidebar" aria-label="Navegação do painel">
+      <a class="admin-brand" href="../" aria-label="Abrir site principal">
+        <img src="../logo.svg" alt="Logo Ativa Digital ON">
+        <span><strong>Ativa Digital <b>ON</b></strong><small>PAINEL DO BLOG</small></span>
+      </a>
+      <nav aria-label="Menu administrativo">
+        <button class="nav-item active" data-view="posts" type="button"><span>▦</span> Matérias</button>
+        <button class="nav-item" id="newPostSide" type="button"><span>＋</span> Nova matéria</button>
+        <a class="nav-item" href="../blog/" target="_blank"><span>↗</span> Ver blog</a>
+      </nav>
+      <div class="sidebar-footer"><span id="adminEmail"></span><button id="logoutButton" type="button">Sair</button></div>
+    </aside>
+
+    <main class="workspace" aria-labelledby="pageTitle">
+      <header class="workspace-header">
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Abrir menu">☰</button>
+        <div><span class="eyebrow">Conteúdo</span><h1 id="pageTitle">Matérias do blog</h1></div>
+        <button id="newPostTop" class="button primary" type="button">＋ Nova matéria</button>
+      </header>
+
+      <section id="postsView" class="view">
+        <div class="stats">
+          <article><span>Publicadas</span><strong id="publishedCount">0</strong></article>
+          <article><span>Rascunhos</span><strong id="draftCount">0</strong></article>
+          <article><span>Total</span><strong id="totalCount">0</strong></article>
+        </div>
+        <div class="list-panel">
+          <div class="list-tools"><div><h2>Suas matérias</h2><p>Edite um conteúdo existente ou publique uma nova matéria.</p></div><label class="search"><span>⌕</span><input id="postSearch" type="search" placeholder="Buscar matéria"></label></div>
+          <div id="postsList" class="posts-list" aria-live="polite"></div>
+          <div id="emptyState" class="empty-state" hidden><strong>Nenhuma matéria encontrada.</strong><p>Crie a primeira matéria ou altere sua busca.</p></div>
+        </div>
+      </section>
+
+      <section id="editorView" class="view" hidden>
+        <form id="postForm" class="editor-form">
+          <div class="editor-heading">
+            <button id="backToPosts" class="back-button" type="button">← Voltar</button>
+            <div class="editor-actions"><button id="previewButton" class="button ghost" type="button">Pré-visualizar</button><button id="saveDraftButton" class="button outline" type="button">Salvar rascunho</button><button id="publishButton" class="button primary" type="submit">Publicar matéria</button></div>
+          </div>
+
+          <div class="editor-grid">
+            <div class="editor-main">
+              <section class="panel">
+                <div class="panel-title"><span>01</span><div><h2>Informações principais</h2><p>Dados que aparecem na página do blog.</p></div></div>
+                <div class="field-grid two"><label>Título da matéria<input id="postTitle" type="text" required maxlength="140" placeholder="Ex.: Como sua empresa pode aparecer melhor no Google"></label><label>Categoria<input id="postCategory" type="text" required maxlength="50" list="categories" placeholder="Ex.: Presença no Google"><datalist id="categories"><option value="Presença no Google"></option><option value="Sites"></option><option value="WhatsApp"></option><option value="Imagem digital"></option><option value="Vendas"></option><option value="Tecnologia"></option></datalist></label></div>
+                <div class="field-grid slug-row"><label>Endereço da matéria<span class="slug-input"><span>ativadigitalon.com.br/blog/</span><input id="postSlug" type="text" required pattern="[a-z0-9-]+" maxlength="90"></span></label><label class="short-field">Leitura<input id="postReadTime" type="number" min="1" max="60" value="5" required><small>minutos</small></label></div>
+                <label>Resumo para a página do blog<textarea id="postExcerpt" required maxlength="320" rows="3" placeholder="Uma descrição curta que desperte o interesse pela matéria."></textarea><span class="counter"><b id="excerptCount">0</b>/320</span></label>
+                <label>Introdução da matéria<textarea id="postLead" required maxlength="500" rows="3" placeholder="Texto que aparece logo abaixo do título da matéria."></textarea></label>
+              </section>
+
+              <section class="panel">
+                <div class="panel-title"><span>02</span><div><h2>Conteúdo</h2><p>Escreva e formate a matéria como ela aparecerá no site.</p></div></div>
+                <div class="toolbar" role="toolbar" aria-label="Formatação do texto">
+                  <button type="button" data-format="formatBlock" data-value="p" title="Parágrafo">P</button><button type="button" data-format="formatBlock" data-value="h2" title="Título de seção">H2</button><button type="button" data-format="formatBlock" data-value="h3" title="Subtítulo">H3</button><span></span><button type="button" data-format="bold" title="Negrito"><b>B</b></button><button type="button" data-format="italic" title="Itálico"><i>I</i></button><button type="button" data-format="insertUnorderedList" title="Lista">• Lista</button><button type="button" data-link title="Inserir link">↗ Link</button><button type="button" data-highlight title="Destaque">✦ Destaque</button>
+                </div>
+                <!-- [html-validate-disable-next prefer-native-element] -->
+                <div id="contentEditor" class="content-editor" contenteditable="true" role="textbox" aria-label="Conteúdo da matéria" aria-multiline="true" data-placeholder="Comece a escrever sua matéria aqui..."></div>
+              </section>
+
+              <section class="panel">
+                <div class="panel-title"><span>03</span><div><h2>Configurações para o Google</h2><p>Textos usados nos resultados de pesquisa.</p></div></div>
+                <label>Título para o Google<input id="seoTitle" type="text" maxlength="70" placeholder="Se ficar vazio, usaremos o título da matéria."><span class="counter"><b id="seoTitleCount">0</b>/70</span></label>
+                <label>Descrição para o Google<textarea id="seoDescription" maxlength="170" rows="3" placeholder="Descrição clara da matéria para os resultados da pesquisa."></textarea><span class="counter"><b id="seoDescriptionCount">0</b>/170</span></label>
+              </section>
+            </div>
+
+            <aside class="editor-side" aria-label="Configurações da matéria">
+              <section class="panel sticky-panel">
+                <div class="panel-title compact"><span>04</span><div><h2>Imagem de capa</h2><p>Recomendado: imagem horizontal.</p></div></div>
+                <label class="image-upload" id="imageUpload"><input id="coverImage" type="file" accept="image/jpeg,image/png,image/webp"><span class="upload-empty"><b>＋ Escolher imagem</b><small>JPG, PNG ou WebP</small></span><img id="coverPreview" src="../assets/og-ativa-digital-on.jpg" alt="Prévia da imagem de capa" hidden></label>
+                <button id="changeImage" class="text-button" type="button" hidden>Trocar imagem</button>
+                <label>Descrição da imagem<input id="imageAlt" type="text" maxlength="180" placeholder="Descreva o que aparece na imagem"></label>
+                <label class="switch-row"><span><strong>Destacar no blog</strong><small>Exibir esta matéria em tamanho maior.</small></span><input id="postFeatured" type="checkbox"><i></i></label>
+                <div class="publish-note"><span>✓</span><p>Ao publicar, o blog e o sitemap serão atualizados automaticamente.</p></div>
+              </section>
+            </aside>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="previewModal" class="preview-modal"><div class="preview-top"><strong>Pré-visualização</strong><button id="closePreview" type="button" aria-label="Fechar">×</button></div><iframe id="previewFrame" title="Prévia da matéria" sandbox></iframe></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
