@@ -71,3 +71,44 @@ footer .brandName b{font-size:15px}
   .heroVisual .orbit.two{top:2%}
   .heroVisual .soundCard{top:50%}
 }
+
+
+/* Mobile: player abaixo do disco, sem sobreposição. */
+@media(max-width:900px){
+  .heroVisual{
+    --record-size:min(86vw,430px);
+    display:block;
+    height:calc(var(--record-size) + 420px);
+    margin-top:50px;
+  }
+  .heroVisual .vinyl{
+    position:absolute;
+    width:var(--record-size);
+    top:64px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .heroVisual .orbit{
+    top:54px;
+    left:50%;
+    width:var(--record-size);
+    transform:translateX(-50%);
+  }
+  .heroVisual .orbit.two{
+    top:34px;
+    width:calc(var(--record-size) + 54px);
+  }
+  .heroVisual .soundCard{
+    top:calc(64px + var(--record-size) + 24px);
+    bottom:auto;
+    left:50%;
+    width:min(86vw,350px);
+    transform:translateX(-50%);
+  }
+  .qualityRail{
+    top:calc(64px + var(--record-size) + 112px);
+    bottom:auto;
+    left:0;
+    right:0;
+  }
+}
