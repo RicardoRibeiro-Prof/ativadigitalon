@@ -87,6 +87,7 @@ footer .brandName b{font-size:15px}
     top:64px;
     left:50%;
     transform:translateX(-50%);
+    animation:none;
   }
   .heroVisual .orbit{
     top:54px;
