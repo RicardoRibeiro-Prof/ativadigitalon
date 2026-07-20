@@ -59,3 +59,15 @@ section{scroll-margin-top:88px}.header{position:fixed;background:#070809ed;backd
 .brandName b{white-space:nowrap;font-size:14px}.brandName small{padding-left:1px}
 footer .brandName b{font-size:15px}
 @media(max-width:600px){.brandName b,footer .brandName b{font-size:10px}.brandName small,footer .brandName small{font-size:5.5px}}
+
+
+/* Correção mobile: respiro entre o menu fixo e o toca-discos. */
+@media(max-width:900px){
+  .hero{padding-top:140px}
+  .heroVisual{height:680px;margin-top:50px}
+  .heroVisual .vinyl{transform:translateY(0)}
+  .studioWord{top:28px}
+  .heroVisual .orbit{top:9%}
+  .heroVisual .orbit.two{top:2%}
+  .heroVisual .soundCard{top:50%}
+}
