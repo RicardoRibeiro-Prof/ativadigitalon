@@ -10,14 +10,14 @@ if(menu && !menu.querySelector('a[href="#inicio"]')){
   menu.prepend(home);
 }
 
-// Torna todas as menções da Ativa Digital ON clicáveis.
+// Torna todas as menções da Ativa Digital ON clicáveis, mantendo o laranja original.
 qa('.badge b,.model-note b').forEach(el=>{
   const link=document.createElement('a');
   link.href='https://ativadigitalon.com.br/';
   link.target='_blank';
   link.rel='noopener noreferrer';
   link.textContent=el.textContent;
-  link.style.color='inherit';
+  link.style.color='var(--o)';
   link.style.fontWeight='inherit';
   link.style.textDecoration='none';
   el.replaceWith(link);
