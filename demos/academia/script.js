@@ -10,6 +10,19 @@ if(menu && !menu.querySelector('a[href="#inicio"]')){
   menu.prepend(home);
 }
 
+// Torna todas as menções da Ativa Digital ON clicáveis.
+qa('.badge b,.model-note b').forEach(el=>{
+  const link=document.createElement('a');
+  link.href='https://ativadigitalon.com.br/';
+  link.target='_blank';
+  link.rel='noopener noreferrer';
+  link.textContent=el.textContent;
+  link.style.color='inherit';
+  link.style.fontWeight='inherit';
+  link.style.textDecoration='none';
+  el.replaceWith(link);
+});
+
 q('#toggle').onclick=()=>q('#menu').classList.toggle('open');
 qa('#menu a').forEach(a=>a.onclick=()=>q('#menu').classList.remove('open'));
 addEventListener('scroll',()=>q('#progress').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%');
