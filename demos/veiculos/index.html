@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="sold-enhancement.css">
 </head>
 <body>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#">ALTURA <span>MOTORS</span></a><nav><a href="#estoque">Estoque</a><a href="#empresa">A empresa</a><a href="#depoimentos">Clientes</a><a href="#avaliacao">Avalie seu usado</a></nav><div class="nav-actions"><button class="pill" onclick="showFavorites()">♡ Favoritos</button></div></div></header>
@@ -20,7 +21,9 @@
 <section class="section reveal" id="avaliacao"><div class="wrap trade"><div><div class="eyebrow">Avaliação de usado</div><h2 style="font:800 52px Manrope;margin:15px 0">Use seu veículo como parte do pagamento.</h2><p style="color:#777;line-height:1.7">Envie os dados básicos e receba uma avaliação inicial.</p></div><form class="trade-box" onsubmit="event.preventDefault();alert('Solicitação enviada! Demonstração fictícia.')"><input placeholder="Seu nome" required><input placeholder="WhatsApp" required><input placeholder="Marca e modelo" required><input placeholder="Ano e quilometragem"><button>Solicitar avaliação</button></form></div></section>
 <footer><div class="wrap"><div class="footer-grid"><div><div class="logo">ALTURA <span>MOTORS</span></div><p>Projeto demonstrativo fictício para apresentação de uma revenda premium.</p></div><div><b>Menu</b><p><a href="#estoque">Estoque</a><br><a href="#empresa">A empresa</a><br><a href="#avaliacao">Avaliação</a></p></div><div><b>Atendimento</b><p>Segunda a sábado<br>WhatsApp e atendimento presencial<br>São Raimundo Nonato - PI</p></div></div><div class="copy">© 2026 Altura Motors — Projeto fictício. <a href="https://ativadigitalon.com.br/" target="_blank" rel="noopener">Desenvolvido por Ativa Digital ON</a></div></div></footer>
 <a class="floating-wa" href="https://wa.me/5589981311034" target="_blank">WhatsApp</a>
-<div class="modal" id="vehicleModal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div id="vehicleContent"></div></div></div><div class="lightbox" id="lightbox"><div class="lightbox-stage"><div class="lightbox-top"><span id="lbCount"></span><div class="lb-tools"><button class="lb-btn" onclick="zoomLightbox()">＋</button><button class="lb-btn" onclick="closeLightbox()">×</button></div></div><button class="lb-btn lb-nav lb-prev" onclick="stepLightbox(-1)">‹</button><img id="lightboxImg"><button class="lb-btn lb-nav lb-next" onclick="stepLightbox(1)">›</button></div></div><div class="compare-bar" id="compareBar"><span id="compareText"></span><button onclick="openCompare()">Comparar</button></div>
-<script src="vehicles-data.js"></script>
-<script src="site-app.js"></script>
+<div class="modal" id="vehicleModal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div id="vehicleContent"></div></div></div>
+<div class="lightbox" id="lightbox"><div class="lightbox-stage"><div class="lightbox-top"><span id="lbCount"></span><div class="lb-tools"><button class="lb-btn" onclick="zoomLightbox()">＋</button><button class="lb-btn" onclick="closeLightbox()">×</button></div></div><button class="lb-btn lb-nav lb-prev" onclick="stepLightbox(-1)">‹</button><img id="lightboxImg"><button class="lb-btn lb-nav lb-next" onclick="stepLightbox(1)">›</button></div></div>
+<div class="compare-bar" id="compareBar"><span id="compareText"></span><button onclick="openCompare()">Comparar</button></div>
+<script src="site.js"></script>
+<script src="sold-enhancement.js"></script>
 </body></html>
