@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRE Farma Pro | Drogaria Rocha</title>
+  <style>
+    :root{
+      --bg:#f3f4f6; --card:#ffffff; --text:#111827; --muted:#6b7280;
+      --line:#e5e7eb; --primary:#0f172a; --accent:#f97316;
+      --ok:#15803d; --danger:#b91c1c; --warn:#b45309; --blue:#2563eb;
+      --shadow:0 10px 25px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    header{background:linear-gradient(135deg,#111827,#1f2937);color:#fff;padding:22px 16px}
+    .wrap{max-width:1180px;margin:auto}
+    .brand{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .brand h1{margin:0;font-size:24px;letter-spacing:.2px}.brand p{margin:6px 0 0;color:#d1d5db}
+    .badge{background:rgba(249,115,22,.16);border:1px solid rgba(249,115,22,.55);padding:8px 12px;border-radius:999px;color:#fed7aa;font-weight:700}
+    nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+    .tabs{display:flex;gap:8px;overflow:auto;padding:10px 16px;max-width:1180px;margin:auto}
+    .tab{border:1px solid var(--line);background:#fff;padding:10px 13px;border-radius:12px;cursor:pointer;white-space:nowrap;font-weight:700;color:#374151}
+    .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    main{padding:20px 16px 40px}.grid{display:grid;gap:16px}.grid4{grid-template-columns:repeat(4,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .card h2,.card h3{margin:0 0 12px}.small{font-size:13px;color:var(--muted);line-height:1.45}.kpi{display:flex;flex-direction:column;gap:6px}.kpi .label{font-size:13px;color:var(--muted)}.kpi .value{font-size:24px;font-weight:800}.ok{color:var(--ok)}.danger{color:var(--danger)}.warn{color:var(--warn)}.blue{color:var(--blue)}
+    label{font-size:13px;font-weight:700;color:#374151;display:block;margin-bottom:6px} input,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px} input:focus{outline:2px solid rgba(249,115,22,.25);border-color:#fb923c}
+    .row{display:grid;grid-template-columns:1.5fr 1fr 110px;gap:10px;align-items:end;margin-bottom:10px}.row4{display:grid;grid-template-columns:1.3fr 1fr 1fr 100px;gap:10px;align-items:end;margin-bottom:10px}
+    button{border:0;border-radius:12px;padding:11px 14px;font-weight:800;cursor:pointer}.primary{background:var(--accent);color:#fff}.dark{background:var(--primary);color:#fff}.light{background:#f9fafb;border:1px solid var(--line);color:#111827}.dangerBtn{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+    table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{background:#f9fafb;color:#374151}.right{text-align:right}.total td{font-weight:800;background:#fff7ed}.pill{display:inline-block;padding:5px 9px;border-radius:999px;font-weight:800;font-size:12px}.pill.ok{background:#dcfce7}.pill.warn{background:#fef3c7}.pill.danger{background:#fee2e2}.progress{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--accent);border-radius:999px}.hidden{display:none}.actions{display:flex;gap:10px;flex-wrap:wrap}.note{border-left:4px solid var(--accent);background:#fff7ed;padding:12px;border-radius:12px;color:#7c2d12}
+    @media(max-width:900px){.grid4,.grid3,.grid2{grid-template-columns:1fr}.row,.row4{grid-template-columns:1fr}.brand h1{font-size:20px}.kpi .value{font-size:21px}}
+    @media print{nav,.actions,.noPrint{display:none!important}body{background:#fff}.card{box-shadow:none;break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <div>
+        <h1>DRE Farma Pro — Drogaria Rocha</h1>
+        <p>Sistema simples em HTML para análise gerencial, despesas e resultado mensal.</p>
+      </div>
+      <div class="badge">Junho/2026</div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="tabs">
+      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab" data-tab="dre">DRE</button>
+      <button class="tab" data-tab="despesas">Despesas</button>
+      <button class="tab" data-tab="apoio">Dados de apoio</button>
+      <button class="tab" data-tab="config">Configurações</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="dashboard" class="page">
+      <div class="grid grid4">
+        <div class="card kpi"><span class="label">Receita líquida</span><span id="kpiReceita" class="value"></span><span class="small">Vendas após descontos.</span></div>
+        <div class="card kpi"><span class="label">Lucro bruto</span><span id="kpiLucroBruto" class="value ok"></span><span id="kpiMargemBruta" class="small"></span></div>
+        <div class="card kpi"><span class="label">Despesas lançadas</span><span id="kpiDespesas" class="value warn"></span><span class="small">Inclui despesas operacionais, taxas e DAS lançado.</span></div>
+        <div class="card kpi"><span class="label">Resultado estimado</span><span id="kpiResultado" class="value"></span><span id="kpiMargemLiquida" class="small"></span></div>
+      </div>
+
+      <div class="grid grid2" style="margin-top:16px">
+        <div class="card">
+          <h3>Resumo rápido</h3>
+          <table>
+            <tbody id="resumoRapido"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Alertas gerenciais</h3>
+          <div id="alertas"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Indicadores principais</h3>
+        <div class="grid grid3">
+          <div><div class="small">CMV sobre receita líquida</div><div class="progress"><div id="barCmv" class="bar"></div></div><strong id="txtCmv"></strong></div>
+          <div><div class="small">Descontos sobre receita bruta</div><div class="progress"><div id="barDesc" class="bar"></div></div><strong id="txtDesc"></strong></div>
+          <div><div class="small">Despesa total sobre receita líquida</div><div class="progress"><div id="barDesp" class="bar"></div></div><strong id="txtDesp"></strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dre" class="page hidden">
+      <div class="card">
+        <h2>DRE gerencial — Junho/2026</h2>
+        <p class="small">Atenção: fornecedores e compras ficam fora das despesas da DRE para não duplicar o CMV.</p>
+        <table>
+          <thead><tr><th>Linha</th><th class="right">Valor</th><th class="right">% Receita Líquida</th></tr></thead>
+          <tbody id="dreTabela"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="despesas" class="page hidden">
+      <div class="grid grid2">
+        <div class="card">
+          <h2>Despesas e impostos</h2>
+          <p class="small">Lance aqui somente despesas reais da empresa. Venda à vista e fornecedores de mercadoria não entram como despesa.</p>
+          <div id="listaDespesas"></div>
+          <div class="actions noPrint">
+            <button class="primary" onclick="addDespesa()">+ Adicionar despesa</button>
+            <button class="light" onclick="resetDespesasPadrao()">Restaurar categorias padrão</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Como classificar</h2>
+          <table>
+            <thead><tr><th>Item</th><th>Tratamento</th></tr></thead>
+            <tbody>
+              <tr><td>Taxa de cartão</td><td>Despesa financeira</td></tr>
+              <tr><td>Tarifas de duplicatas/banco</td><td>Despesa financeira</td></tr>
+              <tr><td>DAS / Simples Nacional</td><td>Imposto sobre vendas</td></tr>
+              <tr><td>Fornecedores de mercadoria</td><td>Não entra na DRE; já está no CMV</td></tr>
+              <tr><td>Compras/entradas</td><td>Análise de estoque/caixa</td></tr>
+              <tr><td>Venda à vista / Outros</td><td>Entrada de caixa, não despesa</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="apoio" class="page hidden">
+      <div class="grid grid2">
+        <div class="card">
+          <h2>Dados de apoio</h2>
+          <div class="row"><div><label>Compras / Entradas</label><input id="compras" type="number" step="0.01"></div><div><label>Entradas no mês</label><input id="entradasQtd" type="number"></div><div></div></div>
+          <div class="row"><div><label>Pagamentos a fornecedores</label><input id="fornecedoresPagos" type="number" step="0.01"></div><div><label>Pagamento antecipado fornecedor</label><input id="pagtoAntecipado" type="number" step="0.01"></div><div></div></div>
+          <div class="row"><div><label>Venda à vista / Outros do Livro Caixa</label><input id="outrosVista" type="number" step="0.01"></div><div><label>Cartão bruto</label><input id="cartaoBruto" type="number" step="0.01"></div><div></div></div>
+          <button class="primary" onclick="saveFromInputs()">Salvar dados de apoio</button>
+        </div>
+        <div class="card">
+          <h2>Formas de pagamento</h2>
+          <table>
+            <tbody id="pagamentosTabela"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h2>Fornecedores pagos — controle de caixa</h2>
+        <p class="small">Lista para controle financeiro. Não entra como despesa da DRE, pois o CMV já mede o custo da mercadoria vendida.</p>
+        <table><thead><tr><th>Fornecedor</th><th class="right">Valor pago</th></tr></thead><tbody id="fornecedoresTabela"></tbody></table>
+      </div>
+    </section>
+
+    <section id="config" class="page hidden">
+      <div class="grid grid2">
+        <div class="card">
+          <h2>Dados principais</h2>
+          <div class="row4"><div><label>Receita bruta</label><input id="receitaBruta" type="number" step="0.01"></div><div><label>Descontos</label><input id="descontos" type="number" step="0.01"></div><div><label>CMV</label><input id="cmv" type="number" step="0.01"></div><div></div></div>
+          <div class="row4"><div><label>Taxa cartão</label><input id="taxaCartao" type="number" step="0.01"></div><div><label>Tarifas financeiras</label><input id="tarifasFinanceiras" type="number" step="0.01"></div><div><label>DAS / Impostos</label><input id="das" type="number" step="0.01"></div><div></div></div>
+          <button class="primary" onclick="saveFromInputs()">Salvar e recalcular</button>
+        </div>
+        <div class="card">
+          <h2>Backup</h2>
+          <p class="small">Os dados ficam salvos no navegador deste aparelho usando LocalStorage.</p>
+          <div class="actions">
+            <button class="dark" onclick="baixarBackup()">Baixar backup JSON</button>
+            <button class="light" onclick="window.print()">Imprimir / PDF</button>
+            <button class="dangerBtn" onclick="resetTudo()">Resetar tudo</button>
+          </div>
+          <div class="note" style="margin-top:14px">Sistema simples em HTML. Para uso interno com link público, evite lançar dados extremamente sensíveis.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+const padrao = {
+  mes:'Junho/2026', receitaBruta:321853.04, descontos:22852.93, cmv:189398.22,
+  taxaCartao:154.91, tarifasFinanceiras:160.07, das:0,
+  compras:234797.84, entradasQtd:235, fornecedoresPagos:249876.31, pagtoAntecipado:485.02, outrosVista:134371.20, cartaoBruto:35539.70,
+  pagamentos:[['A Prazo',122625.38],['Dinheiro',96939.03],['PIX',37923.04],['Cartão',35539.70],['FarPopular',5957.96],['Cheque',15.00]],
+  fornecedores:[
+    ['A E A Comércio de Higiene Pessoal LTDA',1081.84],['A. M. Farma Medicamentos EIRELI-EPP',3521.28],['Armazém Mateus S A CD Altos',9241.95],['BEX Com. e Rep. Prod. Alim. LTDA',1388.06],['Cimed Remédios S.A',4500.84],['Comercial Ibiapina LTDA',1049.09],['Dist Parnaíba de Perf. e Higiene LTDA ME',2600.89],['Dist. Parnaíba de Medicamentos LTDA',2326.09],['F&F Distribuidora de Produtos Farmacêuticos LTDA',7847.68],['Jorge Batista Cia LTDA - Matriz',2419.06],['JR Atacadista de Produtos',8550.33],['Mauro Roberto Rodrigues de Moura',5306.85],['Medcentro Dist. de Prod. Farmac. LTDA',1066.12],['Nazaria Dist Prod Farmacêuticos LTDA',29023.74],['Nazaria Distribuidora de Produtos Farmac',76189.78],['Panpharma Distribuidora de Medicamentos LTDA',74892.85],['Plusfarma Comercial do Piauí LTDA',1043.12],['Produfarma Feirense LTDA',449.68],['Total Distribuidora de Medicamentos LTDA',16895.18],['Total Plus Dist. de Hig. e Alim. LTDA EPP',481.88]
+  ],
+  despesas:[
+    {nome:'Folha / Funcionários',valor:0,tipo:'Operacional'},
+    {nome:'Aluguel',valor:0,tipo:'Operacional'},
+    {nome:'Energia',valor:0,tipo:'Operacional'},
+    {nome:'Água',valor:0,tipo:'Operacional'},
+    {nome:'Internet / telefone',valor:0,tipo:'Operacional'},
+    {nome:'Contador',valor:0,tipo:'Operacional'},
+    {nome:'Sistema / ERP',valor:0,tipo:'Operacional'},
+    {nome:'Delivery / combustível',valor:0,tipo:'Operacional'},
+    {nome:'Marketing',valor:0,tipo:'Operacional'},
+    {nome:'Manutenção',valor:0,tipo:'Operacional'},
+    {nome:'Pró-labore / retirada',valor:0,tipo:'Pessoal'},
+    {nome:'DAS / Simples Nacional',valor:0,tipo:'Imposto'}
+  ]
+};
+let data = JSON.parse(localStorage.getItem('dreFarmaProHtml') || 'null') || structuredClone(padrao);
+const dinheiro = v => (Number(v)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const perc = v => ((Number(v)||0).toFixed(2).replace('.',',')+'%');
+const receitaLiquida = () => data.receitaBruta - data.descontos;
+const lucroBruto = () => receitaLiquida() - data.cmv;
+const totalDespesasOperacionais = () => data.despesas.reduce((s,d)=>s+(Number(d.valor)||0),0);
+const despesasFinanceiras = () => (Number(data.taxaCartao)||0) + (Number(data.tarifasFinanceiras)||0);
+const totalDespesas = () => totalDespesasOperacionais() + despesasFinanceiras() + (Number(data.das)||0);
+const resultado = () => lucroBruto() - totalDespesas();
+function save(){localStorage.setItem('dreFarmaProHtml',JSON.stringify(data));render();}
+function setText(id,v){document.getElementById(id).textContent=v}
+function setVal(id,v){const el=document.getElementById(id); if(el) el.value = Number(v)||0}
+function linha(nome, valor, classe=''){return `<tr><td>${nome}</td><td class="right ${classe}">${dinheiro(valor)}</td><td class="right">${receitaLiquida()?perc(valor/receitaLiquida()*100):'0,00%'}</td></tr>`}
+function render(){
+  const rl=receitaLiquida(), lb=lucroBruto(), td=totalDespesas(), res=resultado();
+  setText('kpiReceita', dinheiro(rl)); setText('kpiLucroBruto', dinheiro(lb)); setText('kpiMargemBruta', `Margem bruta: ${perc(lb/rl*100)}`);
+  setText('kpiDespesas', dinheiro(td)); setText('kpiResultado', dinheiro(res)); document.getElementById('kpiResultado').className='value '+(res>=0?'ok':'danger'); setText('kpiMargemLiquida', `Margem estimada: ${perc(res/rl*100)}`);
+  document.getElementById('resumoRapido').innerHTML = [
+    ['Receita bruta',data.receitaBruta],['Descontos',-data.descontos],['Receita líquida',rl],['CMV',-data.cmv],['Lucro bruto',lb],['Taxas + tarifas financeiras',-despesasFinanceiras()],['Despesas operacionais lançadas',-totalDespesasOperacionais()],['DAS / impostos lançados',-data.das],['Resultado estimado',res]
+  ].map(([n,v])=>`<tr><td>${n}</td><td class="right"><strong>${dinheiro(v)}</strong></td></tr>`).join('');
+  document.getElementById('dreTabela').innerHTML =
+    linha('Receita Bruta',data.receitaBruta)+linha('(-) Descontos',-data.descontos,'danger')+linha('(=) Receita Líquida',rl,'ok')+linha('(-) CMV',-data.cmv,'danger')+linha('(=) Lucro Bruto',lb,'ok')+linha('(-) Taxa de cartão',-data.taxaCartao,'danger')+linha('(-) Tarifas financeiras',-data.tarifasFinanceiras,'danger')+linha('(-) Despesas operacionais',-totalDespesasOperacionais(),'danger')+linha('(-) DAS / Impostos lançados',-data.das,'danger')+`<tr class="total"><td>(=) Resultado estimado</td><td class="right ${res>=0?'ok':'danger'}">${dinheiro(res)}</td><td class="right">${perc(res/rl*100)}</td></tr>`;
+  const cmvP=data.cmv/rl*100, descP=data.descontos/data.receitaBruta*100, despP=td/rl*100;
+  document.getElementById('barCmv').style.width=Math.min(cmvP,100)+'%'; setText('txtCmv',perc(cmvP));
+  document.getElementById('barDesc').style.width=Math.min(descP,100)+'%'; setText('txtDesc',perc(descP));
+  document.getElementById('barDesp').style.width=Math.min(despP,100)+'%'; setText('txtDesp',perc(despP));
+  document.getElementById('alertas').innerHTML = gerarAlertas(rl,lb,td,res).map(a=>`<p>${a}</p>`).join('');
+  renderDespesas(); renderApoio(); fillInputs();
+}
+function gerarAlertas(rl,lb,td,res){
+  const a=[]; const mb=lb/rl*100, cmvP=data.cmv/rl*100;
+  a.push(`<span class="pill ok">Margem bruta ${perc(mb)}</span> Venda com margem saudável.`);
+  if(cmvP>70) a.push(`<span class="pill danger">CMV alto</span> CMV acima de 70%. Revisar preços e compras.`); else a.push(`<span class="pill ok">CMV controlado</span> CMV em ${perc(cmvP)}.`);
+  if(data.das===0) a.push(`<span class="pill warn">DAS pendente</span> Lance o DAS/Simples Nacional quando tiver a guia.`);
+  if(totalDespesasOperacionais()===0) a.push(`<span class="pill warn">Despesas incompletas</span> Ainda faltam salários, aluguel, energia, água, internet, contador e retiradas.`);
+  if(res>=0) a.push(`<span class="pill ok">Resultado positivo</span> Resultado estimado positivo com os dados lançados.`); else a.push(`<span class="pill danger">Resultado negativo</span> Resultado estimado negativo com os dados lançados.`);
+  return a;
+}
+function renderDespesas(){
+  document.getElementById('listaDespesas').innerHTML = data.despesas.map((d,i)=>`
+    <div class="row4">
+      <div><label>Categoria</label><input value="${d.nome}" onchange="data.despesas[${i}].nome=this.value;save()"></div>
+      <div><label>Valor</label><input type="number" step="0.01" value="${Number(d.valor)||0}" onchange="data.despesas[${i}].valor=parseFloat(this.value)||0;save()"></div>
+      <div><label>Tipo</label><select onchange="data.despesas[${i}].tipo=this.value;save()"><option ${d.tipo==='Operacional'?'selected':''}>Operacional</option><option ${d.tipo==='Financeira'?'selected':''}>Financeira</option><option ${d.tipo==='Imposto'?'selected':''}>Imposto</option><option ${d.tipo==='Pessoal'?'selected':''}>Pessoal</option></select></div>
+      <button class="dangerBtn" onclick="removeDespesa(${i})">Excluir</button>
+    </div>`).join('');
+}
+function renderApoio(){
+  document.getElementById('pagamentosTabela').innerHTML = data.pagamentos.map(([n,v])=>`<tr><td>${n}</td><td class="right">${dinheiro(v)}</td></tr>`).join('')+`<tr class="total"><td>Total</td><td class="right">${dinheiro(data.pagamentos.reduce((s,p)=>s+p[1],0))}</td></tr>`;
+  document.getElementById('fornecedoresTabela').innerHTML = data.fornecedores.map(([n,v])=>`<tr><td>${n}</td><td class="right">${dinheiro(v)}</td></tr>`).join('')+`<tr class="total"><td>Total pago</td><td class="right">${dinheiro(data.fornecedores.reduce((s,p)=>s+p[1],0))}</td></tr>`;
+}
+function fillInputs(){['receitaBruta','descontos','cmv','taxaCartao','tarifasFinanceiras','das','compras','entradasQtd','fornecedoresPagos','pagtoAntecipado','outrosVista','cartaoBruto'].forEach(k=>setVal(k,data[k]));}
+function saveFromInputs(){['receitaBruta','descontos','cmv','taxaCartao','tarifasFinanceiras','das','compras','entradasQtd','fornecedoresPagos','pagtoAntecipado','outrosVista','cartaoBruto'].forEach(k=>{const el=document.getElementById(k); if(el) data[k]=parseFloat(el.value)||0}); save();}
+function addDespesa(){data.despesas.push({nome:'Nova despesa',valor:0,tipo:'Operacional'});save();}
+function removeDespesa(i){data.despesas.splice(i,1);save();}
+function resetDespesasPadrao(){if(confirm('Restaurar categorias padrão?')){data.despesas=structuredClone(padrao.despesas);save();}}
+function resetTudo(){if(confirm('Apagar dados salvos neste navegador e voltar ao padrão?')){localStorage.removeItem('dreFarmaProHtml');data=structuredClone(padrao);save();}}
+function baixarBackup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup-dre-farma-pro-junho-2026.json';a.click();URL.revokeObjectURL(a.href)}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(btn.dataset.tab).classList.remove('hidden')}));
+render();
+</script>
+</body>
+</html>
