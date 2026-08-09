@@ -24,15 +24,16 @@ body{
 .screen-logo{
   object-fit:contain!important;
   background:#050505!important;
+  border-radius:50%!important;
   padding:0!important;
 }
 
 .brand img{
-  border:1px solid rgba(255,189,0,.5)!important;
-  box-shadow:0 0 0 4px rgba(255,115,0,.08);
+  border:1px solid rgba(255,115,0,.32)!important;
+  box-shadow:0 0 0 4px rgba(255,82,0,.07);
 }
 
-.screen-logo{border:1px solid rgba(255,189,0,.35)}
+.screen-logo{border:1px solid rgba(255,115,0,.28)}
 
 /* Cabeçalho */
 .top{
