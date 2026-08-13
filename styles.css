@@ -4,6 +4,7 @@
 
 /* Fotografias reais aplicadas à vitrine de projetos */
 .official-logo{display:block;width:58px;height:58px;object-fit:contain}.footer-logo{width:72px;height:72px}
+.brand-name{display:grid;gap:1px;font-family:Manrope,sans-serif;line-height:1}.brand-name strong{font-size:14px;letter-spacing:2.2px;color:#fff}.brand-name small{font-size:11px;font-weight:800;letter-spacing:5px;color:var(--orange)}
 .feature-card{padding-bottom:0}
 .service-photo{display:block;width:calc(100% + 48px);height:158px;margin:auto -24px 0;object-fit:cover;object-position:center;border-top:1px solid var(--line);filter:saturate(.88) contrast(1.03);transition:transform .35s ease,filter .35s ease}
 .feature-card:hover .service-photo{transform:scale(1.025);filter:saturate(1) contrast(1.05)}
