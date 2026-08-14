@@ -2,9 +2,9 @@
 
 Landing page responsiva criada com HTML, CSS e JavaScript puros.
 
-## Antes de publicar
+## Contato configurado
 
-Substitua o número `5588999999999` em `index.html` pelo WhatsApp oficial da Ativa Digital ON, incluindo código do país e DDD.
+Os botões de atendimento utilizam o WhatsApp oficial da Ativa Digital ON: `(89) 98131-1034`.
 
 ## Executar localmente
 
