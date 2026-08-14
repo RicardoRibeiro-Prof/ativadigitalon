@@ -35,3 +35,9 @@
 .mini-site-preview{display:block;width:149px;height:105px;border-radius:7px;object-fit:cover;object-position:left top;border:1px solid rgba(255,255,255,.12)}
 @media(max-width:900px){.hero-overlay{background:linear-gradient(90deg,rgba(5,5,6,.96),rgba(5,5,6,.75) 62%,rgba(5,5,6,.34)),linear-gradient(0deg,#09090a,transparent 40%)}}
 @media(max-width:620px){.hero-overlay{background:linear-gradient(0deg,#09090a 5%,rgba(5,5,6,.64) 68%,rgba(5,5,6,.62))}}
+
+/* Navegação fixa e páginas internas */
+.site-header{position:fixed;background:rgba(8,8,9,.9);backdrop-filter:blur(18px)}
+.main-nav a{position:relative}.main-nav a.active{color:var(--orange)}.main-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:2px;background:var(--orange)}
+.inner-page main{padding-top:78px}.page-hero{padding:88px 0 55px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 78% 22%,rgba(255,107,26,.11),transparent 28%),#0b0b0c}.page-hero h1{max-width:850px;margin-bottom:16px;font-size:clamp(40px,5vw,64px)}.page-hero p{max-width:700px;color:var(--muted);font-size:17px}.inner-page .section{padding-top:80px}.inner-page .section-heading{text-align:left;margin-left:0}.inner-page .section-heading p{max-width:680px}.inner-page .final-cta{margin-top:30px}
+@media(max-width:900px){.inner-page main{padding-top:70px}.main-nav a.active::after{display:none}.page-hero{padding:65px 0 42px}}
