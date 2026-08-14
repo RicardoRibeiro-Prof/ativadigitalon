@@ -1,176 +1,19 @@
 {
-  "headers": [
-    {
-      "source": "/admin/:path*",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "same-origin" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src 'self'; base-uri 'self'; form-action 'self'" },
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    },
-    {
-      "source": "/api/admin/:path*",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/almeida-castro-advocacia",
-      "destination": "/demos/almeida-castro-advocacia/",
-      "permanent": false
-    },
-    {
-      "source": "/almeida-castro-advocacia/",
-      "destination": "/demos/almeida-castro-advocacia/",
-      "permanent": false
-    },
-    {
-      "source": "/almeida-castro-advocacia/:path*",
-      "destination": "/demos/almeida-castro-advocacia/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/moura-vasconcelos-advocacia",
-      "destination": "/demos/moura-vasconcelos-advocacia/",
-      "permanent": false
-    },
-    {
-      "source": "/moura-vasconcelos-advocacia/",
-      "destination": "/demos/moura-vasconcelos-advocacia/",
-      "permanent": false
-    },
-    {
-      "source": "/moura-vasconcelos-advocacia/:path*",
-      "destination": "/demos/moura-vasconcelos-advocacia/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/vertice-contabilidade",
-      "destination": "/demos/vertice-contabilidade/",
-      "permanent": false
-    },
-    {
-      "source": "/vertice-contabilidade/",
-      "destination": "/demos/vertice-contabilidade/",
-      "permanent": false
-    },
-    {
-      "source": "/vertice-contabilidade/:path*",
-      "destination": "/demos/vertice-contabilidade/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/nexo-contabilidade",
-      "destination": "/demos/nexo-contabilidade/",
-      "permanent": false
-    },
-    {
-      "source": "/nexo-contabilidade/",
-      "destination": "/demos/nexo-contabilidade/",
-      "permanent": false
-    },
-    {
-      "source": "/nexo-contabilidade/:path*",
-      "destination": "/demos/nexo-contabilidade/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/atlas-engenharia",
-      "destination": "/demos/atlas-engenharia/",
-      "permanent": false
-    },
-    {
-      "source": "/atlas-engenharia/",
-      "destination": "/demos/atlas-engenharia/",
-      "permanent": false
-    },
-    {
-      "source": "/atlas-engenharia/:path*",
-      "destination": "/demos/atlas-engenharia/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/prisma-engenharia-projetos",
-      "destination": "/demos/prisma-engenharia-projetos/",
-      "permanent": false
-    },
-    {
-      "source": "/prisma-engenharia-projetos/",
-      "destination": "/demos/prisma-engenharia-projetos/",
-      "permanent": false
-    },
-    {
-      "source": "/prisma-engenharia-projetos/:path*",
-      "destination": "/demos/prisma-engenharia-projetos/:path*",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
-      "source": "/demos/moura-vasconcelos-advocacia",
-      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
-    },
-    {
-      "source": "/demos/moura-vasconcelos-advocacia/",
-      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
-    },
-    {
-      "source": "/demos/moura-vasconcelos-advocacia/:path*",
+      "source": "/demos/moura-vasconcelos/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/:path*"
-    },
-    {
-      "source": "/demos/vertice-contabilidade",
-      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/"
-    },
-    {
-      "source": "/demos/vertice-contabilidade/",
-      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/"
     },
     {
       "source": "/demos/vertice-contabilidade/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/:path*"
     },
     {
-      "source": "/demos/nexo-contabilidade",
-      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/"
-    },
-    {
-      "source": "/demos/nexo-contabilidade/",
-      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/"
-    },
-    {
       "source": "/demos/nexo-contabilidade/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/:path*"
     },
     {
-      "source": "/demos/atlas-engenharia",
-      "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/"
-    },
-    {
-      "source": "/demos/atlas-engenharia/",
-      "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/"
-    },
-    {
-      "source": "/demos/atlas-engenharia/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/atlas-engenharia/:path*"
-    },
-    {
-      "source": "/demos/prisma-engenharia-projetos",
-      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/"
-    },
-    {
-      "source": "/demos/prisma-engenharia-projetos/",
-      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/"
-    },
-    {
-      "source": "/demos/prisma-engenharia-projetos/:path*",
+      "source": "/demos/prisma-engenharia/:path*",
       "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/:path*"
     }
   ]
