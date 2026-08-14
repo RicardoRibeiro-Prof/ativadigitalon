@@ -12,3 +12,20 @@
 .portfolio-heading{max-width:780px}.portfolio-showcase{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(320px,.8fr);gap:28px;align-items:stretch}.portfolio-video-frame{overflow:hidden;border:1px solid rgba(255,107,26,.3);border-radius:22px;background:#050506;box-shadow:0 30px 80px rgba(0,0,0,.42)}.video-topbar{height:48px;display:flex;align-items:center;gap:7px;padding:0 18px;border-bottom:1px solid var(--line);background:#151517}.video-topbar span{width:8px;height:8px;border-radius:50%;background:#4a4949}.video-topbar span:first-child{background:var(--orange)}.video-topbar strong{margin-left:9px;color:#898784;font:600 9px Manrope;letter-spacing:1.8px}.portfolio-video{display:block;width:100%;aspect-ratio:16/9;background:#050506;object-fit:contain}.portfolio-details{display:flex;flex-direction:column;justify-content:space-between;gap:26px;padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#19191b,#111113)}.project-tags{display:flex;flex-wrap:wrap;gap:9px}.project-tags span{padding:8px 11px;border:1px solid rgba(255,107,26,.25);border-radius:999px;color:#d6d2cc;font-size:10px;letter-spacing:.5px}.portfolio-details h3{font-size:26px;line-height:1.15;margin-bottom:10px}.portfolio-details p{color:var(--muted);margin:0}.project-links{display:grid;grid-template-columns:1fr 1fr;gap:9px}.portfolio-link{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;padding:0 14px;border:1px solid var(--orange);border-radius:12px;background:var(--orange);color:#14100d;font-size:12px;font-weight:800;transition:.25s}.portfolio-link.secondary{background:transparent;color:var(--text)}.portfolio-link:hover{background:var(--orange-2);color:#14100d;transform:translateY(-2px)}.portfolio-link span{font-size:17px}
 @media(max-width:900px){.portfolio-showcase{grid-template-columns:1fr}.portfolio-details{gap:24px}}
 @media(max-width:620px){.video-topbar{height:42px;padding:0 12px}.video-topbar strong{letter-spacing:1px}.portfolio-details{padding:24px}.portfolio-details h3{font-size:23px}.project-links{grid-template-columns:1fr}.portfolio-link{width:100%;font-size:13px}}
+
+/* Destaque visual do topo e contatos do rodapé */
+.hero-showcase{position:absolute;z-index:3;right:max(4vw,calc((100% - var(--max))/2));top:190px;width:min(32vw,430px);overflow:visible;border:1px solid rgba(255,107,26,.3);border-radius:20px;background:#0c0c0e;box-shadow:0 32px 80px rgba(0,0,0,.58)}
+.hero-showcase>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:0 0 19px 19px}
+.showcase-bar{height:38px;display:flex;align-items:center;gap:6px;padding:0 13px;border-bottom:1px solid var(--line)}
+.showcase-bar span{width:7px;height:7px;border-radius:50%;background:#49494c}.showcase-bar span:first-child{background:var(--orange)}
+.showcase-bar small{margin-left:auto;color:#777;font:600 8px Manrope;letter-spacing:1.2px}
+.hero-showcase .floating-card{right:-24px;bottom:-104px;background:rgba(18,18,20,.92)}
+.footer-grid{grid-template-columns:1fr .9fr .7fr 1.25fr;align-items:start}
+.footer-grid>div:last-child{display:grid;justify-content:stretch;gap:10px}
+.footer-nav{display:flex;flex-direction:column;gap:9px;padding-top:15px;font-size:13px}
+.footer-contact{display:grid;gap:10px;padding:15px 0 0 22px;border-left:1px solid var(--line)}
+.footer-contact strong{margin-bottom:4px;color:var(--orange);font:700 10px Manrope;letter-spacing:1.5px}
+.footer-contact a{display:flex;justify-content:space-between;gap:12px;color:#d7d3cd;font-size:13px}.footer-contact a:hover{color:var(--orange)}.footer-contact a span{color:var(--orange)}
+@media(max-width:1100px){.hero-showcase{width:360px;right:30px}.hero-content h1{max-width:600px}}
+@media(max-width:900px){.hero-showcase{display:none}.footer-grid{grid-template-columns:1fr 1fr}.footer-contact{grid-column:2;padding-left:0;border-left:0}.footer-nav{grid-column:1}}
+@media(max-width:620px){.footer-grid{grid-template-columns:1fr}.footer-contact,.footer-nav{grid-column:auto}.footer-contact{padding-top:6px}.footer-contact a{max-width:310px}}
