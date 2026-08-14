@@ -51,8 +51,16 @@
       "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
     },
     {
+      "source": "/demos/moura-vasconcelos/assets/:path*",
+      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/assets/:path*"
+    },
+    {
+      "source": "/demos/moura-vasconcelos/manifest.webmanifest",
+      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/manifest.webmanifest"
+    },
+    {
       "source": "/demos/moura-vasconcelos/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/:path*"
+      "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/:path*/"
     },
     {
       "source": "/demos/vertice-contabilidade",
@@ -63,8 +71,16 @@
       "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/"
     },
     {
+      "source": "/demos/vertice-contabilidade/assets/:path*",
+      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/assets/:path*"
+    },
+    {
+      "source": "/demos/vertice-contabilidade/manifest.webmanifest",
+      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/manifest.webmanifest"
+    },
+    {
       "source": "/demos/vertice-contabilidade/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/:path*"
+      "destination": "https://ricardoribeiro-prof.github.io/vertice-contabilidade/:path*/"
     },
     {
       "source": "/demos/nexo-contabilidade",
@@ -75,8 +91,16 @@
       "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/"
     },
     {
+      "source": "/demos/nexo-contabilidade/assets/:path*",
+      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/assets/:path*"
+    },
+    {
+      "source": "/demos/nexo-contabilidade/manifest.webmanifest",
+      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/manifest.webmanifest"
+    },
+    {
       "source": "/demos/nexo-contabilidade/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/:path*"
+      "destination": "https://ricardoribeiro-prof.github.io/nexo-contabilidade/:path*/"
     },
     {
       "source": "/demos/prisma-engenharia",
@@ -87,8 +111,16 @@
       "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/"
     },
     {
+      "source": "/demos/prisma-engenharia/assets/:path*",
+      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/assets/:path*"
+    },
+    {
+      "source": "/demos/prisma-engenharia/manifest.webmanifest",
+      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/manifest.webmanifest"
+    },
+    {
       "source": "/demos/prisma-engenharia/:path*",
-      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/:path*"
+      "destination": "https://ricardoribeiro-prof.github.io/prisma-engenharia-projetos/:path*/"
     }
   ]
 }
