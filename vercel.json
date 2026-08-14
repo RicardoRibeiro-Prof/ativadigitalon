@@ -1,4 +1,46 @@
 {
+  "redirects": [
+    {
+      "source": "/moura-vasconcelos-advocacia",
+      "destination": "/demos/moura-vasconcelos/",
+      "permanent": false
+    },
+    {
+      "source": "/moura-vasconcelos-advocacia/:path*",
+      "destination": "/demos/moura-vasconcelos/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/vertice-contabilidade",
+      "destination": "/demos/vertice-contabilidade/",
+      "permanent": false
+    },
+    {
+      "source": "/vertice-contabilidade/:path*",
+      "destination": "/demos/vertice-contabilidade/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/nexo-contabilidade",
+      "destination": "/demos/nexo-contabilidade/",
+      "permanent": false
+    },
+    {
+      "source": "/nexo-contabilidade/:path*",
+      "destination": "/demos/nexo-contabilidade/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/prisma-engenharia-projetos",
+      "destination": "/demos/prisma-engenharia/",
+      "permanent": false
+    },
+    {
+      "source": "/prisma-engenharia-projetos/:path*",
+      "destination": "/demos/prisma-engenharia/:path*",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/demos/moura-vasconcelos",
