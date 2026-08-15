@@ -1,121 +1,267 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sites profissionais e páginas de alta conversão para transformar visitas em oportunidades reais de negócio.">
-  <title>Ativa Digital ON | Sites que geram oportunidades</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-  <header class="site-header" id="inicio">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="Ativa Digital ON - início">
-        <img class="official-logo" src="logo.png" alt="Ativa Digital ON">
-        <span class="brand-name"><strong>ATIVA DIGITAL</strong><small>ON</small></span>
-      </a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a class="active" href="index.html" aria-current="page">Início</a><a href="solucoes.html">Soluções</a><a href="processo.html">Como funciona</a><a href="projetos.html">Projetos</a><a href="investimento.html">Investimento</a>
-      </nav>
-      <a class="btn btn-small nav-cta" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Quero%20um%20or%C3%A7amento%20para%20meu%20site." target="_blank" rel="noopener">Solicitar orçamento</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111214" />
+    <meta name="description" content="SalesFlow — CRM de prospecção da Ativa Digital ON." />
+    <title>SalesFlow | Ativa Digital ON</title>
+    <link rel="manifest" href="manifest.webmanifest?v=5" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=5" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <a class="brand" href="#dashboard" aria-label="SalesFlow - início">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span><strong>SalesFlow</strong><small>Ativa Digital ON</small></span>
+        </a>
 
-  <main id="conteudo">
-    <section class="hero">
-      <img class="hero-image" src="assets/hero-ativa.webp" alt="Profissional trabalhando em um notebook em ambiente moderno">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <div class="eyebrow"><span></span> Presença digital que gera resultado</div>
-        <h1>Seu negócio merece um site que <em>trabalha por você.</em></h1>
-        <p>Criamos páginas modernas, rápidas e estrategicamente planejadas para transformar visitantes em oportunidades reais de atendimento.</p>
-        <div class="hero-actions">
-          <a class="btn" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Quero%20criar%20um%20site%20profissional." target="_blank" rel="noopener">Quero meu site <span>→</span></a>
-          <a class="text-link" href="projetos.html"><span class="play">▶</span> Ver projetos</a>
+        <nav class="main-nav">
+          <button class="nav-item active" type="button" data-page="dashboard">
+            <span class="nav-icon" aria-hidden="true">⌂</span><span>Visão geral</span>
+          </button>
+          <button class="nav-item" type="button" data-page="prospecting">
+            <span class="nav-icon" aria-hidden="true">◎</span><span>Prospectar clientes</span>
+          </button>
+          <button class="nav-item" type="button" data-page="pipeline">
+            <span class="nav-icon" aria-hidden="true">▦</span><span>Funil de vendas</span>
+          </button>
+          <button class="nav-item" type="button" data-page="leads">
+            <span class="nav-icon" aria-hidden="true">♙</span><span>Todos os leads</span>
+          </button>
+          <button class="nav-item" type="button" data-page="followups">
+            <span class="nav-icon" aria-hidden="true">◷</span><span>Follow-ups</span>
+            <span class="nav-badge is-hidden" id="followupBadge">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="status-dot"></span>
+          <div><strong>Dados protegidos</strong><small>Salvos neste dispositivo</small></div>
         </div>
-      </div>
-      <div class="floating-card">
-        <div class="metric"><strong>7 dias</strong><span>prazo médio de entrega</span></div>
-        <img class="mini-site-preview" src="assets/portfolio-almeida-atlas.webp" alt="Prévia de página profissional criada pela Ativa Digital ON">
-      </div>
-    </section>
 
-    <section class="trust-bar" aria-label="Áreas atendidas">
-      <div class="container trust-content"><span>PROJETOS PARA NEGÓCIOS DE VERDADE</span><div class="client-list"><strong>ADVOCACIA</strong><strong>SAÚDE</strong><strong>ESTÉTICA</strong><strong>COMÉRCIO</strong><strong>PROFISSIONAIS</strong></div></div>
-    </section>
+        <button class="nav-item settings-button" type="button" data-page="settings">
+          <span class="nav-icon" aria-hidden="true">⚙</span><span>Configurações</span>
+        </button>
+      </aside>
 
-    <section class="section" id="solucoes">
-      <div class="container">
-        <div class="section-heading"><span class="kicker">SOLUÇÕES SOB MEDIDA</span><h2>Tudo o que seu negócio precisa para <em>ser encontrado e escolhido.</em></h2><p>Estratégia, design e tecnologia reunidos em uma experiência clara para o seu cliente.</p></div>
-        <div class="feature-grid">
-          <article class="feature-card featured"><div class="icon">↗</div><div><h3>Landing Pages</h3><p>Páginas focadas em campanhas, serviços e conversão de visitantes em contatos.</p></div><img class="service-photo" src="assets/servico-landing.webp" alt="Designer criando uma landing page em um notebook" loading="lazy"></article>
-          <article class="feature-card"><div class="icon">◫</div><div><h3>Sites Institucionais</h3><p>Uma presença profissional que apresenta seu negócio com clareza e credibilidade.</p></div><img class="service-photo" src="assets/servico-institucional.webp" alt="Equipe analisando um site institucional em um monitor" loading="lazy"></article>
-          <article class="feature-card"><div class="icon">◉</div><div><h3>Design Responsivo</h3><p>Experiência impecável no celular, tablet e computador, sem conteúdo cortado.</p></div><img class="service-photo" src="assets/servico-responsivo.webp" alt="Profissional visualizando um site responsivo no celular" loading="lazy"></article>
-          <article class="feature-card"><div class="icon">⌁</div><div><h3>Contato no WhatsApp</h3><p>Chamadas estratégicas que levam o cliente direto para o seu atendimento.</p></div><img class="service-photo" src="assets/servico-whatsapp.webp" alt="Empresária atendendo um cliente pelo celular" loading="lazy"></article>
-          <article class="feature-card"><div class="icon">⚡</div><div><h3>Desempenho e SEO</h3><p>Estrutura rápida e preparada para mecanismos de busca desde o início.</p></div><img class="service-photo" src="assets/servico-seo.webp" alt="Profissional analisando desempenho e métricas de um site" loading="lazy"></article>
-          <article class="feature-card"><div class="icon">✓</div><div><h3>Suporte na Publicação</h3><p>Orientação para domínio, hospedagem e tudo o que você precisa para entrar no ar.</p></div><img class="service-photo" src="assets/servico-suporte.webp" alt="Especialista auxiliando cliente durante a publicação de um site" loading="lazy"></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section process-section" id="processo">
-      <div class="container process-grid">
-        <div><span class="kicker">PROCESSO SIMPLES</span><h2>Do primeiro contato ao site publicado.</h2><p>Você não precisa entender de tecnologia. Nós conduzimos cada etapa com clareza.</p><a class="btn" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Quero%20entender%20como%20funciona%20a%20cria%C3%A7%C3%A3o%20do%20site." target="_blank" rel="noopener">Começar meu projeto <span>→</span></a></div>
-        <ol class="steps"><li><b>01</b><div><h3>Briefing estratégico</h3><p>Entendemos o seu negócio, público, objetivos e diferenciais.</p></div></li><li><b>02</b><div><h3>Design e desenvolvimento</h3><p>Criamos a estrutura, o visual e as chamadas de conversão.</p></div></li><li><b>03</b><div><h3>Revisão e publicação</h3><p>Você aprova o resultado e nós colocamos o site no ar.</p></div></li></ol>
-      </div>
-    </section>
-
-    <section class="section" id="projetos">
-      <div class="container">
-        <div class="section-heading portfolio-heading">
-          <span class="kicker">PROJETOS QUE INSPIRAM CONFIANÇA</span>
-          <h2>Veja nossas páginas <em>em funcionamento.</em></h2>
-          <p>Conheça detalhes de dois projetos desenvolvidos para áreas diferentes, com estrutura profissional, navegação clara e foco em conversão.</p>
-        </div>
-        <div class="portfolio-showcase">
-          <div class="portfolio-video-frame">
-            <div class="video-topbar" aria-hidden="true"><span></span><span></span><span></span><strong>DEMONSTRAÇÃO DE PROJETOS</strong></div>
-            <video class="portfolio-video" controls playsinline preload="metadata" poster="assets/portfolio-almeida-atlas.webp" aria-label="Demonstração dos projetos Almeida e Atlas">
-              <source src="assets/demonstracao-portfolio-almeida-atlas.mp4" type="video/mp4">
-              Seu navegador não suporta a reprodução deste vídeo.
-            </video>
+      <div class="content-shell">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="currentDate"></p>
+            <h1 id="pageTitle">Visão geral</h1>
           </div>
-          <div class="portfolio-details">
-            <div class="project-tags" aria-label="Projetos apresentados"><span>01 · Almeida Advocacia</span><span>02 · Atlas Engenharia</span></div>
-            <div><h3>Do primeiro impacto aos detalhes da página.</h3><p>O vídeo mostra a apresentação visual, as seções de conteúdo e a experiência de navegação de cada projeto.</p></div>
-            <div class="project-links" aria-label="Acessar outros projetos completos">
-              <a class="portfolio-link" href="/demos/moura-vasconcelos/" target="_blank" rel="noopener">Moura &amp; Vasconcelos <span aria-hidden="true">↗</span></a>
-              <a class="portfolio-link secondary" href="/demos/vertice-contabilidade/" target="_blank" rel="noopener">Vértice Contabilidade <span aria-hidden="true">↗</span></a>
-              <a class="portfolio-link secondary" href="/demos/nexo-contabilidade/" target="_blank" rel="noopener">Nexo Contabilidade <span aria-hidden="true">↗</span></a>
-              <a class="portfolio-link secondary" href="/demos/prisma-engenharia/" target="_blank" rel="noopener">Prisma Engenharia <span aria-hidden="true">↗</span></a>
+          <div class="topbar-actions">
+            <label class="global-search" for="globalSearch">
+              <span aria-hidden="true">⌕</span>
+              <input id="globalSearch" type="search" placeholder="Buscar empresa ou contato" autocomplete="off" />
+            </label>
+            <button class="primary-button" id="newLeadButton" type="button"><span aria-hidden="true">＋</span>Novo lead</button>
+          </div>
+        </header>
+
+        <main id="mainContent" tabindex="-1">
+          <section class="page active" id="page-dashboard" aria-labelledby="pageTitle">
+            <div class="welcome-panel">
+              <div>
+                <p class="panel-kicker">CENTRAL DE PROSPECÇÃO</p>
+                <h2>Transforme contatos em clientes.</h2>
+                <p>Organize cada oportunidade, saiba quem precisa de retorno e avance suas negociações sem perder vendas.</p>
+              </div>
+              <button class="secondary-button light" id="welcomeNewLead" type="button">Cadastrar primeiro lead <span aria-hidden="true">→</span></button>
             </div>
-          </div>
-        </div>
+
+            <div class="metrics-grid" id="metricsGrid"></div>
+
+            <div class="dashboard-grid">
+              <section class="panel today-panel">
+                <div class="panel-heading">
+                  <div><p class="panel-kicker">PRIORIDADE</p><h2>Retornos de hoje</h2></div>
+                  <button class="text-button" type="button" data-go-page="followups">Ver todos →</button>
+                </div>
+                <div id="todayFollowups"></div>
+              </section>
+
+              <section class="panel">
+                <div class="panel-heading">
+                  <div><p class="panel-kicker">DESEMPENHO</p><h2>Distribuição do funil</h2></div>
+                </div>
+                <div id="stageChart" class="stage-chart"></div>
+              </section>
+            </div>
+
+            <section class="panel recent-panel">
+              <div class="panel-heading">
+                <div><p class="panel-kicker">MOVIMENTAÇÃO</p><h2>Leads recentes</h2></div>
+                <button class="text-button" type="button" data-go-page="leads">Ver lista completa →</button>
+              </div>
+              <div id="recentLeads"></div>
+            </section>
+          </section>
+
+          <section class="page" id="page-prospecting" aria-labelledby="pageTitle">
+            <section class="prospecting-hero">
+              <div>
+                <p class="panel-kicker">BUSCA AUTOMÁTICA</p>
+                <h2>Encontre novas oportunidades em poucos segundos.</h2>
+                <p>Escolha o tipo de negócio e a cidade. O SalesFlow pesquisa estabelecimentos públicos, organiza os dados e destaca quem pode precisar de presença digital.</p>
+              </div>
+              <span class="automation-badge"><span></span> Fonte pública ativa</span>
+            </section>
+
+            <section class="panel prospecting-search-panel">
+              <form id="prospectingForm" class="prospecting-form" novalidate>
+                <label class="field" for="prospectSegment">Segmento <span>*</span>
+                  <select id="prospectSegment" required>
+                    <option value="">Selecione</option>
+                    <option value="dentista">Dentistas</option>
+                    <option value="clinica">Clínicas</option>
+                    <option value="advogado">Advogados</option>
+                    <option value="contador">Contadores</option>
+                    <option value="farmacia">Farmácias</option>
+                    <option value="academia">Academias</option>
+                    <option value="restaurante">Restaurantes</option>
+                    <option value="salao">Salões de beleza</option>
+                  </select>
+                </label>
+                <label class="field prospect-city" for="prospectCity">Cidade e estado <span>*</span>
+                  <input id="prospectCity" required maxlength="80" placeholder="Ex.: São Raimundo Nonato, PI" autocomplete="address-level2" />
+                </label>
+                <label class="field" for="prospectLimit">Quantidade
+                  <select id="prospectLimit">
+                    <option value="10">Até 10</option>
+                    <option value="20" selected>Até 20</option>
+                    <option value="30">Até 30</option>
+                  </select>
+                </label>
+                <button class="primary-button prospect-submit" id="prospectSubmit" type="submit"><span aria-hidden="true">⌕</span>Buscar empresas</button>
+              </form>
+              <div class="search-guidance">
+                <span aria-hidden="true">ⓘ</span>
+                <p>A busca usa informações empresariais publicamente cadastradas. Confira os dados antes de iniciar uma abordagem.</p>
+              </div>
+            </section>
+
+            <div id="prospectStatus" aria-live="polite"></div>
+
+            <section class="prospect-results is-hidden" id="prospectResultsSection">
+              <div class="prospect-metrics" id="prospectMetrics"></div>
+              <section class="panel prospect-list-panel">
+                <div class="panel-heading prospect-heading">
+                  <div><p class="panel-kicker">RESULTADOS DA BUSCA</p><h2 id="prospectResultsTitle">Empresas encontradas</h2></div>
+                  <div class="prospect-actions">
+                    <label class="select-all"><input id="selectAllProspects" type="checkbox" /> Selecionar disponíveis</label>
+                    <button class="primary-button" id="addSelectedProspects" type="button" disabled>Adicionar selecionados <span id="selectedProspectCount">0</span></button>
+                  </div>
+                </div>
+                <div id="prospectList" class="prospect-list"></div>
+                <footer class="data-attribution" id="prospectAttribution">Fonte de dados da busca.</footer>
+              </section>
+            </section>
+          </section>
+
+          <section class="page" id="page-pipeline" aria-labelledby="pageTitle">
+            <div class="page-tools">
+              <div class="segmented-control" id="pipelineSegmentFilter" aria-label="Filtro do funil">
+                <button type="button" class="active" data-pipeline-filter="open">Em andamento</button>
+                <button type="button" data-pipeline-filter="closed">Finalizados</button>
+              </div>
+              <p class="helper-text">Arraste os cartões para atualizar a etapa.</p>
+            </div>
+            <div class="pipeline-board" id="pipelineBoard"></div>
+          </section>
+
+          <section class="page" id="page-leads" aria-labelledby="pageTitle">
+            <div class="filter-bar">
+              <label class="filter-search" for="leadSearch"><span aria-hidden="true">⌕</span><input id="leadSearch" type="search" placeholder="Buscar na lista" /></label>
+              <label class="select-wrap" for="stageFilter"><span>Etapa</span><select id="stageFilter"><option value="all">Todas as etapas</option></select></label>
+              <label class="select-wrap" for="sourceFilter"><span>Origem</span><select id="sourceFilter"><option value="all">Todas as origens</option></select></label>
+            </div>
+            <div class="panel table-panel">
+              <div class="lead-table" id="leadTable"></div>
+            </div>
+          </section>
+
+          <section class="page" id="page-followups" aria-labelledby="pageTitle">
+            <div class="followup-summary" id="followupSummary"></div>
+            <div id="followupGroups"></div>
+          </section>
+
+          <section class="page" id="page-settings" aria-labelledby="pageTitle">
+            <div class="settings-grid">
+              <section class="panel settings-card">
+                <div class="settings-icon">⇩</div>
+                <h2>Backup dos dados</h2>
+                <p>Baixe uma cópia completa dos seus leads e negociações.</p>
+                <button class="secondary-button" id="exportBackup" type="button">Baixar backup</button>
+              </section>
+              <section class="panel settings-card">
+                <div class="settings-icon">⇧</div>
+                <h2>Restaurar backup</h2>
+                <p>Recupere os dados de um arquivo exportado pelo SalesFlow.</p>
+                <label class="secondary-button file-button">Escolher arquivo<input id="importBackup" type="file" accept="application/json" /></label>
+              </section>
+              <section class="panel settings-card danger-card">
+                <div class="settings-icon">⌫</div>
+                <h2>Limpar todos os dados</h2>
+                <p>Exclui definitivamente os leads salvos neste dispositivo.</p>
+                <button class="danger-button" id="clearData" type="button">Limpar dados</button>
+              </section>
+            </div>
+            <section class="panel phase-panel">
+              <div><p class="panel-kicker">PRÓXIMA FASE</p><h2>Conta online e equipe</h2><p>Depois da validação, conectaremos Supabase para login, sincronização entre dispositivos, permissões e histórico centralizado.</p></div>
+              <span class="phase-tag">Planejado</span>
+            </section>
+          </section>
+        </main>
       </div>
-    </section>
-
-    <section class="section pricing-section" id="investimento">
-      <div class="container pricing-grid"><div class="pricing-copy"><span class="kicker">INVESTIMENTO TRANSPARENTE</span><h2>Comece sua presença profissional <em>sem complicação.</em></h2><p>Um projeto feito para o seu negócio, com orientação do início ao fim.</p><ul><li>✓ Layout exclusivo e responsivo</li><li>✓ Botões de contato e WhatsApp</li><li>✓ Estrutura otimizada para Google</li><li>✓ Suporte para colocar no ar</li></ul></div><div class="price-card"><span class="popular">SOLUÇÃO MAIS ESCOLHIDA</span><small>Site profissional</small><div class="price"><sup>R$</sup><strong>497</strong><span> a partir de</span></div><p>Valor ajustado conforme o tamanho e as necessidades do projeto.</p><a class="btn full" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Quero%20receber%20uma%20proposta%20para%20meu%20site." target="_blank" rel="noopener">Receber proposta <span>→</span></a><small class="safe">● Atendimento direto e sem compromisso</small></div></div>
-    </section>
-
-    <section class="final-cta"><div class="container final-wrap"><div><span class="kicker">PRONTO PARA COMEÇAR?</span><h2>Seu próximo cliente pode estar procurando por você agora.</h2><p>Apresente seu negócio de forma profissional e facilite o primeiro contato.</p></div><a class="btn" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Quero%20tirar%20meu%20projeto%20do%20papel." target="_blank" rel="noopener">Falar sobre meu projeto <span>→</span></a></div></section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <a class="brand" href="index.html" aria-label="Ativa Digital ON - início"><img class="official-logo footer-logo" src="logo.png" alt="Ativa Digital ON"><span class="brand-name"><strong>ATIVA DIGITAL</strong><small>ON</small></span></a>
-      <p>Sites profissionais para negócios que querem crescer.</p>
-      <div class="footer-nav"><a href="index.html">Início</a><a href="solucoes.html">Soluções</a><a href="processo.html">Processo</a><a href="projetos.html">Projetos</a><a href="investimento.html">Investimento</a></div>
-      <div class="footer-contact"><strong>FALE COM A ATIVA</strong><a href="https://www.instagram.com/ativadigitalon/" target="_blank" rel="noopener">Instagram · @ativadigitalon <span>↗</span></a><a href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ativa%20Digital%20ON." target="_blank" rel="noopener">WhatsApp · 89 98131-1034 <span>↗</span></a></div>
     </div>
-    <div class="container copyright">© 2026 Ativa Digital ON. Todos os direitos reservados.</div>
-  </footer>
-  <a class="whatsapp-float" href="https://wa.me/5589981311034?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ativa%20Digital%20ON." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">✆</a>
-  <script src="script.js"></script>
-</body>
+
+    <nav class="mobile-nav" aria-label="Navegação principal no celular">
+      <button class="active" type="button" data-page="dashboard"><span>⌂</span><small>Início</small></button>
+      <button type="button" data-page="prospecting"><span>◎</span><small>Buscar</small></button>
+      <button class="mobile-add" id="mobileNewLead" type="button" aria-label="Cadastrar novo lead">＋</button>
+      <button type="button" data-page="pipeline"><span>▦</span><small>Funil</small></button>
+      <button type="button" data-page="leads"><span>♙</span><small>Leads</small></button>
+      <button type="button" data-page="followups"><span>◷</span><small>Retornos</small></button>
+    </nav>
+
+    <dialog class="modal" id="leadModal">
+      <form method="dialog" id="leadForm" novalidate>
+        <div class="modal-header">
+          <div><p class="panel-kicker">OPORTUNIDADE</p><h2 id="leadModalTitle">Novo lead</h2></div>
+          <button class="icon-button" type="button" data-close-modal aria-label="Fechar">×</button>
+        </div>
+        <input type="hidden" id="leadId" />
+        <div class="form-grid">
+          <label class="field span-2" for="company">Empresa ou profissional <span>*</span><input id="company" name="company" required maxlength="80" placeholder="Ex.: Clínica Sorriso" /><small class="field-error"></small></label>
+          <label class="field" for="contact">Pessoa de contato<input id="contact" name="contact" maxlength="60" placeholder="Nome do responsável" /></label>
+          <label class="field" for="phone">WhatsApp<input id="phone" name="phone" inputmode="tel" maxlength="20" placeholder="(89) 99999-9999" /></label>
+          <label class="field" for="segment">Segmento<input id="segment" name="segment" maxlength="50" placeholder="Ex.: Odontologia" /></label>
+          <label class="field" for="source">Origem<select id="source" name="source"></select></label>
+          <label class="field" for="stage">Etapa<select id="stage" name="stage"></select></label>
+          <label class="field" for="value">Valor estimado (R$)<input id="value" name="value" inputmode="decimal" placeholder="0,00" /></label>
+          <label class="field" for="followupDate">Próximo retorno<input id="followupDate" name="followupDate" type="date" /></label>
+          <label class="field" for="followupTime">Horário<input id="followupTime" name="followupTime" type="time" /></label>
+          <label class="field span-2" for="notes">Observações<textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Registre o que foi conversado e o próximo passo."></textarea></label>
+        </div>
+        <div class="modal-actions">
+          <button class="text-button cancel-button" type="button" data-close-modal>Cancelar</button>
+          <button class="primary-button" type="submit">Salvar lead</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal detail-modal" id="detailModal">
+      <div id="leadDetail"></div>
+    </dialog>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+    <script src="app.js?v=5" defer></script>
+  </body>
 </html>
