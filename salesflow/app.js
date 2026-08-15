@@ -13,9 +13,10 @@
   ];
   const OPEN_STAGE_IDS = STAGES.slice(0, 5).map((stage) => stage.id);
   const CLOSED_STAGE_IDS = STAGES.slice(5).map((stage) => stage.id);
-  const SOURCES = ["WhatsApp", "Instagram", "Google Maps", "Indicação", "LinkedIn", "Outro"];
+  const SOURCES = ["WhatsApp", "Instagram", "Google Maps", "Busca automática", "Indicação", "LinkedIn", "Outro"];
   const PAGE_TITLES = {
     dashboard: "Visão geral",
+    prospecting: "Prospectar clientes",
     pipeline: "Funil de vendas",
     leads: "Todos os leads",
     followups: "Follow-ups",
@@ -26,6 +27,7 @@
   let currentPage = "dashboard";
   let pipelineFilter = "open";
   let draggedLeadId = null;
+  let prospectResults = [];
 
   const byId = (id) => document.getElementById(id);
   const leadModal = byId("leadModal");
@@ -82,6 +84,17 @@
     const cleaned = String(value || "").replace(/[^\d,.-]/g, "").replaceAll(".", "").replace(",", ".");
     const number = Number.parseFloat(cleaned);
     return Number.isFinite(number) && number >= 0 ? number : 0;
+  }
+
+  function safeExternalUrl(value) {
+    const text = String(value || "").trim();
+    if (!text) return "";
+    try {
+      const url = new URL(/^https?:\/\//i.test(text) ? text : `https://${text}`);
+      return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+    } catch (_) {
+      return "";
+    }
   }
 
   function initials(name) {
@@ -153,6 +166,143 @@
     renderFollowups();
     refreshFilters();
     updateFollowupBadge();
+  }
+
+  function normalizeComparison(value) {
+    return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\W/g, "").toLowerCase();
+  }
+
+  function isProspectDuplicate(prospect) {
+    if (prospect.externalId && leads.some((lead) => lead.externalId === prospect.externalId)) return true;
+    const prospectPhone = String(prospect.phone || "").replace(/\D/g, "");
+    if (prospectPhone.length >= 8 && leads.some((lead) => String(lead.phone || "").replace(/\D/g, "") === prospectPhone)) return true;
+    const company = normalizeComparison(prospect.name);
+    return company.length > 3 && leads.some((lead) => normalizeComparison(lead.company) === company);
+  }
+
+  function priorityLabel(priority) {
+    return priority === "alta" ? "Alta prioridade" : priority === "media" ? "Média prioridade" : "Baixa prioridade";
+  }
+
+  async function searchProspects(event) {
+    event.preventDefault();
+    const segment = byId("prospectSegment").value;
+    const city = byId("prospectCity").value.trim();
+    const limit = byId("prospectLimit").value;
+    if (!segment || city.length < 3) {
+      showToast("Selecione o segmento e informe a cidade com o estado.", "error");
+      return;
+    }
+
+    localStorage.setItem("salesflow_last_prospect_city", city);
+    const button = byId("prospectSubmit");
+    button.disabled = true;
+    button.innerHTML = '<span class="button-spinner" aria-hidden="true"></span>Buscando empresas';
+    byId("prospectResultsSection").classList.add("is-hidden");
+    byId("prospectStatus").innerHTML = `<div class="searching-state"><span class="search-radar" aria-hidden="true"></span><div><strong>Pesquisando ${escapeHTML(city)}…</strong><p>Localizando estabelecimentos e organizando os dados públicos disponíveis.</p></div></div>`;
+
+    try {
+      const params = new URLSearchParams({ segment, cidade: city, limite: limit });
+      const response = await fetch(`/api/prospectar?${params}`);
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "Não foi possível realizar a busca.");
+      prospectResults = Array.isArray(data.prospects) ? data.prospects : [];
+      renderProspectResults(data);
+      byId("prospectStatus").innerHTML = "";
+      byId("prospectResultsSection").classList.remove("is-hidden");
+    } catch (error) {
+      prospectResults = [];
+      byId("prospectStatus").innerHTML = `<div class="search-error"><span aria-hidden="true">!</span><div><strong>Busca não concluída</strong><p>${escapeHTML(error.message)}</p></div><button class="secondary-button" type="button" data-retry-prospect> tentar novamente</button></div>`;
+    } finally {
+      button.disabled = false;
+      button.innerHTML = '<span aria-hidden="true">⌕</span>Buscar empresas';
+    }
+  }
+
+  function renderProspectResults(data) {
+    const high = prospectResults.filter((prospect) => prospect.priority === "alta").length;
+    const withoutSite = prospectResults.filter((prospect) => !prospect.website).length;
+    const withPhone = prospectResults.filter((prospect) => prospect.phone).length;
+    const newProspects = prospectResults.filter((prospect) => !isProspectDuplicate(prospect)).length;
+    const metrics = [
+      { label: "Encontrados", value: prospectResults.length, color: "#3f79d9" },
+      { label: "Alta prioridade", value: high, color: "#d87821" },
+      { label: "Sem site", value: withoutSite, color: "#785dd1" },
+      { label: "Com telefone", value: withPhone, color: "#2ca36b" }
+    ];
+    byId("prospectMetrics").innerHTML = metrics.map((metric) => `<article class="prospect-metric" style="--metric-color:${metric.color}"><span>${metric.label}</span><strong>${metric.value}</strong></article>`).join("");
+    byId("prospectResultsTitle").textContent = `${data.segment || "Empresas"} em ${String(data.city || "").split(",").slice(0, 2).join(",")}`;
+    byId("selectAllProspects").checked = false;
+    byId("selectAllProspects").disabled = newProspects === 0;
+    byId("prospectList").innerHTML = prospectResults.length ? prospectResults.map(prospectCard).join("") : emptyState("Nenhuma empresa encontrada", "Essa fonte pode não possuir estabelecimentos cadastrados para este segmento na cidade pesquisada.");
+    updateSelectedProspects();
+  }
+
+  function prospectCard(prospect, index) {
+    const duplicate = isProspectDuplicate(prospect);
+    const website = safeExternalUrl(prospect.website);
+    const mapUrl = Number.isFinite(prospect.latitude) && Number.isFinite(prospect.longitude)
+      ? `https://www.openstreetmap.org/?mlat=${prospect.latitude}&mlon=${prospect.longitude}#map=18/${prospect.latitude}/${prospect.longitude}`
+      : "";
+    return `<article class="prospect-card${duplicate ? " duplicate" : ""}">
+      <label class="prospect-check" aria-label="Selecionar ${escapeHTML(prospect.name)}"><input type="checkbox" data-prospect-check="${index}" ${duplicate ? "disabled" : ""} /><span></span></label>
+      <span class="avatar prospect-avatar">${initials(prospect.name)}</span>
+      <div class="prospect-main">
+        <div class="prospect-title-row"><h3>${escapeHTML(prospect.name)}</h3><span class="priority-pill ${prospect.priority}">${duplicate ? "Já está no CRM" : priorityLabel(prospect.priority)}</span></div>
+        <p>${escapeHTML(prospect.address || "Endereço não informado na fonte")}</p>
+        <div class="prospect-contact-grid">
+          <span class="contact-chip ${prospect.phone ? "has-data" : "missing"}"><b>Telefone</b>${escapeHTML(prospect.phone || "Não disponível")}</span>
+          <span class="contact-chip ${website ? "has-data" : "opportunity"}"><b>Site</b>${website ? `<a href="${escapeHTML(website)}" target="_blank" rel="noopener noreferrer">Abrir site</a>` : "Não possui site cadastrado"}</span>
+          <span class="contact-chip ${prospect.instagram ? "has-data" : "missing"}"><b>Instagram</b>${escapeHTML(prospect.instagram || "Não disponível")}</span>
+        </div>
+      </div>
+      <div class="prospect-score"><span>Potencial</span><strong>${prospect.score}</strong><small>/100</small>${mapUrl ? `<a href="${mapUrl}" target="_blank" rel="noopener noreferrer">Ver no mapa</a>` : ""}</div>
+    </article>`;
+  }
+
+  function updateSelectedProspects() {
+    const selected = document.querySelectorAll("[data-prospect-check]:checked").length;
+    byId("selectedProspectCount").textContent = selected;
+    byId("addSelectedProspects").disabled = selected === 0;
+  }
+
+  function toggleAllProspects(checked) {
+    document.querySelectorAll("[data-prospect-check]:not(:disabled)").forEach((input) => { input.checked = checked; });
+    updateSelectedProspects();
+  }
+
+  function addSelectedProspects() {
+    const indices = [...document.querySelectorAll("[data-prospect-check]:checked")].map((input) => Number(input.dataset.prospectCheck));
+    const selected = indices.map((index) => prospectResults[index]).filter(Boolean).filter((prospect) => !isProspectDuplicate(prospect));
+    if (!selected.length) {
+      showToast("Nenhuma empresa nova foi selecionada.", "error");
+      return;
+    }
+    const now = new Date().toISOString();
+    const imported = selected.map((prospect, offset) => ({
+      id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${offset}-${Math.random()}`,
+      company: prospect.name,
+      contact: "",
+      phone: prospect.phone || "",
+      segment: prospect.segment || "",
+      source: "Busca automática",
+      stage: "novo",
+      value: 0,
+      followupDate: "",
+      followupTime: "",
+      website: prospect.website || "",
+      address: prospect.address || "",
+      externalId: prospect.externalId || "",
+      prospectScore: prospect.score || 0,
+      notes: [`Importado automaticamente de ${prospect.source || "fonte pública"}.`, prospect.address ? `Endereço: ${prospect.address}` : "", prospect.website ? `Site: ${prospect.website}` : "Sem site cadastrado — oportunidade para oferta.", prospect.instagram ? `Instagram: ${prospect.instagram}` : ""].filter(Boolean).join("\n"),
+      createdAt: now,
+      updatedAt: now
+    }));
+    leads = [...imported, ...leads];
+    persist();
+    renderAll();
+    renderProspectResults({ segment: imported[0]?.segment || "Empresas", city: byId("prospectCity").value });
+    showToast(`${imported.length} ${imported.length === 1 ? "empresa adicionada" : "empresas adicionadas"} ao funil.`);
   }
 
   function renderDashboard() {
@@ -457,10 +607,17 @@
         document.querySelectorAll("[data-pipeline-filter]").forEach((button) => button.classList.toggle("active", button === pipelineButton));
         renderPipeline();
       }
+      if (event.target.closest("[data-retry-prospect]")) byId("prospectingForm").requestSubmit();
     });
 
     [byId("newLeadButton"), byId("mobileNewLead"), byId("welcomeNewLead")].forEach((button) => button.addEventListener("click", () => openLeadModal()));
     byId("leadForm").addEventListener("submit", saveLead);
+    byId("prospectingForm").addEventListener("submit", searchProspects);
+    byId("selectAllProspects").addEventListener("change", (event) => toggleAllProspects(event.target.checked));
+    byId("addSelectedProspects").addEventListener("click", addSelectedProspects);
+    byId("prospectList").addEventListener("change", (event) => {
+      if (event.target.matches("[data-prospect-check]")) updateSelectedProspects();
+    });
     byId("leadSearch").addEventListener("input", renderLeadTable);
     byId("stageFilter").addEventListener("change", renderLeadTable);
     byId("sourceFilter").addEventListener("change", renderLeadTable);
@@ -515,6 +672,7 @@
     byId("currentDate").textContent = today.charAt(0).toUpperCase() + today.slice(1);
     populateFormOptions();
     bindEvents();
+    byId("prospectCity").value = localStorage.getItem("salesflow_last_prospect_city") || "";
     const initialPage = window.location.hash.slice(1);
     setPage(PAGE_TITLES[initialPage] ? initialPage : "dashboard");
     renderAll();

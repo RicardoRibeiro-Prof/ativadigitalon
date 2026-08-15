@@ -1,4 +1,4 @@
-const CACHE_NAME = "salesflow-v1";
+const CACHE_NAME = "salesflow-v2";
 const APP_FILES = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./assets/icon.svg"];
 
 self.addEventListener("install", (event) => {

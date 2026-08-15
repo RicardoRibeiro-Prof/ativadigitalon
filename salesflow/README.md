@@ -2,6 +2,8 @@
 
 MVP de CRM comercial responsivo, instalável como PWA e sem dependências externas de código.
 
+Inclui busca automática de empresas por segmento e cidade utilizando dados públicos do OpenStreetMap, com classificação de prioridade e importação em lote para o funil.
+
 ## Executar
 
 Sirva a pasta por HTTP. Exemplo:

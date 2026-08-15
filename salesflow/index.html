@@ -25,6 +25,9 @@
           <button class="nav-item active" type="button" data-page="dashboard">
             <span class="nav-icon" aria-hidden="true">⌂</span><span>Visão geral</span>
           </button>
+          <button class="nav-item" type="button" data-page="prospecting">
+            <span class="nav-icon" aria-hidden="true">◎</span><span>Prospectar clientes</span>
+          </button>
           <button class="nav-item" type="button" data-page="pipeline">
             <span class="nav-icon" aria-hidden="true">▦</span><span>Funil de vendas</span>
           </button>
@@ -101,6 +104,67 @@
             </section>
           </section>
 
+          <section class="page" id="page-prospecting" aria-labelledby="pageTitle">
+            <section class="prospecting-hero">
+              <div>
+                <p class="panel-kicker">BUSCA AUTOMÁTICA</p>
+                <h2>Encontre novas oportunidades em poucos segundos.</h2>
+                <p>Escolha o tipo de negócio e a cidade. O SalesFlow pesquisa estabelecimentos públicos, organiza os dados e destaca quem pode precisar de presença digital.</p>
+              </div>
+              <span class="automation-badge"><span></span> Fonte pública ativa</span>
+            </section>
+
+            <section class="panel prospecting-search-panel">
+              <form id="prospectingForm" class="prospecting-form" novalidate>
+                <label class="field" for="prospectSegment">Segmento <span>*</span>
+                  <select id="prospectSegment" required>
+                    <option value="">Selecione</option>
+                    <option value="dentista">Dentistas</option>
+                    <option value="clinica">Clínicas</option>
+                    <option value="advogado">Advogados</option>
+                    <option value="contador">Contadores</option>
+                    <option value="farmacia">Farmácias</option>
+                    <option value="academia">Academias</option>
+                    <option value="restaurante">Restaurantes</option>
+                    <option value="salao">Salões de beleza</option>
+                  </select>
+                </label>
+                <label class="field prospect-city" for="prospectCity">Cidade e estado <span>*</span>
+                  <input id="prospectCity" required maxlength="80" placeholder="Ex.: Picos, PI" autocomplete="address-level2" />
+                </label>
+                <label class="field" for="prospectLimit">Quantidade
+                  <select id="prospectLimit">
+                    <option value="10">Até 10</option>
+                    <option value="20" selected>Até 20</option>
+                    <option value="30">Até 30</option>
+                  </select>
+                </label>
+                <button class="primary-button prospect-submit" id="prospectSubmit" type="submit"><span aria-hidden="true">⌕</span>Buscar empresas</button>
+              </form>
+              <div class="search-guidance">
+                <span aria-hidden="true">ⓘ</span>
+                <p>A busca usa informações empresariais publicamente cadastradas. Confira os dados antes de iniciar uma abordagem.</p>
+              </div>
+            </section>
+
+            <div id="prospectStatus" aria-live="polite"></div>
+
+            <section class="prospect-results is-hidden" id="prospectResultsSection">
+              <div class="prospect-metrics" id="prospectMetrics"></div>
+              <section class="panel prospect-list-panel">
+                <div class="panel-heading prospect-heading">
+                  <div><p class="panel-kicker">RESULTADOS DA BUSCA</p><h2 id="prospectResultsTitle">Empresas encontradas</h2></div>
+                  <div class="prospect-actions">
+                    <label class="select-all"><input id="selectAllProspects" type="checkbox" /> Selecionar disponíveis</label>
+                    <button class="primary-button" id="addSelectedProspects" type="button" disabled>Adicionar selecionados <span id="selectedProspectCount">0</span></button>
+                  </div>
+                </div>
+                <div id="prospectList" class="prospect-list"></div>
+                <footer class="data-attribution">Dados © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">colaboradores do OpenStreetMap</a></footer>
+              </section>
+            </section>
+          </section>
+
           <section class="page" id="page-pipeline" aria-labelledby="pageTitle">
             <div class="page-tools">
               <div class="segmented-control" id="pipelineSegmentFilter" aria-label="Filtro do funil">
@@ -160,8 +224,9 @@
 
     <nav class="mobile-nav" aria-label="Navegação principal no celular">
       <button class="active" type="button" data-page="dashboard"><span>⌂</span><small>Início</small></button>
-      <button type="button" data-page="pipeline"><span>▦</span><small>Funil</small></button>
+      <button type="button" data-page="prospecting"><span>◎</span><small>Buscar</small></button>
       <button class="mobile-add" id="mobileNewLead" type="button" aria-label="Cadastrar novo lead">＋</button>
+      <button type="button" data-page="pipeline"><span>▦</span><small>Funil</small></button>
       <button type="button" data-page="leads"><span>♙</span><small>Leads</small></button>
       <button type="button" data-page="followups"><span>◷</span><small>Retornos</small></button>
     </nav>
