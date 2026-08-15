@@ -1,0 +1,13 @@
+{
+  "name": "SalesFlow — Ativa Digital ON",
+  "short_name": "SalesFlow",
+  "description": "CRM de prospecção e acompanhamento comercial.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f5f3",
+  "theme_color": "#111214",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

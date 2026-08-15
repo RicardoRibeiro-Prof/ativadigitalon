@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111214" />
+    <meta name="description" content="SalesFlow — CRM de prospecção da Ativa Digital ON." />
+    <title>SalesFlow | Ativa Digital ON</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <a class="brand" href="#dashboard" aria-label="SalesFlow - início">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span><strong>SalesFlow</strong><small>Ativa Digital ON</small></span>
+        </a>
+
+        <nav class="main-nav">
+          <button class="nav-item active" type="button" data-page="dashboard">
+            <span class="nav-icon" aria-hidden="true">⌂</span><span>Visão geral</span>
+          </button>
+          <button class="nav-item" type="button" data-page="pipeline">
+            <span class="nav-icon" aria-hidden="true">▦</span><span>Funil de vendas</span>
+          </button>
+          <button class="nav-item" type="button" data-page="leads">
+            <span class="nav-icon" aria-hidden="true">♙</span><span>Todos os leads</span>
+          </button>
+          <button class="nav-item" type="button" data-page="followups">
+            <span class="nav-icon" aria-hidden="true">◷</span><span>Follow-ups</span>
+            <span class="nav-badge is-hidden" id="followupBadge">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="status-dot"></span>
+          <div><strong>Dados protegidos</strong><small>Salvos neste dispositivo</small></div>
+        </div>
+
+        <button class="nav-item settings-button" type="button" data-page="settings">
+          <span class="nav-icon" aria-hidden="true">⚙</span><span>Configurações</span>
+        </button>
+      </aside>
+
+      <div class="content-shell">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="currentDate"></p>
+            <h1 id="pageTitle">Visão geral</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="global-search" for="globalSearch">
+              <span aria-hidden="true">⌕</span>
+              <input id="globalSearch" type="search" placeholder="Buscar empresa ou contato" autocomplete="off" />
+            </label>
+            <button class="primary-button" id="newLeadButton" type="button"><span aria-hidden="true">＋</span>Novo lead</button>
+          </div>
+        </header>
+
+        <main id="mainContent" tabindex="-1">
+          <section class="page active" id="page-dashboard" aria-labelledby="pageTitle">
+            <div class="welcome-panel">
+              <div>
+                <p class="panel-kicker">CENTRAL DE PROSPECÇÃO</p>
+                <h2>Transforme contatos em clientes.</h2>
+                <p>Organize cada oportunidade, saiba quem precisa de retorno e avance suas negociações sem perder vendas.</p>
+              </div>
+              <button class="secondary-button light" id="welcomeNewLead" type="button">Cadastrar primeiro lead <span aria-hidden="true">→</span></button>
+            </div>
+
+            <div class="metrics-grid" id="metricsGrid"></div>
+
+            <div class="dashboard-grid">
+              <section class="panel today-panel">
+                <div class="panel-heading">
+                  <div><p class="panel-kicker">PRIORIDADE</p><h2>Retornos de hoje</h2></div>
+                  <button class="text-button" type="button" data-go-page="followups">Ver todos →</button>
+                </div>
+                <div id="todayFollowups"></div>
+              </section>
+
+              <section class="panel">
+                <div class="panel-heading">
+                  <div><p class="panel-kicker">DESEMPENHO</p><h2>Distribuição do funil</h2></div>
+                </div>
+                <div id="stageChart" class="stage-chart"></div>
+              </section>
+            </div>
+
+            <section class="panel recent-panel">
+              <div class="panel-heading">
+                <div><p class="panel-kicker">MOVIMENTAÇÃO</p><h2>Leads recentes</h2></div>
+                <button class="text-button" type="button" data-go-page="leads">Ver lista completa →</button>
+              </div>
+              <div id="recentLeads"></div>
+            </section>
+          </section>
+
+          <section class="page" id="page-pipeline" aria-labelledby="pageTitle">
+            <div class="page-tools">
+              <div class="segmented-control" id="pipelineSegmentFilter" aria-label="Filtro do funil">
+                <button type="button" class="active" data-pipeline-filter="open">Em andamento</button>
+                <button type="button" data-pipeline-filter="closed">Finalizados</button>
+              </div>
+              <p class="helper-text">Arraste os cartões para atualizar a etapa.</p>
+            </div>
+            <div class="pipeline-board" id="pipelineBoard"></div>
+          </section>
+
+          <section class="page" id="page-leads" aria-labelledby="pageTitle">
+            <div class="filter-bar">
+              <label class="filter-search" for="leadSearch"><span aria-hidden="true">⌕</span><input id="leadSearch" type="search" placeholder="Buscar na lista" /></label>
+              <label class="select-wrap" for="stageFilter"><span>Etapa</span><select id="stageFilter"><option value="all">Todas as etapas</option></select></label>
+              <label class="select-wrap" for="sourceFilter"><span>Origem</span><select id="sourceFilter"><option value="all">Todas as origens</option></select></label>
+            </div>
+            <div class="panel table-panel">
+              <div class="lead-table" id="leadTable"></div>
+            </div>
+          </section>
+
+          <section class="page" id="page-followups" aria-labelledby="pageTitle">
+            <div class="followup-summary" id="followupSummary"></div>
+            <div id="followupGroups"></div>
+          </section>
+
+          <section class="page" id="page-settings" aria-labelledby="pageTitle">
+            <div class="settings-grid">
+              <section class="panel settings-card">
+                <div class="settings-icon">⇩</div>
+                <h2>Backup dos dados</h2>
+                <p>Baixe uma cópia completa dos seus leads e negociações.</p>
+                <button class="secondary-button" id="exportBackup" type="button">Baixar backup</button>
+              </section>
+              <section class="panel settings-card">
+                <div class="settings-icon">⇧</div>
+                <h2>Restaurar backup</h2>
+                <p>Recupere os dados de um arquivo exportado pelo SalesFlow.</p>
+                <label class="secondary-button file-button">Escolher arquivo<input id="importBackup" type="file" accept="application/json" /></label>
+              </section>
+              <section class="panel settings-card danger-card">
+                <div class="settings-icon">⌫</div>
+                <h2>Limpar todos os dados</h2>
+                <p>Exclui definitivamente os leads salvos neste dispositivo.</p>
+                <button class="danger-button" id="clearData" type="button">Limpar dados</button>
+              </section>
+            </div>
+            <section class="panel phase-panel">
+              <div><p class="panel-kicker">PRÓXIMA FASE</p><h2>Conta online e equipe</h2><p>Depois da validação, conectaremos Supabase para login, sincronização entre dispositivos, permissões e histórico centralizado.</p></div>
+              <span class="phase-tag">Planejado</span>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Navegação principal no celular">
+      <button class="active" type="button" data-page="dashboard"><span>⌂</span><small>Início</small></button>
+      <button type="button" data-page="pipeline"><span>▦</span><small>Funil</small></button>
+      <button class="mobile-add" id="mobileNewLead" type="button" aria-label="Cadastrar novo lead">＋</button>
+      <button type="button" data-page="leads"><span>♙</span><small>Leads</small></button>
+      <button type="button" data-page="followups"><span>◷</span><small>Retornos</small></button>
+    </nav>
+
+    <dialog class="modal" id="leadModal">
+      <form method="dialog" id="leadForm" novalidate>
+        <div class="modal-header">
+          <div><p class="panel-kicker">OPORTUNIDADE</p><h2 id="leadModalTitle">Novo lead</h2></div>
+          <button class="icon-button" type="button" data-close-modal aria-label="Fechar">×</button>
+        </div>
+        <input type="hidden" id="leadId" />
+        <div class="form-grid">
+          <label class="field span-2" for="company">Empresa ou profissional <span>*</span><input id="company" name="company" required maxlength="80" placeholder="Ex.: Clínica Sorriso" /><small class="field-error"></small></label>
+          <label class="field" for="contact">Pessoa de contato<input id="contact" name="contact" maxlength="60" placeholder="Nome do responsável" /></label>
+          <label class="field" for="phone">WhatsApp<input id="phone" name="phone" inputmode="tel" maxlength="20" placeholder="(89) 99999-9999" /></label>
+          <label class="field" for="segment">Segmento<input id="segment" name="segment" maxlength="50" placeholder="Ex.: Odontologia" /></label>
+          <label class="field" for="source">Origem<select id="source" name="source"></select></label>
+          <label class="field" for="stage">Etapa<select id="stage" name="stage"></select></label>
+          <label class="field" for="value">Valor estimado (R$)<input id="value" name="value" inputmode="decimal" placeholder="0,00" /></label>
+          <label class="field" for="followupDate">Próximo retorno<input id="followupDate" name="followupDate" type="date" /></label>
+          <label class="field" for="followupTime">Horário<input id="followupTime" name="followupTime" type="time" /></label>
+          <label class="field span-2" for="notes">Observações<textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Registre o que foi conversado e o próximo passo."></textarea></label>
+        </div>
+        <div class="modal-actions">
+          <button class="text-button cancel-button" type="button" data-close-modal>Cancelar</button>
+          <button class="primary-button" type="submit">Salvar lead</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal detail-modal" id="detailModal">
+      <div id="leadDetail"></div>
+    </dialog>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
