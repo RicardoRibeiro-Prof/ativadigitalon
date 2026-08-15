@@ -241,8 +241,6 @@ main { padding: 28px clamp(22px, 4vw, 56px) 54px; }
 .search-error { border-color: #f1cccc; background: #fff9f9; }
 .search-error > span { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 10px; color: var(--red); background: #fff0f0; font-weight: 800; }
 .search-error .secondary-button { margin-left: auto; }
-.search-notice { display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; padding: 13px 15px; border: 1px solid #f0d8b9; border-radius: 12px; color: #754316; background: #fff8ef; font-size: 11px; }
-.search-notice p { margin: 0; line-height: 1.5; }
 .prospect-results { margin-top: 16px; }
 .prospect-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-bottom: 12px; }
 .prospect-metric { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-left: 4px solid var(--metric-color); border-radius: 13px; background: #fff; }
