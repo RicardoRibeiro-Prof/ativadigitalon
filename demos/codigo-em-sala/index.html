@@ -79,19 +79,22 @@
         <div class="filters" aria-label="Filtros de artigos">
           <label class="search-box" for="busca">
             <span aria-hidden="true">⌕</span>
-            <input id="busca" type="search" placeholder="Buscar por tema..." autocomplete="off">
+            <input id="busca" type="search" placeholder="Buscar por tema..." autocomplete="off" aria-label="Buscar artigos por tema">
           </label>
-          <div class="filter-buttons" role="group" aria-label="Categorias">
-            <button class="filter-button active" type="button" data-filter="todos">Todos</button>
-            <button class="filter-button" type="button" data-filter="programacao">Programação</button>
-            <button class="filter-button" type="button" data-filter="redes">Redes</button>
-            <button class="filter-button" type="button" data-filter="ia">Inteligência Artificial</button>
-            <button class="filter-button" type="button" data-filter="seguranca">Segurança</button>
-            <button class="filter-button" type="button" data-filter="hardware">Hardware</button>
-            <button class="filter-button" type="button" data-filter="nuvem">Nuvem</button>
-            <button class="filter-button" type="button" data-filter="banco">Dados</button>
-            <button class="filter-button" type="button" data-filter="software">Software</button>
-            <button class="filter-button" type="button" data-filter="carreiras">Carreiras</button>
+          <div class="category-filter">
+            <span class="filter-label">Filtrar por categoria</span>
+            <div class="filter-buttons" role="group" aria-label="Categorias">
+              <button class="filter-button active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+              <button class="filter-button" type="button" data-filter="programacao" aria-pressed="false">Programação</button>
+              <button class="filter-button" type="button" data-filter="redes" aria-pressed="false">Redes</button>
+              <button class="filter-button" type="button" data-filter="ia" aria-pressed="false">Inteligência Artificial</button>
+              <button class="filter-button" type="button" data-filter="seguranca" aria-pressed="false">Segurança</button>
+              <button class="filter-button" type="button" data-filter="hardware" aria-pressed="false">Hardware</button>
+              <button class="filter-button" type="button" data-filter="nuvem" aria-pressed="false">Nuvem</button>
+              <button class="filter-button" type="button" data-filter="banco" aria-pressed="false">Dados</button>
+              <button class="filter-button" type="button" data-filter="software" aria-pressed="false">Software</button>
+              <button class="filter-button" type="button" data-filter="carreiras" aria-pressed="false">Carreiras</button>
+            </div>
           </div>
         </div>
 

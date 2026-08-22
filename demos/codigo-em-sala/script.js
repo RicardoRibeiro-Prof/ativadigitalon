@@ -22,7 +22,11 @@ const requestedCategory = new URLSearchParams(window.location.search).get('categ
 
 if (requestedCategory && filterButtons.some((button) => button.dataset.filter === requestedCategory)) {
   activeCategory = requestedCategory;
-  filterButtons.forEach((button) => button.classList.toggle('active', button.dataset.filter === requestedCategory));
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.filter === requestedCategory;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
 }
 
 function normalizeText(value) {
@@ -48,7 +52,11 @@ function filterArticles() {
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     activeCategory = button.dataset.filter || 'todos';
-    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
     filterArticles();
   });
 });
