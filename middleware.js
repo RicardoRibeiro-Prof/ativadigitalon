@@ -1,7 +1,7 @@
 import { next, rewrite } from '@vercel/functions';
 
 export const config = {
-  matcher: '/',
+  matcher: '/:path*',
 };
 
 export default function middleware(request) {
@@ -12,5 +12,13 @@ export default function middleware(request) {
     return next();
   }
 
-  return rewrite(new URL('/demos/codigo-em-sala/index.html', url));
+  if (url.pathname.startsWith('/demos/codigo-em-sala/')) {
+    return next();
+  }
+
+  url.pathname = url.pathname === '/'
+    ? '/demos/codigo-em-sala/index.html'
+    : `/demos/codigo-em-sala${url.pathname}`;
+
+  return rewrite(url);
 }
