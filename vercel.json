@@ -43,6 +43,26 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "codigoemsala.com.br"
+        }
+      ],
+      "destination": "/demos/codigo-em-sala/"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "codigoemsala.com.br"
+        }
+      ],
+      "destination": "/demos/codigo-em-sala/:path*"
+    },
+    {
       "source": "/demos/moura-vasconcelos",
       "destination": "https://ricardoribeiro-prof.github.io/moura-vasconcelos-advocacia/"
     },
