@@ -1,12 +1,12 @@
 # Código em Sala
 
-Protótipo de blog educacional sobre programação, banco de dados, redes e jogos digitais.
+Protótipo de portal educacional sobre todas as áreas da Tecnologia da Informação, incluindo hardware, software, programação, redes, segurança, inteligência artificial, nuvem, dados e carreira.
 
 ## Conteúdo inicial
 
 - página inicial responsiva;
 - busca e filtros por categoria;
-- três artigos completos;
+- oito artigos completos em diferentes áreas da TI;
 - páginas Sobre, Contato e Política de Privacidade;
 - metadados básicos de SEO, `robots.txt` e `sitemap.xml`;
 - área reservada para futura integração com Google AdSense.
