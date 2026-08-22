@@ -1,6 +1,7 @@
 {
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@vercel/functions": "latest"
+    "@vercel/functions": "3.9.5"
   }
 }
