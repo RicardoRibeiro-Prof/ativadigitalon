@@ -6,9 +6,10 @@ Protótipo de portal educacional sobre todas as áreas da Tecnologia da Informa�
 
 - página inicial responsiva;
 - busca e filtros por categoria;
-- oito artigos completos em diferentes áreas da TI;
+- dezesseis artigos completos em diferentes áreas da TI;
 - páginas Sobre, Contato e Política de Privacidade;
 - metadados básicos de SEO, `robots.txt` e `sitemap.xml`;
+- feed RSS, favicon e manifesto do site;
 - área reservada para futura integração com Google AdSense.
 
 ## Teste local

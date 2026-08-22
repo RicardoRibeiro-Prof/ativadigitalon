@@ -7,6 +7,17 @@
   <meta name="description" content="Conteúdos claros e práticos sobre tecnologia da informação: inteligência artificial, segurança, hardware, software, programação, redes, nuvem, dados e carreira.">
   <meta name="theme-color" content="#10233f">
   <link rel="canonical" href="https://ativadigitalon.com.br/demos/codigo-em-sala/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Código em Sala" href="feed.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Código em Sala">
+  <meta property="og:title" content="Código em Sala — Tecnologia ensinada de forma simples">
+  <meta property="og:description" content="Conteúdos claros e práticos sobre tecnologia da informação, programação, redes, dados, segurança e inteligência artificial.">
+  <meta property="og:url" content="https://ativadigitalon.com.br/demos/codigo-em-sala/">
+  <meta property="og:image" content="https://ativadigitalon.com.br/demos/codigo-em-sala/assets/images/capa-ti.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Blog","name":"Código em Sala","description":"Portal educacional sobre todas as áreas da Tecnologia da Informação.","url":"https://ativadigitalon.com.br/demos/codigo-em-sala/","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://ativadigitalon.com.br/demos/codigo-em-sala/sobre.html"}}
@@ -77,14 +88,19 @@
         </div>
 
         <div class="filters" aria-label="Filtros de artigos">
-          <label class="search-box" for="busca">
-            <span aria-hidden="true">⌕</span>
-            <input id="busca" type="search" placeholder="Buscar por tema..." autocomplete="off" aria-label="Buscar artigos por tema">
-          </label>
+          <div class="filter-search-row">
+            <label class="search-box" for="busca">
+              <span aria-hidden="true">⌕</span>
+              <input id="busca" type="search" placeholder="Buscar por tema..." autocomplete="off" aria-label="Buscar artigos por tema">
+              <button class="search-clear" type="button" data-clear-search aria-label="Limpar busca" hidden>Limpar</button>
+            </label>
+            <p id="resultados-contagem" class="filter-result" role="status" aria-live="polite">16 artigos encontrados</p>
+          </div>
           <div class="category-filter">
             <span class="filter-label">Filtrar por categoria</span>
             <div class="filter-buttons" role="group" aria-label="Categorias">
               <button class="filter-button active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+              <button class="filter-button" type="button" data-filter="fundamentos" aria-pressed="false">Fundamentos</button>
               <button class="filter-button" type="button" data-filter="programacao" aria-pressed="false">Programação</button>
               <button class="filter-button" type="button" data-filter="redes" aria-pressed="false">Redes</button>
               <button class="filter-button" type="button" data-filter="ia" aria-pressed="false">Inteligência Artificial</button>
@@ -214,6 +230,7 @@
             <div class="card-content"><div class="card-meta"><span>Carreiras</span><time datetime="2026-08-22">22 ago 2026</time></div><h3><a href="artigos/carreiras-ti.html">Carreiras em TI: descubra qual área combina com você</a></h3><p>Conheça diferentes caminhos profissionais e construa um plano de experimentação em 30 dias.</p><div class="card-footer"><span>12 min de leitura</span><a href="artigos/carreiras-ti.html" aria-label="Ler artigo sobre carreiras em TI">Ler artigo →</a></div></div>
           </article>
         </div>
+        <noscript><p class="empty-state">A busca e os filtros precisam de JavaScript, mas todos os artigos continuam disponíveis nesta página.</p></noscript>
         <p id="sem-resultados" class="empty-state" hidden>Nenhum conteúdo encontrado. Tente outra palavra ou categoria.</p>
       </div>
     </section>
@@ -234,7 +251,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><p>Tecnologia ensinada de forma simples, prática e responsável.</p></div>
-      <div><h2>Conteúdo</h2><a href="#artigos">Todos os artigos</a><a href="categorias.html">Categorias</a><a href="artigos/o-que-e-ti.html">Fundamentos de TI</a></div>
+      <div><h2>Conteúdo</h2><a href="#artigos">Todos os artigos</a><a href="categorias.html">Categorias</a><a href="artigos/o-que-e-ti.html">Fundamentos de TI</a><a href="feed.xml">Feed RSS</a></div>
       <div><h2>Institucional</h2><a href="sobre.html">Equipe editorial</a><a href="contato.html">Contato</a><a href="referencias.html">Bibliografia</a><a href="creditos.html">Créditos das imagens</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a></div>
     </div>
     <div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><span>Projeto educacional independente</span><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div>

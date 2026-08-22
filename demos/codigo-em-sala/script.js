@@ -17,6 +17,8 @@ const searchInput = document.querySelector('#busca');
 const filterButtons = [...document.querySelectorAll('.filter-button')];
 const cards = [...document.querySelectorAll('.article-card')];
 const emptyState = document.querySelector('#sem-resultados');
+const resultCount = document.querySelector('#resultados-contagem');
+const clearSearchButton = document.querySelector('[data-clear-search]');
 let activeCategory = 'todos';
 const requestedCategory = new URLSearchParams(window.location.search).get('categoria');
 
@@ -47,6 +49,15 @@ function filterArticles() {
   });
 
   if (emptyState) emptyState.hidden = visible !== 0;
+  if (resultCount) resultCount.textContent = `${visible} ${visible === 1 ? 'artigo encontrado' : 'artigos encontrados'}`;
+  if (clearSearchButton) clearSearchButton.hidden = !term;
+}
+
+function updateCategoryUrl() {
+  const url = new URL(window.location.href);
+  if (activeCategory === 'todos') url.searchParams.delete('categoria');
+  else url.searchParams.set('categoria', activeCategory);
+  window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
 }
 
 filterButtons.forEach((button) => {
@@ -57,11 +68,24 @@ filterButtons.forEach((button) => {
       item.classList.toggle('active', isActive);
       item.setAttribute('aria-pressed', String(isActive));
     });
+    updateCategoryUrl();
     filterArticles();
   });
 });
 
 searchInput?.addEventListener('input', filterArticles);
+searchInput?.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && searchInput.value) {
+    searchInput.value = '';
+    filterArticles();
+  }
+});
+clearSearchButton?.addEventListener('click', () => {
+  if (!searchInput) return;
+  searchInput.value = '';
+  searchInput.focus();
+  filterArticles();
+});
 if (cards.length) filterArticles();
 
 const article = document.querySelector('.article-body');
