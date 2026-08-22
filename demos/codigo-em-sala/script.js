@@ -127,7 +127,7 @@ document.querySelectorAll('[data-share="native"]').forEach((button) => {
 if (!document.querySelector('#aviso-cookies')) {
   document.body.insertAdjacentHTML('beforeend', `
     <aside id="aviso-cookies" class="cookie-banner" aria-label="Preferências de cookies" aria-live="polite">
-      <p><strong>Cookies e privacidade</strong>Usamos apenas o armazenamento necessário para lembrar sua escolha. Recursos de análise e publicidade só serão ativados de acordo com esta preferência. <a href="${document.body.dataset.article === 'true' ? '../' : ''}privacidade.html">Saiba mais</a>.</p>
+      <p><strong>Cookies e privacidade</strong>Você pode aceitar a personalização ou continuar apenas com recursos essenciais. A publicidade, quando disponível, respeita essa escolha. <a href="${document.body.dataset.article === 'true' ? '../' : ''}privacidade.html">Saiba mais</a>.</p>
       <div class="cookie-actions">
         <button class="cookie-button" type="button" data-cookie-choice="essenciais">Somente essenciais</button>
         <button class="cookie-button primary" type="button" data-cookie-choice="aceitos">Aceitar</button>
@@ -142,7 +142,14 @@ if (cookieBanner && !cookieChoice) cookieBanner.classList.add('open');
 
 document.querySelectorAll('[data-cookie-choice]').forEach((button) => {
   button.addEventListener('click', () => {
+    const accepted = button.dataset.cookieChoice === 'aceitos';
     localStorage.setItem('codigo-em-sala-cookies', button.dataset.cookieChoice);
+    window.gtag?.('consent', 'update', {
+      ad_storage: accepted ? 'granted' : 'denied',
+      ad_user_data: accepted ? 'granted' : 'denied',
+      ad_personalization: accepted ? 'granted' : 'denied',
+      analytics_storage: accepted ? 'granted' : 'denied'
+    });
     cookieBanner?.classList.remove('open');
   });
 });
