@@ -1,13 +1,62 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Estrutura FOR em C# passo a passo — Código em Sala</title><meta name="description" content="Aprenda a estrutura de repetição FOR em C# e entenda cada parte do código."><link rel="stylesheet" href="../styles.css"></head><body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><nav class="main-nav"><a href="../">Início</a><a href="../#artigos">Artigos</a><a href="../sobre.html">Sobre</a></nav></div></header><main><section class="page-hero"><div class="container article-head"><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Programação</span><h1>Estrutura FOR em C#: aprenda passo a passo</h1><div class="article-meta"><span>7 minutos de leitura</span><time datetime="2026-08-22">22 de agosto de 2026</time></div></div></section><article class="content-page"><div class="prose article-body"><p>A estrutura FOR repete um bloco de código quando sabemos quantas vezes a ação deve acontecer. Em vez de escrever a mesma instrução dez vezes, criamos uma repetição controlada.</p><h2>O primeiro exemplo</h2><pre class="code-block">for (int numero = 1; numero &lt;= 10; numero++)
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Estrutura FOR em C# passo a passo — Código em Sala</title><meta name="description" content="Aprenda a estrutura de repetição FOR em C#, entenda cada parte e pratique com exemplos comentados."><link rel="canonical" href="https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/estrutura-for.html"><link rel="stylesheet" href="../styles.css"></head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../#artigos">Artigos</a><a href="../sobre.html">Sobre</a></nav></div></header>
+<main><section class="page-hero"><div class="container article-head"><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Programação</span><h1>Estrutura FOR em C#: aprenda passo a passo</h1><div class="article-meta"><span>11 minutos de leitura</span><time datetime="2026-08-22">Atualizado em 22 de agosto de 2026</time></div></div></section>
+<article class="content-page"><div class="prose article-body">
+  <figure class="article-cover"><img src="../assets/images/capa-programacao.webp" alt="Blocos de programação percorrendo um ciclo para representar uma estrutura de repetição" width="1440" height="810"><figcaption>Uma repetição possui início, condição, ação e atualização.</figcaption></figure>
+  <p>A estrutura <strong>for</strong> repete um bloco de código quando sabemos quantas vezes uma ação deve acontecer ou quando existe um controle claro de início, condição e atualização. Em vez de escrever a mesma instrução dez vezes, criamos uma repetição controlada.</p>
+  <nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#estrutura">As três partes do for</a></li><li><a href="#execucao">Execução passo a passo</a></li><li><a href="#exemplos">Exemplos comentados</a></li><li><a href="#erros">Erros comuns</a></li></ul></nav>
+  <h2 id="estrutura">A estrutura básica</h2>
+  <pre class="code-block">for (int numero = 1; numero &lt;= 5; numero++)
 {
     Console.WriteLine(numero);
-}</pre><h2>Entendendo cada parte</h2><ol><li><strong>int numero = 1:</strong> cria a variável e define o valor inicial.</li><li><strong>numero &lt;= 10:</strong> determina até quando a repetição continua.</li><li><strong>numero++:</strong> aumenta o valor em uma unidade após cada volta.</li><li><strong>Console.WriteLine(numero):</strong> mostra o valor atual.</li></ol><div class="callout">Se você escrever <strong>Console.WriteLine("numero")</strong>, o programa exibirá a palavra “numero”. Sem aspas, ele mostra o valor da variável.</div><h2>Um exemplo com total</h2><pre class="code-block">double total = 0;
+}</pre>
+  <p>O comando exibirá os números de 1 a 5. Dentro dos parênteses existem três partes separadas por ponto e vírgula.</p>
+  <ol><li><strong>int numero = 1:</strong> inicialização. A variável é criada e começa com 1.</li><li><strong>numero &lt;= 5:</strong> condição. A repetição continua enquanto ela for verdadeira.</li><li><strong>numero++:</strong> atualização. Após cada volta, o valor aumenta em uma unidade.</li></ol>
+  <h2 id="execucao">O que acontece em cada volta?</h2>
+  <ol><li>A variável <code>numero</code> recebe 1.</li><li>O programa verifica se 1 é menor ou igual a 5.</li><li>Como a condição é verdadeira, mostra 1.</li><li>Executa <code>numero++</code>, e o valor passa a 2.</li><li>Repete a verificação e continua até mostrar 5.</li><li>Quando o valor chega a 6, a condição fica falsa e o laço termina.</li></ol>
+  <div class="callout"><strong>Atenção às aspas:</strong> <code>Console.WriteLine("numero")</code> mostra a palavra “numero”. <code>Console.WriteLine(numero)</code> mostra o valor guardado na variável.</div>
+  <h2 id="exemplos">Exemplo: mostrar apenas números pares</h2>
+  <pre class="code-block">for (int numero = 2; numero &lt;= 10; numero += 2)
+{
+    Console.WriteLine(numero);
+}</pre>
+  <p>O valor começa em 2 e aumenta de dois em dois. O resultado será 2, 4, 6, 8 e 10.</p>
+  <h2>Exemplo: somar valores digitados</h2>
+  <pre class="code-block">double total = 0;
 
 for (int item = 1; item &lt;= 3; item++)
 {
-    Console.Write("Digite o valor: ");
+    Console.Write("Digite o valor do item: ");
     double valor = Convert.ToDouble(Console.ReadLine());
     total += valor;
 }
 
-Console.WriteLine("Total: R$ " + total);</pre><p>A conversão é necessária porque o texto digitado pelo teclado chega ao programa como texto, mesmo quando a pessoa digita apenas números.</p><div class="exercise"><h3>Pratique</h3><p>Faça um programa que solicite cinco notas, some os valores e mostre a média final. Antes de programar, identifique o valor inicial, a condição e o incremento do FOR.</p></div></div></article></main><footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala</span><a href="../privacidade.html">Privacidade</a></div></footer></body></html>
+Console.WriteLine("Total: R$ " + total);</pre>
+  <p>A variável <code>total</code> precisa ser criada antes do laço para conservar a soma entre as repetições. O texto digitado pelo teclado chega como texto; por isso é convertido para <code>double</code>.</p>
+  <h2>Exemplo: calcular média</h2>
+  <pre class="code-block">double soma = 0;
+
+for (int contador = 1; contador &lt;= 4; contador++)
+{
+    Console.Write("Digite a nota: ");
+    double nota = Convert.ToDouble(Console.ReadLine());
+    soma += nota;
+}
+
+double media = soma / 4;
+Console.WriteLine("Média: " + media);</pre>
+  <h2 id="erros">Erros comuns</h2>
+  <h3>Condição que nunca fica falsa</h3><p>Se a variável não for atualizada corretamente, o laço pode continuar indefinidamente. Verifique se o valor se aproxima do limite.</p>
+  <h3>Usar a direção errada</h3><p>Se o valor começa em 1 e a condição é chegar a 10, normalmente ele deve aumentar. Usar <code>numero--</code> faria o valor se afastar do objetivo.</p>
+  <h3>Começar ou terminar no número errado</h3><p>Compare <code>&lt;</code> com <code>&lt;=</code>. A primeira condição não inclui o limite; a segunda inclui.</p>
+  <div class="exercise"><h3>Desafio</h3><p>Crie um programa que solicite cinco preços, mostre o total e informe quantos valores foram maiores que R$ 100. Planeje primeiro as variáveis necessárias.</p></div>
+  <h2>Perguntas frequentes</h2>
+  <div class="faq"><h3>Quando usar for em vez de while?</h3><p>O for é conveniente quando o controle da repetição cabe em inicialização, condição e atualização. O while é útil quando a quantidade de repetições depende de uma situação que pode variar.</p></div>
+  <div class="faq"><h3>A variável do for existe fora do laço?</h3><p>Quando ela é declarada dentro da inicialização, normalmente seu escopo fica limitado ao laço.</p></div>
+  <aside class="related-box"><h2>Continue aprendendo</h2><p>Amplie sua visão conhecendo <a href="o-que-e-ti.html">as principais áreas da Tecnologia da Informação</a>.</p></aside>
+</div></article></main>
+<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala</span><a href="../privacidade.html">Privacidade</a></div></footer><script src="../script.js"></script>
+</body></html>

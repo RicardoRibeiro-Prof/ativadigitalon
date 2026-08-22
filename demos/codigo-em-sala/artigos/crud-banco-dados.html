@@ -1,8 +1,62 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CRUD: as quatro operações fundamentais — Código em Sala</title><meta name="description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados."><link rel="canonical" href="https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/crud-banco-dados.html"><link rel="stylesheet" href="../styles.css"></head><body>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><nav class="main-nav"><a href="../">Início</a><a href="../#artigos">Artigos</a><a href="../sobre.html">Sobre</a></nav></div></header>
-<main><section class="page-hero"><div class="container article-head"><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Banco de Dados</span><h1>CRUD: entenda as quatro operações fundamentais</h1><div class="article-meta"><span>8 minutos de leitura</span><time datetime="2026-08-22">Publicado em 22 de agosto de 2026</time></div></div></section><article class="content-page"><div class="prose article-body"><p>CRUD é a sigla usada para representar as quatro ações básicas realizadas com dados: criar, consultar, atualizar e excluir. Quase todo sistema utiliza essas operações, desde uma agenda escolar até um aplicativo de delivery.</p><div class="callout"><strong>CRUD significa:</strong> Create, Read, Update e Delete. Em SQL, normalmente usamos INSERT, SELECT, UPDATE e DELETE.</div><h2>1. Create: criar um registro</h2><p>Imagine uma tabela chamada <strong>alunos</strong>. Para cadastrar uma pessoa, usamos o comando INSERT:</p><pre class="code-block">INSERT INTO alunos (nome, turma)
-VALUES ('Marina', '1ª Série A');</pre><h2>2. Read: consultar registros</h2><p>O SELECT lê os dados armazenados. O asterisco solicita todas as colunas:</p><pre class="code-block">SELECT * FROM alunos;</pre><p>Para encontrar somente uma turma, acrescentamos uma condição:</p><pre class="code-block">SELECT * FROM alunos
-WHERE turma = '1ª Série A';</pre><h2>3. Update: atualizar um registro</h2><p>O UPDATE altera informações existentes. A condição WHERE é essencial para indicar qual registro será modificado.</p><pre class="code-block">UPDATE alunos
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CRUD: as quatro operações fundamentais — Código em Sala</title><meta name="description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade."><link rel="canonical" href="https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/crud-banco-dados.html"><link rel="stylesheet" href="../styles.css"></head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../#artigos">Artigos</a><a href="../sobre.html">Sobre</a></nav></div></header>
+<main><section class="page-hero"><div class="container article-head"><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Banco de Dados</span><h1>CRUD: entenda as quatro operações fundamentais</h1><div class="article-meta"><span>12 minutos de leitura</span><time datetime="2026-08-22">Atualizado em 22 de agosto de 2026</time></div></div></section>
+<article class="content-page"><div class="prose article-body">
+  <figure class="article-cover"><img src="../assets/images/capa-banco-dados.webp" alt="Banco de dados central com fluxos de criação, consulta, atualização e exclusão de registros" width="1440" height="810"><figcaption>O CRUD representa o ciclo básico de vida de um registro em um sistema.</figcaption></figure>
+  <p>CRUD é a sigla usada para representar quatro ações básicas realizadas com dados: criar, consultar, atualizar e excluir. Quase todo sistema utiliza essas operações, desde uma agenda escolar até um aplicativo de delivery.</p>
+  <div class="callout"><strong>CRUD significa:</strong> Create, Read, Update e Delete. Em SQL, essas ações normalmente correspondem a INSERT, SELECT, UPDATE e DELETE.</div>
+  <nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#preparacao">Preparando a tabela</a></li><li><a href="#operacoes">As quatro operações</a></li><li><a href="#cuidados">Cuidados importantes</a></li><li><a href="#pratica">Atividade completa</a></li></ul></nav>
+  <h2 id="preparacao">Antes do CRUD: criando a tabela</h2>
+  <p>Usaremos uma tabela simples de alunos em PostgreSQL. O identificador é gerado automaticamente e a coluna de e-mail não permite valores repetidos.</p>
+  <pre class="code-block">CREATE TABLE alunos (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    turma VARCHAR(30),
+    ativo BOOLEAN DEFAULT TRUE
+);</pre>
+  <h2 id="operacoes">1. Create: cadastrar um registro</h2>
+  <p>O comando INSERT inclui uma nova linha. Informamos as colunas e, em seguida, os valores na mesma ordem.</p>
+  <pre class="code-block">INSERT INTO alunos (nome, email, turma)
+VALUES ('Marina Alves', 'marina@email.com', '1ª Série A');</pre>
+  <p>Também é possível cadastrar mais de um registro em um único comando:</p>
+  <pre class="code-block">INSERT INTO alunos (nome, email, turma)
+VALUES
+  ('João Lima', 'joao@email.com', '1ª Série B'),
+  ('Ana Souza', 'ana@email.com', '1ª Série A');</pre>
+  <h2>2. Read: consultar registros</h2>
+  <p>SELECT lê dados sem alterá-los. O asterisco solicita todas as colunas, mas em aplicações reais é melhor selecionar apenas as necessárias.</p>
+  <pre class="code-block">SELECT id, nome, turma
+FROM alunos
+WHERE ativo = TRUE
+ORDER BY nome;</pre>
+  <p>O WHERE filtra, e o ORDER BY organiza. Para limitar resultados, podemos acrescentar <code>LIMIT 10</code>.</p>
+  <h2>3. Update: atualizar um registro</h2>
+  <p>UPDATE altera dados existentes. O WHERE define quais registros serão modificados.</p>
+  <pre class="code-block">UPDATE alunos
 SET turma = '1ª Série B'
-WHERE id = 1;</pre><h2>4. Delete: excluir um registro</h2><p>O DELETE remove dados. Sem WHERE, todos os registros da tabela podem ser excluídos.</p><pre class="code-block">DELETE FROM alunos
-WHERE id = 1;</pre><div class="exercise"><h3>Pratique</h3><p>Crie uma tabela chamada <strong>livros</strong> com id, título, autor e ano. Depois, escreva quatro comandos: cadastrar um livro, consultar todos, alterar o ano do livro de id 1 e excluir esse mesmo livro.</p></div><h2>O que realmente importa</h2><p>Não memorize apenas os comandos. Pense sempre na ação que o usuário realiza: cadastrar corresponde ao INSERT, visualizar ao SELECT, editar ao UPDATE e remover ao DELETE. Essa associação torna o CRUD muito mais fácil de compreender.</p></div></article></main><footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala</span><a href="../privacidade.html">Privacidade</a></div></footer></body></html>
+WHERE id = 1;</pre>
+  <p>Sem a condição, todos os alunos receberiam a mesma turma. Antes de uma alteração importante, execute um SELECT com a mesma condição para confirmar o alvo.</p>
+  <h2>4. Delete: excluir um registro</h2>
+  <pre class="code-block">DELETE FROM alunos
+WHERE id = 1;</pre>
+  <p>A exclusão física remove a linha. Alguns sistemas preferem a exclusão lógica: mantêm o registro e alteram um campo como <code>ativo</code>. Isso preserva histórico quando a regra de negócio permite.</p>
+  <pre class="code-block">UPDATE alunos
+SET ativo = FALSE
+WHERE id = 1;</pre>
+  <h2 id="cuidados">Cuidados que evitam problemas</h2>
+  <ul><li>Use WHERE em UPDATE e DELETE quando a intenção não for atingir toda a tabela.</li><li>Valide dados também no servidor, não apenas na tela.</li><li>Utilize parâmetros nas aplicações para reduzir risco de injeção SQL.</li><li>Controle permissões: nem todo usuário deve excluir ou alterar registros.</li><li>Mantenha backup e histórico para dados importantes.</li><li>Use transações quando várias operações precisam acontecer juntas.</li></ul>
+  <h2>CRUD na interface de um sistema</h2>
+  <div class="table-wrap"><table class="compare-table"><thead><tr><th>Ação do usuário</th><th>Operação</th><th>SQL comum</th></tr></thead><tbody><tr><td>Cadastrar</td><td>Create</td><td>INSERT</td></tr><tr><td>Visualizar ou buscar</td><td>Read</td><td>SELECT</td></tr><tr><td>Editar</td><td>Update</td><td>UPDATE</td></tr><tr><td>Remover</td><td>Delete</td><td>DELETE</td></tr></tbody></table></div>
+  <div id="pratica" class="exercise"><h3>Atividade prática</h3><p>Crie uma tabela <strong>livros</strong> com id, título, autor, ano e disponível. Cadastre três livros, consulte apenas os disponíveis em ordem de título, atualize o ano de um registro e marque outro como indisponível. Por último, explique quando seria melhor excluir fisicamente ou apenas alterar o status.</p></div>
+  <h2>Perguntas frequentes</h2>
+  <div class="faq"><h3>CRUD é uma linguagem?</h3><p>Não. É uma forma de agrupar operações. Elas podem ser implementadas com SQL, APIs, interfaces e diferentes linguagens.</p></div>
+  <div class="faq"><h3>ORDER BY, LIMIT e LIKE fazem parte do CRUD?</h3><p>São recursos usados principalmente na leitura, isto é, no SELECT. Eles organizam, limitam e filtram resultados.</p></div>
+  <div class="faq"><h3>DELETE sempre apaga para sempre?</h3><p>No banco, a linha é removida; ainda pode existir em backups ou históricos. Sistemas também podem usar exclusão lógica em vez de DELETE.</p></div>
+  <aside class="related-box"><h2>Continue aprendendo</h2><p>Conheça também a diferença entre <a href="tipos-servidores.html">servidor web, de arquivos e de banco de dados</a>.</p></aside>
+</div></article></main>
+<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala</span><a href="../privacidade.html">Privacidade</a></div></footer><script src="../script.js"></script>
+</body></html>
