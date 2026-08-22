@@ -18,6 +18,12 @@ const filterButtons = [...document.querySelectorAll('.filter-button')];
 const cards = [...document.querySelectorAll('.article-card')];
 const emptyState = document.querySelector('#sem-resultados');
 let activeCategory = 'todos';
+const requestedCategory = new URLSearchParams(window.location.search).get('categoria');
+
+if (requestedCategory && filterButtons.some((button) => button.dataset.filter === requestedCategory)) {
+  activeCategory = requestedCategory;
+  filterButtons.forEach((button) => button.classList.toggle('active', button.dataset.filter === requestedCategory));
+}
 
 function normalizeText(value) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
@@ -48,3 +54,67 @@ filterButtons.forEach((button) => {
 });
 
 searchInput?.addEventListener('input', filterArticles);
+if (cards.length) filterArticles();
+
+const article = document.querySelector('.article-body');
+const progressBar = document.querySelector('.reading-progress span');
+
+function updateReadingProgress() {
+  if (!article || !progressBar) return;
+  const articleTop = article.getBoundingClientRect().top + window.scrollY;
+  const scrollable = Math.max(article.offsetHeight - window.innerHeight, 1);
+  const progress = Math.min(100, Math.max(0, ((window.scrollY - articleTop + 120) / scrollable) * 100));
+  progressBar.style.width = `${progress}%`;
+}
+
+if (article && progressBar) {
+  updateReadingProgress();
+  window.addEventListener('scroll', updateReadingProgress, { passive: true });
+  window.addEventListener('resize', updateReadingProgress);
+}
+
+const pageUrl = encodeURIComponent(window.location.href);
+const pageTitle = encodeURIComponent(document.title.replace(' — Código em Sala', ''));
+
+document.querySelectorAll('[data-share="whatsapp"]').forEach((link) => {
+  link.href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+});
+
+document.querySelectorAll('[data-share="facebook"]').forEach((link) => {
+  link.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+});
+
+document.querySelectorAll('[data-share="native"]').forEach((button) => {
+  if (!navigator.share) {
+    button.hidden = true;
+    return;
+  }
+  button.addEventListener('click', () => navigator.share({ title: document.title, url: window.location.href }).catch(() => {}));
+});
+
+if (!document.querySelector('#aviso-cookies')) {
+  document.body.insertAdjacentHTML('beforeend', `
+    <aside id="aviso-cookies" class="cookie-banner" aria-label="Preferências de cookies" aria-live="polite">
+      <p><strong>Cookies e privacidade</strong>Usamos apenas o armazenamento necessário para lembrar sua escolha. Recursos de análise e publicidade só serão ativados de acordo com esta preferência. <a href="${document.body.dataset.article === 'true' ? '../' : ''}privacidade.html">Saiba mais</a>.</p>
+      <div class="cookie-actions">
+        <button class="cookie-button" type="button" data-cookie-choice="essenciais">Somente essenciais</button>
+        <button class="cookie-button primary" type="button" data-cookie-choice="aceitos">Aceitar</button>
+      </div>
+    </aside>`);
+}
+
+const cookieBanner = document.querySelector('#aviso-cookies');
+const cookieChoice = localStorage.getItem('codigo-em-sala-cookies');
+
+if (cookieBanner && !cookieChoice) cookieBanner.classList.add('open');
+
+document.querySelectorAll('[data-cookie-choice]').forEach((button) => {
+  button.addEventListener('click', () => {
+    localStorage.setItem('codigo-em-sala-cookies', button.dataset.cookieChoice);
+    cookieBanner?.classList.remove('open');
+  });
+});
+
+document.querySelectorAll('[data-cookie-settings]').forEach((button) => {
+  button.addEventListener('click', () => cookieBanner?.classList.add('open'));
+});
