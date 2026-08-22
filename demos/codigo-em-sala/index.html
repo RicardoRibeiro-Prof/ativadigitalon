@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Código em Sala — Tecnologia ensinada de forma simples</title>
+  <meta name="description" content="Aulas, atividades e explicações práticas de programação, banco de dados, redes e jogos digitais.">
+  <meta name="theme-color" content="#10233f">
+  <link rel="canonical" href="https://ativadigitalon.com.br/demos/codigo-em-sala/">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Blog","name":"Código em Sala","description":"Tecnologia ensinada de forma simples para professores e estudantes.","inLanguage":"pt-BR"}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="./" aria-label="Página inicial do Código em Sala">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span><strong>Código</strong> em Sala</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <nav id="menu-principal" class="main-nav" aria-label="Navegação principal">
+        <a class="active" href="./">Início</a>
+        <a href="#artigos">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Tecnologia sem complicação</span>
+          <h1>Aprenda, pratique e leve a tecnologia para a sala de aula.</h1>
+          <p>Explicações diretas, exemplos comentados e atividades sobre programação, banco de dados, redes e jogos digitais.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#artigos">Explorar conteúdos</a>
+            <a class="button secondary" href="artigos/crud-banco-dados.html">Começar por CRUD</a>
+          </div>
+          <ul class="trust-list" aria-label="Diferenciais">
+            <li>Conteúdo em português</li>
+            <li>Exemplos práticos</li>
+            <li>Material para estudar e ensinar</li>
+          </ul>
+        </div>
+        <aside class="hero-panel" aria-label="Trilha de aprendizagem em destaque">
+          <div class="panel-top"><span>Trilha em destaque</span><span class="status">Iniciante</span></div>
+          <h2>Banco de Dados na prática</h2>
+          <ol class="lesson-list">
+            <li><span>01</span> Entenda tabelas e registros</li>
+            <li><span>02</span> Domine o CRUD</li>
+            <li><span>03</span> Filtre com LIKE e ILIKE</li>
+            <li><span>04</span> Organize com ORDER BY</li>
+          </ol>
+          <a href="artigos/crud-banco-dados.html">Iniciar a trilha <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Resumo do conteúdo">
+      <div class="container stats-grid">
+        <div><strong>4</strong><span>áreas de estudo</span></div>
+        <div><strong>3</strong><span>artigos iniciais</span></div>
+        <div><strong>100%</strong><span>conteúdo prático</span></div>
+      </div>
+    </section>
+
+    <section id="artigos" class="articles-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Biblioteca</span><h2>Conteúdos para aprender fazendo</h2></div>
+          <p>Escolha um assunto e avance no seu ritmo.</p>
+        </div>
+
+        <div class="filters" aria-label="Filtros de artigos">
+          <label class="search-box" for="busca">
+            <span aria-hidden="true">⌕</span>
+            <input id="busca" type="search" placeholder="Buscar por tema..." autocomplete="off">
+          </label>
+          <div class="filter-buttons" role="group" aria-label="Categorias">
+            <button class="filter-button active" type="button" data-filter="todos">Todos</button>
+            <button class="filter-button" type="button" data-filter="banco">Banco de Dados</button>
+            <button class="filter-button" type="button" data-filter="programacao">Programação</button>
+            <button class="filter-button" type="button" data-filter="redes">Redes</button>
+          </div>
+        </div>
+
+        <div class="article-grid" aria-live="polite">
+          <article class="article-card featured" data-category="banco" data-search="crud banco dados sql create read update delete">
+            <div class="card-visual visual-database"><span>SQL</span></div>
+            <div class="card-content">
+              <div class="card-meta"><span>Banco de Dados</span><time datetime="2026-08-22">22 ago 2026</time></div>
+              <h3><a href="artigos/crud-banco-dados.html">CRUD: entenda as quatro operações fundamentais</a></h3>
+              <p>Aprenda a criar, consultar, atualizar e excluir dados com exemplos simples e uma atividade ao final.</p>
+              <div class="card-footer"><span>8 min de leitura</span><a href="artigos/crud-banco-dados.html" aria-label="Ler artigo sobre CRUD">Ler artigo →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card" data-category="programacao" data-search="for repetição csharp laço programação">
+            <div class="card-visual visual-code"><span>for( )</span></div>
+            <div class="card-content">
+              <div class="card-meta"><span>Programação</span><time datetime="2026-08-22">22 ago 2026</time></div>
+              <h3><a href="artigos/estrutura-for.html">Estrutura FOR em C#: aprenda passo a passo</a></h3>
+              <p>Veja como a repetição funciona, por que cada parte existe e como evitar os erros mais comuns.</p>
+              <div class="card-footer"><span>7 min de leitura</span><a href="artigos/estrutura-for.html" aria-label="Ler artigo sobre estrutura FOR">Ler artigo →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card" data-category="redes" data-search="servidor web arquivos banco dados redes">
+            <div class="card-visual visual-network"><span>●—●</span></div>
+            <div class="card-content">
+              <div class="card-meta"><span>Redes</span><time datetime="2026-08-22">22 ago 2026</time></div>
+              <h3><a href="artigos/tipos-servidores.html">Servidor web, de arquivos e de banco: qual a diferença?</a></h3>
+              <p>Compare as funções dos três servidores usando situações que acontecem em empresas e escolas.</p>
+              <div class="card-footer"><span>6 min de leitura</span><a href="artigos/tipos-servidores.html" aria-label="Ler artigo sobre tipos de servidores">Ler artigo →</a></div>
+            </div>
+          </article>
+        </div>
+        <p id="sem-resultados" class="empty-state" hidden>Nenhum conteúdo encontrado. Tente outra palavra ou categoria.</p>
+      </div>
+    </section>
+
+    <aside class="ad-slot container" aria-label="Espaço reservado para publicidade">
+      <span>Publicidade</span>
+      <p>Espaço preparado para o Google AdSense após a aprovação do blog.</p>
+    </aside>
+
+    <section class="purpose-section">
+      <div class="container purpose-grid">
+        <div><span class="eyebrow">Nosso propósito</span><h2>Conteúdo que ajuda de verdade.</h2></div>
+        <p>O Código em Sala transforma assuntos técnicos em explicações compreensíveis, sem retirar a parte prática. Cada artigo é pensado para quem está aprendendo e para quem precisa ensinar.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><p>Tecnologia ensinada de forma simples, prática e responsável.</p></div>
+      <div><h2>Conteúdo</h2><a href="#artigos">Artigos</a><a href="artigos/crud-banco-dados.html">Banco de Dados</a><a href="artigos/estrutura-for.html">Programação</a></div>
+      <div><h2>Institucional</h2><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a href="privacidade.html">Privacidade</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Código em Sala</span><span>Projeto educacional independente</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
