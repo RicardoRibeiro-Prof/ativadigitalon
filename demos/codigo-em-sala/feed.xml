@@ -5,8 +5,22 @@
     <link>https://ativadigitalon.com.br/demos/codigo-em-sala/</link>
     <description>Tecnologia ensinada de forma simples, prática e responsável.</description>
     <language>pt-BR</language>
-    <lastBuildDate>Sat, 22 Aug 2026 12:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 14:00:00 -0300</lastBuildDate>
     <atom:link href="https://ativadigitalon.com.br/demos/codigo-em-sala/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Normalização de banco de dados: 1FN, 2FN e 3FN</title>
+      <link>https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/normalizacao-banco-dados.html</link>
+      <guid isPermaLink="true">https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/normalizacao-banco-dados.html</guid>
+      <pubDate>Sat, 22 Aug 2026 14:00:00 -0300</pubDate>
+      <description>Organize tabelas, reduza redundâncias e evite anomalias com um exemplo completo de pedidos.</description>
+    </item>
+    <item>
+      <title>SQL JOIN para iniciantes: INNER, LEFT, RIGHT e FULL</title>
+      <link>https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/sql-join-iniciantes.html</link>
+      <guid isPermaLink="true">https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/sql-join-iniciantes.html</guid>
+      <pubDate>Sat, 22 Aug 2026 13:00:00 -0300</pubDate>
+      <description>Combine tabelas relacionadas com exemplos progressivos de clientes, pedidos e produtos.</description>
+    </item>
     <item>
       <title>Modelo Entidade-Relacionamento: como planejar um banco de dados</title>
       <link>https://ativadigitalon.com.br/demos/codigo-em-sala/artigos/modelo-entidade-relacionamento.html</link>
