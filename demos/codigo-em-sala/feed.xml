@@ -1,81 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Código em Sala</title>
-    <link>https://codigoemsala.com.br/</link>
-    <description>Tecnologia ensinada de forma simples, prática e responsável.</description>
-    <language>pt-BR</language>
-    <lastBuildDate>Sat, 22 Aug 2026 14:00:00 -0300</lastBuildDate>
-    <atom:link href="https://codigoemsala.com.br/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>Normalização de banco de dados: da 1FN à 5FN e FNBC</title>
-      <link>https://codigoemsala.com.br/artigos/normalizacao-banco-dados.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/normalizacao-banco-dados.html</guid>
-      <pubDate>Sat, 22 Aug 2026 14:00:00 -0300</pubDate>
-      <description>Entenda dependências funcionais, multivaloradas e de junção com exemplos progressivos.</description>
-    </item>
-    <item>
-      <title>SQL JOIN para iniciantes: INNER, LEFT, RIGHT e FULL</title>
-      <link>https://codigoemsala.com.br/artigos/sql-join-iniciantes.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/sql-join-iniciantes.html</guid>
-      <pubDate>Sat, 22 Aug 2026 13:00:00 -0300</pubDate>
-      <description>Combine tabelas relacionadas com exemplos progressivos de clientes, pedidos e produtos.</description>
-    </item>
-    <item>
-      <title>Modelo Entidade-Relacionamento: como planejar um banco de dados</title>
-      <link>https://codigoemsala.com.br/artigos/modelo-entidade-relacionamento.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/modelo-entidade-relacionamento.html</guid>
-      <pubDate>Sat, 22 Aug 2026 12:00:00 -0300</pubDate>
-      <description>Aprenda a identificar entidades, atributos, relacionamentos e cardinalidades antes de criar tabelas.</description>
-    </item>
-    <item>
-      <title>Chaves primárias e estrangeiras: como relacionar tabelas</title>
-      <link>https://codigoemsala.com.br/artigos/chaves-primarias-estrangeiras.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/chaves-primarias-estrangeiras.html</guid>
-      <pubDate>Sat, 22 Aug 2026 11:00:00 -0300</pubDate>
-      <description>Entenda como as chaves identificam registros, conectam tabelas e protegem a integridade dos dados.</description>
-    </item>
-    <item>
-      <title>O que é TI e quais são suas principais áreas?</title>
-      <link>https://codigoemsala.com.br/artigos/o-que-e-ti.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/o-que-e-ti.html</guid>
-      <pubDate>Sat, 22 Aug 2026 10:00:00 -0300</pubDate>
-      <description>Conheça o mapa completo da Tecnologia da Informação e entenda como suas áreas se conectam.</description>
-    </item>
-    <item>
-      <title>Inteligência artificial: o que é e onde já está presente?</title>
-      <link>https://codigoemsala.com.br/artigos/inteligencia-artificial.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/inteligencia-artificial.html</guid>
-      <pubDate>Sat, 22 Aug 2026 09:00:00 -0300</pubDate>
-      <description>Entenda como máquinas identificam padrões, geram conteúdo e auxiliam decisões sem cair em exageros.</description>
-    </item>
-    <item>
-      <title>Segurança digital: sete cuidados essenciais</title>
-      <link>https://codigoemsala.com.br/artigos/seguranca-digital.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/seguranca-digital.html</guid>
-      <pubDate>Sat, 22 Aug 2026 08:00:00 -0300</pubDate>
-      <description>Aprenda a reconhecer golpes, proteger contas e reduzir riscos no celular e no computador.</description>
-    </item>
-    <item>
-      <title>Como funciona um computador por dentro?</title>
-      <link>https://codigoemsala.com.br/artigos/como-funciona-computador.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/como-funciona-computador.html</guid>
-      <pubDate>Sat, 22 Aug 2026 07:00:00 -0300</pubDate>
-      <description>Veja o papel do processador, memória RAM, armazenamento e placa-mãe.</description>
-    </item>
-    <item>
-      <title>Como a internet funciona: do Wi-Fi ao servidor</title>
-      <link>https://codigoemsala.com.br/artigos/como-internet-funciona.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/como-internet-funciona.html</guid>
-      <pubDate>Sat, 22 Aug 2026 06:00:00 -0300</pubDate>
-      <description>Acompanhe o caminho de uma página e compreenda DNS, IP, pacotes, roteadores e servidores.</description>
-    </item>
-    <item>
-      <title>Carreiras em TI: descubra qual área combina com você</title>
-      <link>https://codigoemsala.com.br/artigos/carreiras-ti.html</link>
-      <guid isPermaLink="true">https://codigoemsala.com.br/artigos/carreiras-ti.html</guid>
-      <pubDate>Sat, 22 Aug 2026 05:00:00 -0300</pubDate>
-      <description>Conheça diferentes caminhos profissionais e construa um plano de experimentação em 30 dias.</description>
-    </item>
+    <title>Código em Sala</title><link>https://codigoemsala.com.br/</link><description>Tecnologia ensinada de forma simples, prática e responsável.</description><language>pt-BR</language><lastBuildDate>Tue, 25 Aug 2026 07:00:00 -0300</lastBuildDate><atom:link href="https://codigoemsala.com.br/feed.xml" rel="self" type="application/rss+xml"/>
+    <item><title>O que é algoritmo? Entenda antes de programar</title><link>https://codigoemsala.com.br/artigos/o-que-e-algoritmo.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/o-que-e-algoritmo.html</guid><pubDate>Tue, 25 Aug 2026 07:00:00 -0300</pubDate><description>Aprenda a transformar problemas em passos claros e entenda por que algoritmos vêm antes do código.</description></item>
+    <item><title>Normalização de banco de dados: da 1FN à 5FN e FNBC</title><link>https://codigoemsala.com.br/artigos/normalizacao-banco-dados.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/normalizacao-banco-dados.html</guid><pubDate>Sat, 22 Aug 2026 14:00:00 -0300</pubDate><description>Entenda dependências funcionais, multivaloradas e de junção com exemplos progressivos.</description></item>
+    <item><title>SQL JOIN para iniciantes: INNER, LEFT, RIGHT e FULL</title><link>https://codigoemsala.com.br/artigos/sql-join-iniciantes.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/sql-join-iniciantes.html</guid><pubDate>Sat, 22 Aug 2026 13:00:00 -0300</pubDate><description>Combine tabelas relacionadas com exemplos progressivos de clientes, pedidos e produtos.</description></item>
+    <item><title>Modelo Entidade-Relacionamento: como planejar um banco de dados</title><link>https://codigoemsala.com.br/artigos/modelo-entidade-relacionamento.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/modelo-entidade-relacionamento.html</guid><pubDate>Sat, 22 Aug 2026 12:00:00 -0300</pubDate><description>Aprenda a identificar entidades, atributos, relacionamentos e cardinalidades antes de criar tabelas.</description></item>
+    <item><title>Chaves primárias e estrangeiras: como relacionar tabelas</title><link>https://codigoemsala.com.br/artigos/chaves-primarias-estrangeiras.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/chaves-primarias-estrangeiras.html</guid><pubDate>Sat, 22 Aug 2026 11:00:00 -0300</pubDate><description>Entenda como as chaves identificam registros, conectam tabelas e protegem a integridade dos dados.</description></item>
+    <item><title>O que é TI e quais são suas principais áreas?</title><link>https://codigoemsala.com.br/artigos/o-que-e-ti.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/o-que-e-ti.html</guid><pubDate>Sat, 22 Aug 2026 10:00:00 -0300</pubDate><description>Conheça o mapa completo da Tecnologia da Informação e entenda como suas áreas se conectam.</description></item>
+    <item><title>Inteligência artificial: o que é e onde já está presente?</title><link>https://codigoemsala.com.br/artigos/inteligencia-artificial.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/inteligencia-artificial.html</guid><pubDate>Sat, 22 Aug 2026 09:00:00 -0300</pubDate><description>Entenda como máquinas identificam padrões, geram conteúdo e auxiliam decisões sem cair em exageros.</description></item>
+    <item><title>Segurança digital: sete cuidados essenciais</title><link>https://codigoemsala.com.br/artigos/seguranca-digital.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/seguranca-digital.html</guid><pubDate>Sat, 22 Aug 2026 08:00:00 -0300</pubDate><description>Aprenda a reconhecer golpes, proteger contas e reduzir riscos no celular e no computador.</description></item>
+    <item><title>Como funciona um computador por dentro?</title><link>https://codigoemsala.com.br/artigos/como-funciona-computador.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/como-funciona-computador.html</guid><pubDate>Sat, 22 Aug 2026 07:00:00 -0300</pubDate><description>Veja o papel do processador, memória RAM, armazenamento e placa-mãe.</description></item>
+    <item><title>Como a internet funciona: do Wi-Fi ao servidor</title><link>https://codigoemsala.com.br/artigos/como-internet-funciona.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/como-internet-funciona.html</guid><pubDate>Sat, 22 Aug 2026 06:00:00 -0300</pubDate><description>Acompanhe o caminho de uma página e compreenda DNS, IP, pacotes, roteadores e servidores.</description></item>
+    <item><title>Carreiras em TI: descubra qual área combina com você</title><link>https://codigoemsala.com.br/artigos/carreiras-ti.html</link><guid isPermaLink="true">https://codigoemsala.com.br/artigos/carreiras-ti.html</guid><pubDate>Sat, 22 Aug 2026 05:00:00 -0300</pubDate><description>Conheça diferentes caminhos profissionais e construa um plano de experimentação em 30 dias.</description></item>
   </channel>
 </rss>
