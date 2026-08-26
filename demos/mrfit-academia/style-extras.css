@@ -1,0 +1,35 @@
+.back-to-top{
+  position:fixed;
+  right:22px;
+  bottom:92px;
+  z-index:96;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(10,10,11,.84);
+  backdrop-filter:blur(14px);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(14px) scale(.94);
+  transition:opacity .28s var(--ease),visibility .28s,transform .28s var(--ease),background .28s,border-color .28s;
+  box-shadow:0 16px 36px rgba(0,0,0,.32);
+}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.back-to-top:hover{background:var(--red);border-color:var(--red);transform:translateY(-4px) scale(1.04)}
+@media(max-width:720px){.back-to-top{right:16px;bottom:88px;width:46px;height:46px;font-size:20px}}
+
+/* refined icon system */
+.meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;font-weight:850}
+.meta-item{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.meta-ico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,rgba(239,29,38,.22),rgba(239,29,38,.08));border:1px solid rgba(239,29,38,.28);color:#ff6b71;box-shadow:0 0 0 6px rgba(239,29,38,.05)}
+.meta-ico svg{width:14px;height:14px;display:block}
+.feature-card .symbol{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
+.feature-card .symbol::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(239,29,38,.22),transparent 42%)}
+.feature-card .symbol svg{position:relative;z-index:1;width:28px;height:28px;display:block;color:#fff}
+@media(max-width:720px){.meta-item{padding:9px 12px}.meta-ico{width:26px;height:26px}.feature-card .symbol{width:54px;height:54px;border-radius:16px}.feature-card .symbol svg{width:24px;height:24px}}
