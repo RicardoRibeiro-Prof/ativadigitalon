@@ -1,0 +1,19 @@
+/* animated workout images */
+.motion-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.motion-card{position:relative;min-height:470px;border-radius:30px;overflow:hidden;border:1px solid var(--line);background:#080809}
+.motion-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.02)}
+.motion-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.08) 30%,rgba(0,0,0,.80) 100%)}
+.motion-copy{position:absolute;left:22px;right:22px;bottom:22px;z-index:2}.motion-copy strong{display:block;font-size:30px;line-height:1}.motion-copy span{display:block;color:#d3d3d9;margin-top:8px;line-height:1.5}
+.anim-pan-left{animation:panLeft 15s ease-in-out infinite alternate}
+.anim-pan-right{animation:panRight 16s ease-in-out infinite alternate}
+.anim-zoom{animation:softZoom 13s ease-in-out infinite alternate}
+@keyframes panLeft{0%{transform:scale(1.08) translateX(3%) translateY(0)}100%{transform:scale(1.18) translateX(-4%) translateY(-1%)}}
+@keyframes panRight{0%{transform:scale(1.08) translateX(-3%) translateY(0)}100%{transform:scale(1.17) translateX(4%) translateY(-2%)}}
+@keyframes softZoom{0%{transform:scale(1.06) translateY(1%)}100%{transform:scale(1.18) translateY(-3%)}}
+.motion-card:hover img{animation-play-state:paused}
+.motion-card .glow-dot{position:absolute;top:18px;right:18px;z-index:2;width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(239,29,38,.42);animation:pulseDot 2s infinite}
+@keyframes pulseDot{70%{box-shadow:0 0 0 14px rgba(239,29,38,0)}100%{box-shadow:0 0 0 0 rgba(239,29,38,0)}}
+@media(max-width:1050px){.motion-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.motion-grid{grid-template-columns:1fr}.motion-card{min-height:340px}.motion-copy strong{font-size:24px}}
+
+.statement{position:relative;min-height:660px;display:flex;align-items:center;isolation:isolate;background-size:cover;background-position:center;background-attachment:fixed;overflow:hidden}.statement::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.93),rgba(0,0,0,.46)),linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.72))}.statement h2{font-size:clamp(58px,7.4vw,106px);line-height:.9;letter-spacing:-.06em;text-transform:uppercase;margin:0;max-width:1060px}.statement h2 span{color:var(--red)}.statement p{max-width:620px;color:#d5d5da;font-size:18px;line-height:1.7;margin-top:24px}
