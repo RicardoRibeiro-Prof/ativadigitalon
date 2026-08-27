@@ -1,0 +1,116 @@
+/* Mobile overflow hardening — keep every section inside the viewport */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+@supports not (overflow:clip){
+  html,body{overflow-x:hidden}
+}
+body{position:relative}
+main,section,header,footer,.container{
+  max-width:100%;
+  min-width:0;
+}
+.hero-grid,.hero-side,.split,.feature,.feature-grid,.editorial,.editorial-left,.editorial-row,
+.motion-grid,.gallery-grid,.location-grid,.form-panel,.final-panel,.foot{
+  min-width:0;
+}
+.hero-grid>*,.hero-side>*,.split>*,.feature>*,.feature-grid>*,.editorial>*,
+.editorial-left>*,.editorial-row>*,.motion-grid>*,.gallery-grid>*,.location-grid>*{
+  min-width:0;
+  max-width:100%;
+}
+.feature-card,.photo-hero,.shot,.motion-card,.glass,.vip-card,.visual-card{
+  width:100%;
+  max-width:100%;
+}
+img,svg,video{
+  max-width:100%;
+}
+.kinetic{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+
+@media(max-width:720px){
+  html,body{
+    width:100%;
+    max-width:100%;
+    overflow-x:clip;
+    overscroll-behavior-x:none;
+  }
+
+  .container{
+    width:calc(100% - 24px)!important;
+    max-width:calc(100% - 24px)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  /* Horizontal reveal animations were creating a scrollable page width on phones */
+  .reveal-left,.reveal-right{
+    transform:translateY(28px)!important;
+  }
+  .reveal-left.show,.reveal-right.show{
+    transform:none!important;
+  }
+
+  .feature,.feature-grid,.split,.editorial,.editorial-row,.motion-grid,.gallery-grid,.location-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+    max-width:100%;
+  }
+
+  .feature-card{
+    min-width:0!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow:hidden;
+  }
+
+  .feature-card h3,.feature-card p,.headline,.lead,.statement h2,.statement p,
+  .page-copy h1,.page-copy p,.final-content h2,.final-content p{
+    max-width:100%;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+
+  .hero{
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+  }
+  .hero-grid{
+    width:100%;
+    max-width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .hero-side{
+    width:100%;
+    max-width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .meta{
+    max-width:100%;
+  }
+  .meta-item{
+    max-width:100%;
+    min-width:0;
+  }
+
+  .actions{
+    max-width:100%;
+  }
+
+  .final-content{
+    max-width:100%;
+  }
+
+  .back-to-top,.float-contact{
+    max-width:none;
+  }
+}
