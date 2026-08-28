@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API REST com Node.js e Express: CRUD na prática — Código em Sala</title>
+<meta name="description" content="Crie uma API HTTP em Node.js com Express, rotas GET, POST, PUT e DELETE, JSON, códigos de status e testes práticos passo a passo.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/api-rest-node-express.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="API REST com Node.js e Express: CRUD na prática"><meta property="og:description" content="Monte uma API de produtos e entenda rotas, métodos HTTP, JSON e códigos de status na prática."><meta property="og:url" content="https://codigoemsala.com.br/artigos/api-rest-node-express.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-programacao.webp"><meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"API REST com Node.js e Express: CRUD na prática","description":"Crie uma API HTTP em Node.js com Express, rotas GET, POST, PUT e DELETE, JSON, códigos de status e testes práticos passo a passo.","image":["https://codigoemsala.com.br/assets/images/capa-programacao.webp"],"datePublished":"2026-08-28","dateModified":"2026-08-28","inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/api-rest-node-express.html"}}</script>
+</head>
+<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
+<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#programacao">Programação</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Programação</span><h1>API REST com Node.js e Express: CRUD na prática</h1><div class="article-meta"><span>16 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-08-28">28 de agosto de 2026</time></div></div></section>
+<article class="content-page"><div class="prose article-body">
+<figure class="article-cover"><img src="../assets/images/capa-programacao.webp" alt="Notebook exibindo código em um ambiente de desenvolvimento" width="1440" height="810"><figcaption>Uma API transforma regras de negócio em endpoints que outros sistemas podem chamar. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
+<div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
+<p>Neste tutorial você vai criar uma API HTTP simples para produtos usando Node.js e Express. A aplicação aceitará requisições <strong>GET, POST, PUT e DELETE</strong>, receberá e devolverá JSON e usará códigos de status adequados. O objetivo é enxergar, em um projeto pequeno, como o CRUD vira uma interface que pode ser consumida por um site, aplicativo móvel ou outro sistema.</p>
+<div class="callout"><strong>Resultado final:</strong> uma API executada localmente em <code>http://localhost:3000</code>, com endpoints para listar, consultar, cadastrar, atualizar e excluir produtos.</div>
+<aside class="source-note"><strong>Base técnica.</strong> O roteamento segue a documentação oficial do Express; os conceitos de servidor HTTP e mensagens seguem a documentação oficial do Node.js. A distinção entre uma API HTTP prática e o estilo arquitetural REST é baseada na dissertação de Roy Fielding e nas obras de Ethan Brown e de Richardson, Amundsen e Ruby.</aside>
+<nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#preparar">Preparar o projeto</a></li><li><a href="#servidor">Criar o servidor</a></li><li><a href="#rotas">Criar o CRUD</a></li><li><a href="#testar">Testar a API</a></li><li><a href="#melhorar">O que melhorar depois</a></li></ul></nav>
+<h2 id="preparar">1. Preparando o projeto</h2><p>Você precisa ter o Node.js instalado. Em uma pasta vazia, abra o terminal e execute:</p><pre class="code-block"><code>npm init -y
+npm install express</code></pre><p>O primeiro comando cria o arquivo <code>package.json</code>. O segundo instala o Express, framework que facilita a criação de rotas e respostas HTTP.</p><p>Crie um arquivo chamado <code>server.js</code>. Para este primeiro projeto, os dados ficarão em memória. Isso deixa o foco nas rotas. Ao reiniciar o servidor, os produtos voltam ao estado inicial; mais adiante você pode substituir o array por PostgreSQL ou outro banco.</p>
+<h2 id="servidor">2. Criando o servidor Express</h2><pre class="code-block"><code>const express = require('express');
+
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+app.listen(PORT, () =&gt; {
+  console.log(`API rodando em http://localhost:${PORT}`);
+});</code></pre><p><code>express()</code> cria a aplicação. <code>express.json()</code> permite que o Express interprete corpos de requisições enviados em JSON. O <code>listen</code> coloca o servidor para escutar a porta 3000.</p><p>A documentação do Express define uma rota pela combinação de <strong>método HTTP + caminho + função manipuladora</strong>. Por isso, <code>GET /produtos</code> e <code>POST /produtos</code> são operações diferentes mesmo usando o mesmo caminho.</p>
+<h2>3. Criando alguns dados para trabalhar</h2><p>Acrescente este array antes do <code>app.listen</code>:</p><pre class="code-block"><code>let produtos = [
+  { id: 1, nome: 'Teclado', preco: 120 },
+  { id: 2, nome: 'Mouse', preco: 80 }
+];
+
+let proximoId = 3;</code></pre><p>Em um sistema real, essa responsabilidade pertence ao banco de dados. Aqui, o array funciona como um armazenamento temporário para que você consiga visualizar o ciclo completo.</p>
+<h2 id="rotas">4. GET: listar todos os produtos</h2><pre class="code-block"><code>app.get('/produtos', (req, res) =&gt; {
+  res.json(produtos);
+});</code></pre><p>Ao acessar <code>GET /produtos</code>, a API responde com o array em JSON e, por padrão, status 200.</p>
+<h2>5. GET por ID: localizar um produto</h2><pre class="code-block"><code>app.get('/produtos/:id', (req, res) =&gt; {
+  const id = Number(req.params.id);
+  const produto = produtos.find(p =&gt; p.id === id);
+
+  if (!produto) {
+    return res.status(404).json({ erro: 'Produto não encontrado' });
+  }
+
+  res.json(produto);
+});</code></pre><p>O trecho <code>:id</code> é um parâmetro de rota. Como parâmetros chegam como texto, usamos <code>Number()</code> antes da comparação. Se o recurso não existir, retornar <strong>404 Not Found</strong> comunica melhor o resultado do que devolver um objeto vazio.</p>
+<h2>6. POST: cadastrar um produto</h2><pre class="code-block"><code>app.post('/produtos', (req, res) =&gt; {
+  const { nome, preco } = req.body;
+
+  if (!nome || typeof preco !== 'number' || preco &lt; 0) {
+    return res.status(400).json({ erro: 'Informe nome e preço válido' });
+  }
+
+  const produto = { id: proximoId++, nome, preco };
+  produtos.push(produto);
+  res.status(201).json(produto);
+});</code></pre><p>O cliente envia dados; o servidor valida antes de confiar neles. A própria documentação do Express alerta que <code>req.body</code> é controlado pelo usuário e deve ser validado. Quando o cadastro é criado, <strong>201 Created</strong> é mais informativo do que um 200 genérico.</p>
+<h2>7. PUT: atualizar um produto</h2><pre class="code-block"><code>app.put('/produtos/:id', (req, res) =&gt; {
+  const id = Number(req.params.id);
+  const produto = produtos.find(p =&gt; p.id === id);
+  if (!produto) return res.status(404).json({ erro: 'Produto não encontrado' });
+
+  const { nome, preco } = req.body;
+  if (!nome || typeof preco !== 'number' || preco &lt; 0) return res.status(400).json({ erro: 'Dados inválidos' });
+
+  produto.nome = nome;
+  produto.preco = preco;
+  res.json(produto);
+});</code></pre><p>Neste exemplo, o <code>PUT</code> substitui os campos editáveis do produto. Uma API maior também pode oferecer <code>PATCH</code> para alterações parciais.</p>
+<h2>8. DELETE: excluir um produto</h2><pre class="code-block"><code>app.delete('/produtos/:id', (req, res) =&gt; {
+  const id = Number(req.params.id);
+  const indice = produtos.findIndex(p =&gt; p.id === id);
+  if (indice === -1) return res.status(404).json({ erro: 'Produto não encontrado' });
+  produtos.splice(indice, 1);
+  res.status(204).send();
+});</code></pre><p>Quando a exclusão ocorre e não há corpo para devolver, <strong>204 No Content</strong> é uma resposta apropriada.</p>
+<h2>9. Código completo</h2><pre class="code-block"><code>const express = require('express');
+const app = express();
+const PORT = 3000;
+app.use(express.json());
+
+let produtos = [
+  { id: 1, nome: 'Teclado', preco: 120 },
+  { id: 2, nome: 'Mouse', preco: 80 }
+];
+let proximoId = 3;
+
+app.get('/produtos', (req, res) =&gt; res.json(produtos));
+app.get('/produtos/:id', (req, res) =&gt; {
+  const produto = produtos.find(p =&gt; p.id === Number(req.params.id));
+  if (!produto) return res.status(404).json({ erro: 'Produto não encontrado' });
+  res.json(produto);
+});
+app.post('/produtos', (req, res) =&gt; {
+  const { nome, preco } = req.body;
+  if (!nome || typeof preco !== 'number' || preco &lt; 0) return res.status(400).json({ erro: 'Dados inválidos' });
+  const produto = { id: proximoId++, nome, preco };
+  produtos.push(produto);
+  res.status(201).json(produto);
+});
+app.put('/produtos/:id', (req, res) =&gt; {
+  const produto = produtos.find(p =&gt; p.id === Number(req.params.id));
+  if (!produto) return res.status(404).json({ erro: 'Produto não encontrado' });
+  const { nome, preco } = req.body;
+  if (!nome || typeof preco !== 'number' || preco &lt; 0) return res.status(400).json({ erro: 'Dados inválidos' });
+  produto.nome = nome; produto.preco = preco; res.json(produto);
+});
+app.delete('/produtos/:id', (req, res) =&gt; {
+  const indice = produtos.findIndex(p =&gt; p.id === Number(req.params.id));
+  if (indice === -1) return res.status(404).json({ erro: 'Produto não encontrado' });
+  produtos.splice(indice, 1); res.status(204).send();
+});
+app.listen(PORT, () =&gt; console.log(`API rodando em http://localhost:${PORT}`));</code></pre>
+<h2 id="testar">10. Como testar</h2><p>Inicie o servidor:</p><pre class="code-block"><code>node server.js</code></pre><p>Você pode testar no terminal com <code>curl</code>, no Postman, Insomnia ou em outro cliente HTTP.</p><pre class="code-block"><code>curl http://localhost:3000/produtos
+
+curl -X POST http://localhost:3000/produtos \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Webcam","preco":250}'
+
+curl -X PUT http://localhost:3000/produtos/1 \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Teclado mecânico","preco":220}'
+
+curl -X DELETE http://localhost:3000/produtos/2</code></pre>
+<h2>CRUD e métodos HTTP lado a lado</h2><div class="table-wrap"><table class="compare-table"><thead><tr><th>Objetivo</th><th>Método</th><th>Endpoint</th><th>Status comum</th></tr></thead><tbody><tr><td>Listar</td><td>GET</td><td>/produtos</td><td>200</td></tr><tr><td>Consultar um</td><td>GET</td><td>/produtos/:id</td><td>200 / 404</td></tr><tr><td>Criar</td><td>POST</td><td>/produtos</td><td>201 / 400</td></tr><tr><td>Atualizar</td><td>PUT</td><td>/produtos/:id</td><td>200 / 400 / 404</td></tr><tr><td>Excluir</td><td>DELETE</td><td>/produtos/:id</td><td>204 / 404</td></tr></tbody></table></div>
+<h2>Esta API é realmente REST?</h2><p>No uso cotidiano, muita gente chama qualquer API HTTP com recursos e métodos como GET, POST, PUT e DELETE de “API REST”. É uma aproximação útil para iniciantes, mas REST é mais amplo. Na formulação original de Roy Fielding, REST é um <strong>estilo arquitetural</strong> com um conjunto de restrições, incluindo interface uniforme, comunicação sem estado e possibilidade de uso de intermediários. Uma aplicação pode usar HTTP e JSON sem cumprir integralmente essas restrições.</p><p>Por isso, o projeto deste tutorial é melhor entendido como uma <strong>API HTTP orientada a recursos, no estilo REST</strong>. Essa precisão evita transformar REST em apenas uma tabela de verbos HTTP.</p>
+<h2 id="melhorar">O que melhorar depois</h2><p>Este exemplo é didático. Em produção, você deve separar rotas e regras de negócio, persistir dados em um banco, validar entradas de forma mais robusta, tratar erros de modo centralizado, configurar autenticação e autorização quando necessário, proteger segredos em variáveis de ambiente e criar testes automatizados.</p><p>Também vale conectar este tutorial aos conteúdos já publicados: revise <a href="crud-banco-dados.html">CRUD em banco de dados</a>, entenda a base lógica em <a href="o-que-e-algoritmo.html">algoritmos</a> e use <a href="git-github-iniciantes.html">Git e GitHub</a> para versionar o projeto.</p>
+<div class="exercise"><h3>Desafio prático</h3><p>Adicione o campo <code>estoque</code> aos produtos. Faça a API rejeitar valores negativos. Depois crie a rota <code>GET /produtos/baixo-estoque</code> para devolver somente produtos com menos de 5 unidades. Pense na ordem das rotas para que <code>baixo-estoque</code> não seja interpretado como um ID.</p></div>
+<h2>Perguntas frequentes</h2><div class="faq"><h3>Preciso de banco de dados para criar uma API?</h3><p>Não para aprender o fluxo. Um array em memória é suficiente para experimentar rotas e HTTP. Para persistência real, use um banco.</p></div><div class="faq"><h3>Express é obrigatório no Node.js?</h3><p>Não. O próprio Node.js possui um módulo HTTP. O Express adiciona uma camada mais conveniente para rotas, middleware e respostas.</p></div><div class="faq"><h3>POST e PUT são a mesma coisa?</h3><p>Não. Neste tutorial, POST cria um novo recurso e PUT atualiza um recurso identificado pela URL.</p></div>
+<h2>Conclusão</h2><p>Uma API deixa o CRUD visível como um contrato entre sistemas. Cada endpoint combina um recurso, um método HTTP, dados de entrada, regras de validação e uma resposta com status coerente. Depois de dominar esse ciclo em memória, o passo natural é ligar a mesma estrutura a um banco de dados e organizar o projeto em camadas.</p>
+<section class="article-references" aria-labelledby="referencias-bibliograficas"><h2 id="referencias-bibliograficas">Referências bibliográficas</h2><ol><li><a href="../referencias.html#brown-node"><strong>BROWN, Ethan.</strong> <cite>Web Development with Node and Express</cite></a>. 2. ed. O’Reilly Media, 2019.</li><li><a href="../referencias.html#richardson-rest"><strong>RICHARDSON, Leonard; AMUNDSEN, Mike; RUBY, Sam.</strong> <cite>RESTful Web APIs</cite></a>. 1. ed. O’Reilly Media, 2013.</li></ol><p class="reference-note"><strong>Documentação técnica:</strong> Node.js HTTP API; Express Routing e Express API. <strong>Material acadêmico:</strong> Fielding, Roy T., <cite>Architectural Styles and the Design of Network-based Software Architectures</cite>, 2000.</p><p class="reference-note"><a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p></section>
+<aside class="author-card" aria-label="Autoria"><span class="author-symbol" aria-hidden="true">&lt;/&gt;</span><div><h2>Equipe Código em Sala</h2><p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p></div></aside><nav class="article-nav" aria-label="Navegação entre artigos"><a href="o-que-e-algoritmo.html"><small>← Artigo anterior</small>O que é algoritmo?</a><a href="crud-banco-dados.html"><small>Continue estudando →</small>CRUD em banco de dados</a></nav><aside class="related-box"><h2>Continue aprendendo</h2><p>Entenda o CRUD por trás das operações em <a href="crud-banco-dados.html">CRUD: as quatro operações fundamentais</a> e organize seu projeto com <a href="git-github-iniciantes.html">Git e GitHub</a>.</p></aside>
+</div></article></main><footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><a href="../privacidade.html">Privacidade</a><a href="../termos.html">Termos de uso</a><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div></footer><script src="../script.js"></script></body></html>
