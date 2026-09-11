@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Como testar uma API REST com curl: GET, POST, PUT e DELETE — Código em Sala</title>
+<meta name="description" content="Aprenda a testar uma API REST com curl no terminal usando GET, POST, PUT e DELETE, JSON, headers, status HTTP e diagnóstico de erros.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/testar-api-rest-curl.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="Como testar uma API REST com curl: GET, POST, PUT e DELETE"><meta property="og:description" content="Use o terminal para testar endpoints, enviar JSON, inspecionar headers e interpretar respostas HTTP."><meta property="og:url" content="https://codigoemsala.com.br/artigos/testar-api-rest-curl.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-programacao.webp"><meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Como testar uma API REST com curl: GET, POST, PUT e DELETE","description":"Aprenda a testar uma API REST com curl no terminal usando GET, POST, PUT e DELETE, JSON, headers, status HTTP e diagnóstico de erros.","image":["https://codigoemsala.com.br/assets/images/capa-programacao.webp"],"datePublished":"2026-09-11","dateModified":"2026-09-11","inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/testar-api-rest-curl.html"}}</script>
+</head>
+<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
+<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#programacao">Programação</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Programação</span><h1>Como testar uma API REST com curl: GET, POST, PUT e DELETE</h1><div class="article-meta"><span>14 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-09-11">11 de setembro de 2026</time></div></div></section>
+<article class="content-page"><div class="prose article-body">
+<figure class="article-cover"><img src="../assets/images/capa-programacao.webp" alt="Notebook exibindo código em um ambiente de desenvolvimento" width="1440" height="810"><figcaption>Testar uma API pelo terminal ajuda a enxergar a requisição e a resposta sem depender de uma interface gráfica. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
+<div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
+<p>Se você já tem uma API rodando, o <strong>curl</strong> permite testá-la diretamente pelo terminal. Com poucos comandos é possível fazer requisições GET, POST, PUT e DELETE, enviar JSON, adicionar cabeçalhos, conferir o código de status e identificar se um erro está no cliente, no endpoint ou no servidor.</p>
+<div class="callout"><strong>Objetivo deste tutorial:</strong> testar uma API local de produtos em <code>http://localhost:3000</code>. Se você ainda não criou essa API, use primeiro o tutorial <a href="api-rest-node-express.html">API REST com Node.js e Express: CRUD na prática</a>.</div>
+<aside class="source-note"><strong>Base técnica.</strong> Os exemplos seguem a documentação oficial do curl e as semânticas HTTP definidas na RFC 9110. A organização de APIs e recursos é apoiada em <a href="../referencias.html#brown-node">Brown (2019)</a> e <a href="../referencias.html#richardson-rest">Richardson, Amundsen e Ruby (2013)</a>.</aside>
+<nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#preparar">Preparar o ambiente</a></li><li><a href="#get">Testar GET</a></li><li><a href="#post">Enviar JSON com POST</a></li><li><a href="#put">Atualizar com PUT</a></li><li><a href="#delete">Excluir com DELETE</a></li><li><a href="#diagnostico">Diagnosticar respostas e erros</a></li></ul></nav>
+
+<h2 id="preparar">1. Antes de testar: confirme se o curl está disponível</h2>
+<p>Abra o terminal, PowerShell ou Prompt de Comando e execute:</p>
+<pre class="code-block"><code>curl --version</code></pre>
+<p>Se o comando devolver a versão e os protocolos suportados, você já pode seguir. A documentação oficial define o curl como uma ferramenta de linha de comando para transferir dados de ou para servidores usando URLs, incluindo HTTP e HTTPS.</p>
+<p>Neste tutorial, consideramos que a API está executando em:</p>
+<pre class="code-block"><code>http://localhost:3000</code></pre>
+<p>Abra outro terminal e mantenha o servidor da API rodando. Se estiver usando o projeto do artigo anterior, o comando é:</p>
+<pre class="code-block"><code>node server.js</code></pre>
+
+<h2 id="get">2. GET: listar recursos</h2>
+<p>O método GET solicita uma representação atual do recurso. Para listar os produtos:</p>
+<pre class="code-block"><code>curl http://localhost:3000/produtos</code></pre>
+<p>Uma resposta possível é:</p>
+<pre class="code-block"><code>[
+  {"id":1,"nome":"Teclado","preco":120},
+  {"id":2,"nome":"Mouse","preco":80}
+]</code></pre>
+<p>Para consultar apenas o produto de ID 1:</p>
+<pre class="code-block"><code>curl http://localhost:3000/produtos/1</code></pre>
+<div class="callout"><strong>Boa prática:</strong> em um GET comum não é necessário escrever <code>-X GET</code>. O curl já usa GET quando você informa somente a URL.</div>
+
+<h2>3. Veja também os cabeçalhos da resposta</h2>
+<p>Quando o corpo da resposta não explica tudo, inclua <code>-i</code>. Isso mostra os cabeçalhos HTTP junto com o conteúdo:</p>
+<pre class="code-block"><code>curl -i http://localhost:3000/produtos/1</code></pre>
+<p>Você poderá ver uma primeira linha semelhante a:</p>
+<pre class="code-block"><code>HTTP/1.1 200 OK</code></pre>
+<p>Se consultar um ID inexistente, uma API bem configurada pode responder:</p>
+<pre class="code-block"><code>HTTP/1.1 404 Not Found</code></pre>
+<p>O status é parte importante do contrato. Não basta verificar apenas se algum JSON apareceu na tela.</p>
+
+<h2 id="post">4. POST: cadastrar um recurso enviando JSON</h2>
+<p>Para criar um produto, a API espera JSON. Em versões atuais do curl, a opção <code>--json</code> é uma forma simples de enviar o conteúdo com os cabeçalhos apropriados:</p>
+<pre class="code-block"><code>curl --json '{"nome":"Webcam","preco":250}' \
+  http://localhost:3000/produtos</code></pre>
+<p>A própria documentação do curl explica que <code>--json</code> funciona como um atalho para enviar os dados e acrescentar os cabeçalhos <code>Content-Type: application/json</code> e <code>Accept: application/json</code>. O curl não valida se o texto é um JSON correto; essa responsabilidade continua sendo sua.</p>
+<p>Se preferir a forma mais explícita, útil para aprender o que está acontecendo:</p>
+<pre class="code-block"><code>curl -X POST http://localhost:3000/produtos \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Webcam","preco":250}'</code></pre>
+<p>Uma criação bem-sucedida normalmente devolve o recurso criado e um status <strong>201 Created</strong>.</p>
+
+<h2>5. Entenda as opções usadas</h2>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Opção</th><th>Função</th></tr></thead><tbody><tr><td><code>-X POST</code></td><td>Define explicitamente o método da requisição.</td></tr><tr><td><code>-H</code></td><td>Adiciona um cabeçalho HTTP.</td></tr><tr><td><code>-d</code></td><td>Envia dados no corpo da requisição.</td></tr><tr><td><code>--json</code></td><td>Atalho para enviar JSON com cabeçalhos adequados.</td></tr><tr><td><code>-i</code></td><td>Inclui os cabeçalhos da resposta na saída.</td></tr><tr><td><code>-v</code></td><td>Mostra detalhes da comunicação para diagnóstico.</td></tr></tbody></table></div>
+
+<h2 id="put">6. PUT: atualizar um recurso existente</h2>
+<p>No projeto de exemplo, PUT substitui os campos editáveis do produto identificado pela URL. Para atualizar o produto 1:</p>
+<pre class="code-block"><code>curl -X PUT http://localhost:3000/produtos/1 \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Teclado mecânico","preco":220}'</code></pre>
+<p>Depois, confirme a alteração com outro GET:</p>
+<pre class="code-block"><code>curl http://localhost:3000/produtos/1</code></pre>
+<p>A RFC 9110 define PUT como a solicitação para criar ou substituir o estado do recurso-alvo com a representação enviada. Em APIs reais, PATCH também pode ser usado quando a intenção é alterar apenas parte do recurso.</p>
+
+<h2 id="delete">7. DELETE: remover um recurso</h2>
+<p>Para excluir o produto 2:</p>
+<pre class="code-block"><code>curl -i -X DELETE http://localhost:3000/produtos/2</code></pre>
+<p>No projeto do Código em Sala, uma exclusão bem-sucedida responde com <strong>204 No Content</strong>. Isso significa que a operação foi aceita e não existe corpo de resposta para exibir.</p>
+<p>Confirme depois:</p>
+<pre class="code-block"><code>curl -i http://localhost:3000/produtos/2</code></pre>
+<p>Agora a resposta esperada é <strong>404 Not Found</strong>.</p>
+
+<h2 id="diagnostico">8. Use o modo verboso quando algo der errado</h2>
+<p>A opção <code>-v</code> mostra informações de diagnóstico, incluindo a conexão, a linha da requisição, cabeçalhos enviados e cabeçalhos recebidos:</p>
+<pre class="code-block"><code>curl -v http://localhost:3000/produtos</code></pre>
+<p>Esse modo é especialmente útil para distinguir problemas diferentes: servidor fora do ar, URL errada, redirecionamento, autenticação ausente, cabeçalho incorreto ou resposta inesperada.</p>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Sintoma</th><th>O que verificar primeiro</th></tr></thead><tbody><tr><td><code>Failed to connect</code></td><td>Servidor parado, porta errada ou endereço incorreto.</td></tr><tr><td>400</td><td>JSON inválido, campo obrigatório ausente ou validação rejeitada.</td></tr><tr><td>401</td><td>Credencial de autenticação ausente ou inválida.</td></tr><tr><td>403</td><td>Cliente autenticado, mas sem permissão para a operação.</td></tr><tr><td>404</td><td>Endpoint ou recurso não encontrado.</td></tr><tr><td>405</td><td>Método reconhecido, mas não permitido naquele recurso.</td></tr><tr><td>500</td><td>Falha interna no servidor; consulte os logs da aplicação.</td></tr></tbody></table></div>
+
+<h2>9. Teste uma sequência completa de CRUD</h2>
+<p>Agora execute as operações na ordem para observar o ciclo completo:</p>
+<pre class="code-block"><code># 1. Listar
+curl http://localhost:3000/produtos
+
+# 2. Criar
+curl --json '{"nome":"Headset","preco":180}' \
+  http://localhost:3000/produtos
+
+# 3. Consultar o novo recurso
+curl http://localhost:3000/produtos/3
+
+# 4. Atualizar
+curl -X PUT http://localhost:3000/produtos/3 \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Headset USB","preco":210}'
+
+# 5. Excluir
+curl -i -X DELETE http://localhost:3000/produtos/3
+
+# 6. Confirmar a exclusão
+curl -i http://localhost:3000/produtos/3</code></pre>
+<p>Essa sequência transforma o CRUD em algo observável: cada comando produz uma requisição, cada endpoint executa uma regra e cada resposta informa o resultado.</p>
+
+<h2>10. Windows PowerShell: atenção ao comando curl</h2>
+<p>Em ambientes atuais do Windows, o executável <code>curl.exe</code> costuma estar disponível. Se seu terminal interpretar <code>curl</code> de outra forma ou houver conflito com aliases, tente escrever explicitamente:</p>
+<pre class="code-block"><code>curl.exe --version</code></pre>
+<p>Em comandos com JSON, as regras de aspas também mudam conforme o shell. Se uma linha copiada não funcionar no seu ambiente, confirme primeiro se o problema é o endpoint ou apenas a forma como o terminal interpretou as aspas.</p>
+
+<h2>11. Não coloque segredos em exemplos ou histórico do terminal</h2>
+<p>Ao testar APIs autenticadas, evite colar tokens reais em materiais públicos, capturas de tela ou repositórios. O histórico do shell também pode armazenar comandos. Para ambientes profissionais, prefira variáveis de ambiente, arquivos de configuração protegidos ou mecanismos próprios do cliente para lidar com credenciais.</p>
+
+<div class="exercise"><h3>Desafio prático</h3><p>Com a API do artigo anterior, cadastre três produtos usando curl. Em seguida, atualize um deles, exclua outro e provoque de propósito uma resposta 400 e uma 404. Para cada operação, registre: método, URL, corpo enviado, código de status e corpo recebido.</p></div>
+
+<h2>Perguntas frequentes</h2>
+<div class="faq"><h3>curl serve apenas para APIs REST?</h3><p>Não. O curl suporta vários protocolos e pode ser usado em muitos tipos de transferência. Neste artigo estamos usando HTTP para testar uma API.</p></div>
+<div class="faq"><h3>Preciso usar <code>-X GET</code>?</h3><p>Normalmente não. Ao fornecer apenas uma URL HTTP, o curl faz GET por padrão. Use opções adicionais quando precisar alterar o comportamento da requisição.</p></div>
+<div class="faq"><h3>Postman e curl fazem a mesma coisa?</h3><p>Ambos podem atuar como clientes HTTP. O Postman oferece interface gráfica e recursos de coleção; o curl é leve, funciona muito bem no terminal e é fácil de incorporar em scripts.</p></div>
+<div class="faq"><h3>Um status 200 significa que a API está correta?</h3><p>Não necessariamente. Você também precisa conferir se o corpo, os cabeçalhos e os efeitos da operação correspondem ao contrato esperado.</p></div>
+
+<h2>Conclusão</h2>
+<p>Testar uma API com curl aproxima você do funcionamento real do HTTP. Em vez de clicar em botões, você controla método, URL, cabeçalhos e corpo e observa exatamente o que o servidor devolve. Depois que GET, POST, PUT e DELETE ficam claros no terminal, ferramentas gráficas deixam de ser uma caixa-preta e passam a ser apenas outra forma de montar as mesmas requisições.</p>
+
+<section class="article-references" aria-labelledby="referencias-bibliograficas"><h2 id="referencias-bibliograficas">Referências bibliográficas</h2><ol><li><a href="../referencias.html#brown-node"><strong>BROWN, Ethan.</strong> <cite>Web Development with Node and Express</cite></a>. 2. ed. O’Reilly Media, 2019.</li><li><a href="../referencias.html#richardson-rest"><strong>RICHARDSON, Leonard; AMUNDSEN, Mike; RUBY, Sam.</strong> <cite>RESTful Web APIs</cite></a>. 1. ed. O’Reilly Media, 2013.</li></ol><p class="reference-note"><strong>Documentação técnica:</strong> curl, <cite>curl man page</cite> e <cite>everything curl — JSON</cite>. <strong>Norma técnica:</strong> IETF, RFC 9110 — <cite>HTTP Semantics</cite>, 2022.</p><p class="reference-note"><a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p></section>
+<aside class="author-card" aria-label="Autoria"><span class="author-symbol" aria-hidden="true">&lt;/&gt;</span><div><h2>Equipe Código em Sala</h2><p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p></div></aside>
+<nav class="article-nav" aria-label="Navegação entre artigos"><a href="api-rest-node-express.html"><small>← Artigo anterior</small>API REST com Node.js e Express</a><a href="http-https-como-funciona.html"><small>Entenda a base →</small>HTTP e HTTPS</a></nav>
+<aside class="related-box"><h2>Continue aprendendo</h2><p>Se quiser construir os endpoints usados aqui, siga <a href="api-rest-node-express.html">API REST com Node.js e Express</a>. Para compreender métodos, cabeçalhos e códigos de status em mais profundidade, leia <a href="http-https-como-funciona.html">HTTP e HTTPS: entenda como a Web se comunica</a>.</p></aside>
+</div></article></main><footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><a href="../privacidade.html">Privacidade</a><a href="../termos.html">Termos de uso</a><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div></footer><script src="../script.js"></script></body></html>
