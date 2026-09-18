@@ -7,8 +7,11 @@ if (menuButton && navigation) { menuButton.addEventListener('click',()=>{const i
 const articleGrid=document.querySelector('.article-grid');
 if(articleGrid && !articleGrid.querySelector('a[href="artigos/url-uri-endereco-web.html"]')){
   articleGrid.insertAdjacentHTML('afterbegin','<article class="article-card featured" data-category="fundamentos" data-search="url uri endereço web scheme esquema domínio host porta caminho path query string parâmetros fragmento link"><div class="card-visual"><img src="assets/images/capa-internet.webp" alt="Roteador Wi-Fi e switch de rede conectados por cabos" width="1440" height="810"></div><div class="card-content"><div class="card-meta"><span>Fundamentos</span><time datetime="2026-09-15">15 set 2026</time></div><h3><a href="artigos/url-uri-endereco-web.html">URL e URI: entenda cada parte de um endereço da Web</a></h3><p>Aprenda a ler protocolo, domínio, porta, caminho, parâmetros e fragmentos de uma URL.</p><div class="card-footer"><span>13 min de leitura</span><a href="artigos/url-uri-endereco-web.html" aria-label="Ler artigo sobre URL e URI">Ler artigo →</a></div></div></article>');
-  document.querySelectorAll('.stats strong').forEach((el)=>{if(el.textContent.trim()==='24')el.textContent='25';});
 }
+if(articleGrid && !articleGrid.querySelector('a[href="artigos/sql-group-by-having.html"]')){
+  articleGrid.insertAdjacentHTML('afterbegin','<article class="article-card featured" data-category="banco" data-search="sql group by having count sum avg min max agregação agrupamento relatório vendas postgres banco dados"><div class="card-visual"><img src="assets/images/capa-sql-filtros.webp" alt="Pessoa analisando dados em um tablet ao lado de um computador" width="1440" height="810"></div><div class="card-content"><div class="card-meta"><span>Banco de Dados</span><time datetime="2026-09-18">18 set 2026</time></div><h3><a href="artigos/sql-group-by-having.html">SQL GROUP BY e HAVING na prática</a></h3><p>Agrupe dados, calcule totais e médias e aprenda quando usar WHERE ou HAVING.</p><div class="card-footer"><span>15 min de leitura</span><a href="artigos/sql-group-by-having.html" aria-label="Ler artigo sobre GROUP BY e HAVING">Ler artigo →</a></div></div></article>');
+}
+if(articleGrid){const total=articleGrid.querySelectorAll('.article-card').length;document.querySelectorAll('.stats strong').forEach((el)=>{if(/^\d+$/.test(el.textContent.trim()))el.textContent=String(total);});}
 
 const searchInput=document.querySelector('#busca');
 const filterButtons=[...document.querySelectorAll('.filter-button')];
