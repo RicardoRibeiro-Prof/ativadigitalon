@@ -1,28 +1,292 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>URL e URI: entenda cada parte de um endereço da Web — Código em Sala</title><meta name="description" content="Entenda o que são URL e URI e aprenda scheme, domínio, porta, caminho, query string e fragmento usando exemplos simples e corretos."><link rel="canonical" href="https://codigoemsala.com.br/artigos/url-uri-endereco-web.html"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css"><meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="URL e URI: entenda cada parte de um endereço da Web"><meta property="og:description" content="Aprenda a ler um endereço da Web e entenda protocolo, domínio, porta, caminho, parâmetros e fragmentos."><meta property="og:url" content="https://codigoemsala.com.br/artigos/url-uri-endereco-web.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-internet.webp"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"URL e URI: entenda cada parte de um endereço da Web","description":"Entenda o que são URL e URI e aprenda scheme, domínio, porta, caminho, query string e fragmento.","image":["https://codigoemsala.com.br/assets/images/capa-internet.webp"],"datePublished":"2026-09-15","dateModified":"2026-09-15","inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/url-uri-endereco-web.html"}}</script></head>
-<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div><header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
-<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#fundamentos">Fundamentos</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Fundamentos</span><h1>URL e URI: entenda cada parte de um endereço da Web</h1><div class="article-meta"><span>13 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-09-15">15 de setembro de 2026</time></div></div></section>
-<article class="content-page"><div class="prose article-body"><figure class="article-cover"><img src="../assets/images/capa-internet.webp" alt="Roteador Wi-Fi e switch de rede conectados por cabos" width="1440" height="810"><figcaption>Endereços da Web conectam nomes legíveis a recursos acessados pela internet. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
-<div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
-<p><strong>URL é o endereço que informa onde um recurso está e como acessá-lo.</strong> Em <code>https://codigoemsala.com.br/artigos/url-uri-endereco-web.html</code>, por exemplo, cada trecho tem uma função: <code>https</code> indica o esquema de acesso, <code>codigoemsala.com.br</code> identifica o host e o restante aponta o caminho do recurso.</p>
+<html lang="pt-BR">
+<head>
+<meta name="google-adsense-account" content="ca-pub-8245234066143632">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>URL e URI: entenda cada parte de um endereço da Web — Código em Sala</title>
+<meta name="description" content="Entenda o que são URL e URI e aprenda scheme, domínio, porta, caminho, query string e fragmento usando exemplos simples e corretos.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/url-uri-endereco-web.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Código em Sala">
+<meta property="og:title" content="URL e URI: entenda cada parte de um endereço da Web">
+<meta property="og:description" content="Aprenda a ler um endereço da Web e entenda protocolo, domínio, porta, caminho, parâmetros e fragmentos.">
+<meta property="og:url" content="https://codigoemsala.com.br/artigos/url-uri-endereco-web.html">
+<meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-internet.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"URL e URI: entenda cada parte de um endereço da Web","description":"Entenda o que são URL e URI e aprenda scheme, domínio, porta, caminho, query string e fragmento.","image":["https://codigoemsala.com.br/assets/images/capa-internet.webp"],"datePublished":"2026-09-15","dateModified":"2026-09-18","inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/url-uri-endereco-web.html"}}</script>
+</head>
+<body data-article="true">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="reading-progress" aria-hidden="true">
+<span>
+</span>
+</div>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="../">
+<span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+<span>
+<strong>Código</strong> em Sala</span>
+</a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+<nav id="menu-principal" class="main-nav">
+<a href="../">Início</a>
+<a href="../categorias.html">Categorias</a>
+<a href="../sobre.html">Sobre</a>
+<a href="../contato.html">Contato</a>
+</nav>
+</div>
+</header>
+<main id="conteudo">
+<section class="page-hero">
+<div class="container article-head">
+<nav class="breadcrumbs" aria-label="Trilha de navegação">
+<a href="../">Início</a>
+<span>›</span>
+<a href="../categorias.html#fundamentos">Fundamentos</a>
+<span>›</span>
+<span>Artigo</span>
+</nav>
+<a class="back-link" href="../#artigos">← Voltar aos artigos</a>
+<span class="eyebrow">Fundamentos</span>
+<h1>URL e URI: entenda cada parte de um endereço da Web</h1>
+<div class="article-meta">
+<span>17 minutos de leitura</span>
+<span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a>
+</span>
+<time datetime="2026-09-18">Atualizado em 18 de setembro de 2026</time>
+</div>
+</div>
+</section>
+<article class="content-page">
+<div class="prose article-body">
+<figure class="article-cover">
+<img src="../assets/images/capa-internet.webp" alt="Roteador Wi-Fi e switch de rede conectados por cabos" width="1440" height="810">
+<figcaption>Endereços da Web conectam nomes legíveis a recursos acessados pela internet. <a href="../creditos.html">Crédito da foto</a>.</figcaption>
+</figure>
+<div class="article-tools">
+<span>Compartilhe este conteúdo</span>
+<div class="share-buttons">
+<a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+<a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+<button class="share-button" data-share="native" type="button">Compartilhar</button>
+</div>
+</div>
+<p>
+<strong>URL é o endereço que informa onde um recurso está e como acessá-lo.</strong> Em <code>https://codigoemsala.com.br/artigos/url-uri-endereco-web.html</code>, por exemplo, cada trecho tem uma função: <code>https</code> indica o esquema de acesso, <code>codigoemsala.com.br</code> identifica o host e o restante aponta o caminho do recurso.</p>
 <p>Entender uma URL ajuda a navegar com mais segurança, desenvolver sites, criar APIs, interpretar links e compreender melhor <a href="dns-como-funciona.html">DNS</a> e <a href="http-https-como-funciona.html">HTTP e HTTPS</a>. Neste artigo, vamos desmontar um endereço da Web peça por peça.</p>
-<aside class="source-note" aria-label="Base técnica e bibliográfica"><strong>Base técnica e bibliográfica.</strong> A sintaxe genérica de URI segue o <a href="https://www.rfc-editor.org/rfc/rfc3986.html" target="_blank" rel="noopener noreferrer">RFC 3986</a>. Como apoio conceitual, usamos <a href="../referencias.html#kurose-ross">Kurose e Ross</a> e <a href="../referencias.html#http-definitive">Gourley, Totty, Sayer, Reddy e Aggarwal</a>.</aside>
-<nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#url-uri">URL e URI</a></li><li><a href="#partes">Partes de uma URL</a></li><li><a href="#dominio">Domínio, host e DNS</a></li><li><a href="#query">Query string e fragmento</a></li><li><a href="#relativas">URLs relativas</a></li><li><a href="#seguranca">Como ler links com segurança</a></li></ul></nav>
-<h2 id="url-uri">URL e URI são a mesma coisa?</h2><p>Os termos aparecem juntos e frequentemente são usados como se fossem sinônimos, mas existe uma diferença conceitual. <strong>URI</strong>, Uniform Resource Identifier, é uma forma geral de identificar um recurso. <strong>URL</strong>, Uniform Resource Locator, é o tipo de identificador que também fornece uma maneira de localizar ou acessar o recurso.</p><p>Na prática cotidiana da Web, você quase sempre lida com URLs: endereços de páginas, imagens, arquivos e endpoints de APIs. O RFC 3986 define a sintaxe genérica dos URIs e organiza seus componentes principais em esquema, autoridade, caminho, consulta e fragmento.</p>
-<div class="callout"><strong>Regra simples para começar:</strong> pense em URI como a família de identificadores e em URL como o endereço usado para chegar a um recurso.</div>
-<h2 id="partes">Desmontando uma URL completa</h2><p>Considere este exemplo didático:</p><pre class="code-block"><code>https://www.exemplo.com:443/produtos/notebooks?marca=acer&amp;ordem=preco#ofertas</code></pre>
-<div class="table-wrap"><table class="compare-table"><thead><tr><th>Trecho</th><th>Nome</th><th>Função</th></tr></thead><tbody><tr><td><code>https</code></td><td>Scheme ou esquema</td><td>Indica como o recurso será acessado</td></tr><tr><td><code>www.exemplo.com</code></td><td>Host</td><td>Identifica o servidor ou nome de rede</td></tr><tr><td><code>443</code></td><td>Porta</td><td>Identifica um serviço no host</td></tr><tr><td><code>/produtos/notebooks</code></td><td>Caminho</td><td>Identifica o recurso dentro daquele contexto</td></tr><tr><td><code>?marca=acer&amp;ordem=preco</code></td><td>Query</td><td>Acrescenta dados não hierárquicos à referência</td></tr><tr><td><code>#ofertas</code></td><td>Fragmento</td><td>Aponta para uma parte do recurso</td></tr></tbody></table></div>
-<h3>1. Scheme: o começo do endereço</h3><p>O esquema vem antes dos dois-pontos. Em URLs da Web, os exemplos mais conhecidos são <code>http</code> e <code>https</code>. Também existem outros esquemas de URI, como <code>mailto:</code>, <code>tel:</code> e <code>ftp:</code>. O esquema define regras para interpretar o restante do identificador.</p><h3>2. Autoridade: onde aparece o host</h3><p>Depois de <code>//</code> normalmente encontramos a autoridade. Ela pode conter informações de usuário, host e porta, embora credenciais em URLs devam ser evitadas. No uso comum da Web, a parte mais visível é o host, como <code>codigoemsala.com.br</code>.</p><h3>3. Porta: qual serviço atenderá</h3><p>A porta é opcional na URL. HTTPS normalmente usa a porta 443 e HTTP, a 80; quando a porta padrão é usada, o navegador não precisa exibi-la. Em desenvolvimento é comum encontrar endereços como <code>http://localhost:3000</code>.</p><h3>4. Caminho: qual recurso queremos</h3><p>O caminho vem depois da autoridade e costuma ser organizado em segmentos separados por barras. Em <code>/artigos/dns-como-funciona.html</code>, o caminho aponta para um recurso dentro do site. Ele não precisa corresponder literalmente a pastas físicas no servidor: aplicações podem mapear rotas para código, banco de dados ou conteúdo gerado dinamicamente.</p>
-<h2 id="dominio">Domínio, host e DNS: conceitos relacionados, mas diferentes</h2><p>Quando digitamos <code>codigoemsala.com.br</code>, estamos usando um nome que pode ser resolvido pelo DNS. O navegador precisa descobrir para qual infraestrutura de rede deve encaminhar a comunicação. É aí que o <a href="dns-como-funciona.html">Sistema de Nomes de Domínio</a> entra.</p><p>É importante não confundir o endereço inteiro com o domínio. A URL inclui muito mais informações. Em <code>https://codigoemsala.com.br/artigos/</code>, o domínio é apenas uma parte do endereço.</p>
-<h2 id="query">Query string: os dados depois do ponto de interrogação</h2><p>A consulta começa com <code>?</code>. Ela é frequentemente formada por pares de chave e valor. Um site de busca poderia usar:</p><pre class="code-block"><code>https://exemplo.com/busca?q=rede&amp;pagina=2</code></pre><p>Nesse caso, <code>q=rede</code> e <code>pagina=2</code> fornecem dados adicionais ao recurso <code>/busca</code>. A aplicação decide o significado desses parâmetros. Eles podem controlar filtros, paginação, ordenação e outras opções.</p><div class="callout"><strong>Cuidado:</strong> dados colocados na URL podem aparecer no histórico do navegador, logs, ferramentas de análise e links compartilhados. Senhas e outros segredos não devem ser colocados em parâmetros de URL.</div>
-<h2>Fragmento: o que vem depois de #</h2><p>O fragmento começa com <code>#</code> e identifica uma parte secundária do recurso. Ao abrir <code>pagina.html#referencias</code>, o navegador pode ir diretamente até um elemento com aquele identificador. Segundo a sintaxe de URI, o fragmento é separado do restante da referência; em requisições HTTP comuns, ele é tratado pelo cliente e não é enviado ao servidor como parte do alvo da requisição.</p>
-<h2 id="relativas">URL absoluta e referência relativa</h2><p>Uma referência absoluta contém informação suficiente para identificar o recurso sem depender do endereço atual:</p><pre class="code-block"><code>https://codigoemsala.com.br/artigos/dns-como-funciona.html</code></pre><p>Já uma referência relativa depende de uma URL-base:</p><pre class="code-block"><code>dns-como-funciona.html
+<aside class="source-note" aria-label="Base técnica e bibliográfica">
+<strong>Base técnica e bibliográfica.</strong> A sintaxe genérica de URI segue o <a href="https://www.rfc-editor.org/rfc/rfc3986.html" target="_blank" rel="noopener noreferrer">RFC 3986</a>. Como apoio conceitual, usamos <a href="../referencias.html#kurose-ross">Kurose e Ross</a> e <a href="../referencias.html#http-definitive">Gourley, Totty, Sayer, Reddy e Aggarwal</a>.</aside>
+<nav class="article-toc" aria-label="Neste artigo">
+<strong>Neste artigo</strong>
+<ul>
+<li>
+<a href="#url-uri">URL e URI</a>
+</li>
+<li>
+<a href="#partes">Partes de uma URL</a>
+</li>
+<li>
+<a href="#dominio">Domínio, host e DNS</a>
+</li>
+<li>
+<a href="#query">Query string e fragmento</a>
+</li>
+<li>
+<a href="#relativas">URLs relativas</a>
+</li>
+<li>
+<a href="#seguranca">Como ler links com segurança</a>
+</li>
+</ul>
+</nav>
+<h2 id="url-uri">URL e URI são a mesma coisa?</h2>
+<p>Os termos aparecem juntos e frequentemente são usados como se fossem sinônimos, mas existe uma diferença conceitual. <strong>URI</strong>, Uniform Resource Identifier, é uma forma geral de identificar um recurso. <strong>URL</strong>, Uniform Resource Locator, é o tipo de identificador que também fornece uma maneira de localizar ou acessar o recurso.</p>
+<p>Na prática cotidiana da Web, você quase sempre lida com URLs: endereços de páginas, imagens, arquivos e endpoints de APIs. O RFC 3986 define a sintaxe genérica dos URIs e organiza seus componentes principais em esquema, autoridade, caminho, consulta e fragmento.</p>
+<div class="callout">
+<strong>Regra simples para começar:</strong> pense em URI como a família de identificadores e em URL como o endereço usado para chegar a um recurso.</div>
+<h2 id="partes">Desmontando uma URL completa</h2>
+<p>Considere este exemplo didático:</p>
+<pre class="code-block">
+<code>https://www.exemplo.com:443/produtos/notebooks?marca=acer&amp;ordem=preco#ofertas</code>
+</pre>
+<div class="table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Trecho</th>
+<th>Nome</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>https</code>
+</td>
+<td>Scheme ou esquema</td>
+<td>Indica como o recurso será acessado</td>
+</tr>
+<tr>
+<td>
+<code>www.exemplo.com</code>
+</td>
+<td>Host</td>
+<td>Identifica o servidor ou nome de rede</td>
+</tr>
+<tr>
+<td>
+<code>443</code>
+</td>
+<td>Porta</td>
+<td>Identifica um serviço no host</td>
+</tr>
+<tr>
+<td>
+<code>/produtos/notebooks</code>
+</td>
+<td>Caminho</td>
+<td>Identifica o recurso dentro daquele contexto</td>
+</tr>
+<tr>
+<td>
+<code>?marca=acer&amp;ordem=preco</code>
+</td>
+<td>Query</td>
+<td>Acrescenta dados não hierárquicos à referência</td>
+</tr>
+<tr>
+<td>
+<code>#ofertas</code>
+</td>
+<td>Fragmento</td>
+<td>Aponta para uma parte do recurso</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>1. Scheme: o começo do endereço</h3>
+<p>O esquema vem antes dos dois-pontos. Em URLs da Web, os exemplos mais conhecidos são <code>http</code> e <code>https</code>. Também existem outros esquemas de URI, como <code>mailto:</code>, <code>tel:</code> e <code>ftp:</code>. O esquema define regras para interpretar o restante do identificador.</p>
+<h3>2. Autoridade: onde aparece o host</h3>
+<p>Depois de <code>//</code> normalmente encontramos a autoridade. Ela pode conter informações de usuário, host e porta, embora credenciais em URLs devam ser evitadas. No uso comum da Web, a parte mais visível é o host, como <code>codigoemsala.com.br</code>.</p>
+<h3>3. Porta: qual serviço atenderá</h3>
+<p>A porta é opcional na URL. HTTPS normalmente usa a porta 443 e HTTP, a 80; quando a porta padrão é usada, o navegador não precisa exibi-la. Em desenvolvimento é comum encontrar endereços como <code>http://localhost:3000</code>.</p>
+<h3>4. Caminho: qual recurso queremos</h3>
+<p>O caminho vem depois da autoridade e costuma ser organizado em segmentos separados por barras. Em <code>/artigos/dns-como-funciona.html</code>, o caminho aponta para um recurso dentro do site. Ele não precisa corresponder literalmente a pastas físicas no servidor: aplicações podem mapear rotas para código, banco de dados ou conteúdo gerado dinamicamente.</p>
+<h2 id="dominio">Domínio, host e DNS: conceitos relacionados, mas diferentes</h2>
+<p>Quando digitamos <code>codigoemsala.com.br</code>, estamos usando um nome que pode ser resolvido pelo DNS. O navegador precisa descobrir para qual infraestrutura de rede deve encaminhar a comunicação. É aí que o <a href="dns-como-funciona.html">Sistema de Nomes de Domínio</a> entra.</p>
+<p>É importante não confundir o endereço inteiro com o domínio. A URL inclui muito mais informações. Em <code>https://codigoemsala.com.br/artigos/</code>, o domínio é apenas uma parte do endereço.</p>
+<h2 id="query">Query string: os dados depois do ponto de interrogação</h2>
+<p>A consulta começa com <code>?</code>. Ela é frequentemente formada por pares de chave e valor. Um site de busca poderia usar:</p>
+<pre class="code-block">
+<code>https://exemplo.com/busca?q=rede&amp;pagina=2</code>
+</pre>
+<p>Nesse caso, <code>q=rede</code> e <code>pagina=2</code> fornecem dados adicionais ao recurso <code>/busca</code>. A aplicação decide o significado desses parâmetros. Eles podem controlar filtros, paginação, ordenação e outras opções.</p>
+<div class="callout">
+<strong>Cuidado:</strong> dados colocados na URL podem aparecer no histórico do navegador, logs, ferramentas de análise e links compartilhados. Senhas e outros segredos não devem ser colocados em parâmetros de URL.</div>
+<h2>Fragmento: o que vem depois de #</h2>
+<p>O fragmento começa com <code>#</code> e identifica uma parte secundária do recurso. Ao abrir <code>pagina.html#referencias</code>, o navegador pode ir diretamente até um elemento com aquele identificador. Segundo a sintaxe de URI, o fragmento é separado do restante da referência; em requisições HTTP comuns, ele é tratado pelo cliente e não é enviado ao servidor como parte do alvo da requisição.</p>
+<h2 id="relativas">URL absoluta e referência relativa</h2>
+<p>Uma referência absoluta contém informação suficiente para identificar o recurso sem depender do endereço atual:</p>
+<pre class="code-block">
+<code>https://codigoemsala.com.br/artigos/dns-como-funciona.html</code>
+</pre>
+<p>Já uma referência relativa depende de uma URL-base:</p>
+<pre class="code-block">
+<code>dns-como-funciona.html
 ../assets/images/capa-internet.webp
-#referencias</code></pre><p>Isso é muito usado em HTML. Dentro de um artigo deste blog, por exemplo, <code>../styles.css</code> sobe um nível e encontra a folha de estilos. Referências relativas facilitam mover um conjunto de páginas dentro da mesma estrutura, mas precisam ser calculadas em relação à base correta.</p>
-<h2>Caracteres especiais e percent-encoding</h2><p>URLs possuem caracteres reservados com funções sintáticas, como <code>/</code>, <code>?</code>, <code>#</code> e <code>%</code>. Quando um octeto precisa ser representado em um componente e não pode aparecer diretamente, pode ser usado o percent-encoding: um sinal de porcentagem seguido por dois dígitos hexadecimais. O espaço, por exemplo, pode aparecer como <code>%20</code> em determinados contextos.</p><p>Isso explica por que alguns endereços copiados do navegador parecem conter sequências estranhas. Não significa necessariamente erro; pode ser apenas a representação codificada de dados.</p>
-<h2 id="seguranca">Como ler uma URL antes de clicar</h2><p>Saber separar as partes de uma URL também é uma habilidade de segurança. O ponto principal é identificar corretamente o host. Um endereço como <code>https://banco.exemplo-malicioso.com/</code> pertence a <code>exemplo-malicioso.com</code>, não a um banco chamado “banco”. Palavras colocadas antes do domínio principal podem ser apenas subdomínios criados para confundir.</p><p>Também observe o esquema. HTTPS protege a comunicação com o host apresentado pelo certificado, mas, como explicamos no artigo sobre <a href="http-https-como-funciona.html">HTTP e HTTPS</a>, isso não garante que o conteúdo ou a empresa por trás do site seja legítima.</p>
-<h2>O que acontece depois que você digita uma URL?</h2><p>De forma simplificada, o navegador interpreta a URL, identifica o host, pode consultar o DNS, estabelece a comunicação de rede, negocia proteção TLS quando HTTPS é usado e envia uma requisição HTTP para o recurso. O servidor responde, e o navegador processa HTML, CSS, JavaScript, imagens e outros recursos necessários.</p><p>Perceba como os conceitos se conectam: <strong>URL diz qual recurso queremos; DNS ajuda a encontrar o host; HTTP organiza a troca de mensagens; HTTPS protege a comunicação.</strong></p>
-<h2>Conclusão</h2><p>Uma URL não é uma sequência aleatória de caracteres. Ela possui uma estrutura previsível. Quando você reconhece esquema, host, porta, caminho, query e fragmento, fica mais fácil compreender a Web, programar aplicações e analisar links suspeitos.</p><p>O próximo passo é acompanhar o percurso completo em <a href="como-internet-funciona.html">Como a internet funciona: do Wi-Fi ao servidor</a> e depois aprofundar a comunicação em <a href="http-https-como-funciona.html">HTTP e HTTPS</a>.</p>
-<section class="faq-section" aria-labelledby="faq"><h2 id="faq">Perguntas frequentes</h2><h3>URL e link são a mesma coisa?</h3><p>Não exatamente. URL é um identificador/endereço. Link é um elemento ou referência que aponta para um destino, normalmente usando uma URL ou referência URI.</p><h3>www faz parte do domínio?</h3><p><code>www</code> normalmente é um subdomínio/hostname convencional. Um site pode funcionar com ou sem ele, dependendo da configuração de DNS e do servidor.</p><h3>O fragmento # é enviado ao servidor?</h3><p>Em uma navegação HTTP normal, não. O fragmento é processado pelo cliente depois que o recurso é obtido.</p><h3>Posso colocar senha na URL?</h3><p>Não é uma prática segura. URLs podem ficar registradas em histórico, logs e outros sistemas. Segredos devem usar mecanismos apropriados de autenticação e transporte.</p></section>
-<h2>Referências bibliográficas</h2><ul><li>KUROSE, James F.; ROSS, Keith W. <cite>Computer Networking: A Top-Down Approach</cite>. 9. ed. Pearson, 2025.</li><li>GOURLEY, David; TOTTY, Brian; SAYER, Marjorie; REDDY, Sailu; AGGARWAL, Anshu. <cite>HTTP: The Definitive Guide</cite>. O’Reilly Media, 2002.</li></ul><h3>Documentação técnica</h3><ul><li>BERNERS-LEE, Tim; FIELDING, Roy; MASINTER, Larry. <cite>RFC 3986 — Uniform Resource Identifier (URI): Generic Syntax</cite>. IETF, 2005.</li><li>MDN Web Docs. <cite>URI reference</cite>. Documentação técnica consultada em setembro de 2026.</li></ul>
-<nav class="article-navigation" aria-label="Navegação entre artigos"><a href="dns-como-funciona.html"><span>← Conteúdo relacionado</span><strong>Como o DNS funciona</strong></a><a href="http-https-como-funciona.html"><span>Próximo conceito →</span><strong>HTTP e HTTPS</strong></a></nav><section class="author-box"><strong>Equipe Código em Sala</strong><p>Conteúdo educacional sobre Tecnologia da Informação com linguagem simples, exemplos práticos e referências técnicas verificáveis.</p></section><section class="related-content"><h2>Continue estudando</h2><ul><li><a href="como-internet-funciona.html">Como a internet funciona</a></li><li><a href="dns-como-funciona.html">DNS: nomes e endereços IP</a></li><li><a href="http-https-como-funciona.html">HTTP e HTTPS</a></li></ul></section></div></article></main><footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span></div></footer><script src="../script.js"></script></body></html>
+#referencias</code>
+</pre>
+<p>Isso é muito usado em HTML. Dentro de um artigo deste blog, por exemplo, <code>../styles.css</code> sobe um nível e encontra a folha de estilos. Referências relativas facilitam mover um conjunto de páginas dentro da mesma estrutura, mas precisam ser calculadas em relação à base correta.</p>
+<h2>Caracteres especiais e percent-encoding</h2>
+<p>URLs possuem caracteres reservados com funções sintáticas, como <code>/</code>, <code>?</code>, <code>#</code> e <code>%</code>. Quando um octeto precisa ser representado em um componente e não pode aparecer diretamente, pode ser usado o percent-encoding: um sinal de porcentagem seguido por dois dígitos hexadecimais. O espaço, por exemplo, pode aparecer como <code>%20</code> em determinados contextos.</p>
+<p>Isso explica por que alguns endereços copiados do navegador parecem conter sequências estranhas. Não significa necessariamente erro; pode ser apenas a representação codificada de dados.</p>
+<h2 id="seguranca">Como ler uma URL antes de clicar</h2>
+<p>Saber separar as partes de uma URL também é uma habilidade de segurança. O ponto principal é identificar corretamente o host. Um endereço como <code>https://banco.exemplo-malicioso.com/</code> pertence a <code>exemplo-malicioso.com</code>, não a um banco chamado “banco”. Palavras colocadas antes do domínio principal podem ser apenas subdomínios criados para confundir.</p>
+<p>Também observe o esquema. HTTPS protege a comunicação com o host apresentado pelo certificado, mas, como explicamos no artigo sobre <a href="http-https-como-funciona.html">HTTP e HTTPS</a>, isso não garante que o conteúdo ou a empresa por trás do site seja legítima.</p>
+<h2>O que acontece depois que você digita uma URL?</h2>
+<p>De forma simplificada, o navegador interpreta a URL, identifica o host, pode consultar o DNS, estabelece a comunicação de rede, negocia proteção TLS quando HTTPS é usado e envia uma requisição HTTP para o recurso. O servidor responde, e o navegador processa HTML, CSS, JavaScript, imagens e outros recursos necessários.</p>
+<p>Perceba como os conceitos se conectam: <strong>URL diz qual recurso queremos; DNS ajuda a encontrar o host; HTTP organiza a troca de mensagens; HTTPS protege a comunicação.</strong>
+</p>
+<h2>Conclusão</h2>
+<p>Uma URL não é uma sequência aleatória de caracteres. Ela possui uma estrutura previsível. Quando você reconhece esquema, host, porta, caminho, query e fragmento, fica mais fácil compreender a Web, programar aplicações e analisar links suspeitos.</p>
+<p>O próximo passo é acompanhar o percurso completo em <a href="como-internet-funciona.html">Como a internet funciona: do Wi-Fi ao servidor</a> e depois aprofundar a comunicação em <a href="http-https-como-funciona.html">HTTP e HTTPS</a>.</p>
+<section class="faq-section" aria-labelledby="faq">
+<h2 id="comparacao-urls">Compare endereços que parecem semelhantes</h2>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Endereço</th><th>Host real</th><th>Observação</th></tr></thead><tbody><tr><td><code>https://conta.exemplo.com/entrar</code></td><td>conta.exemplo.com</td><td>Subdomínio de exemplo.com</td></tr><tr><td><code>https://exemplo.com.seguro.test/</code></td><td>exemplo.com.seguro.test</td><td>Pertence a seguro.test, não a exemplo.com</td></tr><tr><td><code>https://exemplo.com@outro.test/</code></td><td>outro.test</td><td>Texto antes de @ pode confundir</td></tr><tr><td><code>https://exemplo.com/pagina#secao</code></td><td>exemplo.com</td><td>Fragmento orienta o cliente</td></tr></tbody></table></div>
+<p>Leia o host da direita para a esquerda: primeiro o domínio de nível superior e depois o domínio registrável. Caminho, parâmetros e fragmento vêm depois da autoridade e não transformam outro domínio no site esperado.</p>
+<h2 id="construir-url">Construa uma URL sem concatenar dados cegamente</h2>
+<p>Valores de busca podem conter espaço, acentos, <code>&amp;</code> ou <code>#</code>. Eles precisam ser codificados segundo o componente em que aparecem. Em JavaScript, a interface <code>URL</code> e <code>URLSearchParams</code> evitam várias ambiguidades.</p>
+<pre class="code-block"><code>const url = new URL("https://loja.exemplo/busca");
+url.searchParams.set("q", "café &amp; leite");
+url.searchParams.set("pagina", "2");
+
+console.log(url.toString());</code></pre>
+<div class="exercise"><h3>Leitura de segurança</h3><p>Selecione cinco URLs de exemplo sem abri-las. Separe esquema, host, porta, caminho, query e fragmento. Marque qual organização controlaria o domínio registrável e quais partes poderiam ser escolhidas livremente por um golpista.</p></div>
+<h2 id="faq">Perguntas frequentes</h2>
+<h3>URL e link são a mesma coisa?</h3>
+<p>Não exatamente. URL é um identificador/endereço. Link é um elemento ou referência que aponta para um destino, normalmente usando uma URL ou referência URI.</p>
+<h3>www faz parte do domínio?</h3>
+<p>
+<code>www</code> normalmente é um subdomínio/hostname convencional. Um site pode funcionar com ou sem ele, dependendo da configuração de DNS e do servidor.</p>
+<h3>O fragmento # é enviado ao servidor?</h3>
+<p>Em uma navegação HTTP normal, não. O fragmento é processado pelo cliente depois que o recurso é obtido.</p>
+<h3>Posso colocar senha na URL?</h3>
+<p>Não é uma prática segura. URLs podem ficar registradas em histórico, logs e outros sistemas. Segredos devem usar mecanismos apropriados de autenticação e transporte.</p>
+</section>
+<h2>Referências bibliográficas</h2>
+<ul>
+<li>KUROSE, James F.; ROSS, Keith W. <cite>Computer Networking: A Top-Down Approach</cite>. 9. ed. Pearson, 2025.</li>
+<li>GOURLEY, David; TOTTY, Brian; SAYER, Marjorie; REDDY, Sailu; AGGARWAL, Anshu. <cite>HTTP: The Definitive Guide</cite>. O’Reilly Media, 2002.</li>
+</ul>
+<h3>Documentação técnica</h3>
+<ul>
+<li>BERNERS-LEE, Tim; FIELDING, Roy; MASINTER, Larry. <cite>RFC 3986 — Uniform Resource Identifier (URI): Generic Syntax</cite>. IETF, 2005.</li>
+<li>MDN Web Docs. <cite>URI reference</cite>. Documentação técnica consultada em setembro de 2026.</li>
+</ul>
+<nav class="article-navigation" aria-label="Navegação entre artigos">
+<a href="dns-como-funciona.html">
+<span>← Conteúdo relacionado</span>
+<strong>Como o DNS funciona</strong>
+</a>
+<a href="http-https-como-funciona.html">
+<span>Próximo conceito →</span>
+<strong>HTTP e HTTPS</strong>
+</a>
+</nav>
+<section class="author-box">
+<strong>Equipe Código em Sala</strong>
+<p>Conteúdo educacional sobre Tecnologia da Informação com linguagem simples, exemplos práticos e referências técnicas verificáveis.</p>
+</section>
+<section class="related-content">
+<h2>Continue estudando</h2>
+<ul>
+<li>
+<a href="como-internet-funciona.html">Como a internet funciona</a>
+</li>
+<li>
+<a href="dns-como-funciona.html">DNS: nomes e endereços IP</a>
+</li>
+<li>
+<a href="http-https-como-funciona.html">HTTP e HTTPS</a>
+</li>
+</ul>
+</section>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© 2026 Código em Sala · Equipe Código em Sala</span>
+</div>
+</footer>
+<script src="../script.js">
+</script>
+</body>
+</html>

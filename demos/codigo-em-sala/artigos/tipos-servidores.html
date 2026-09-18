@@ -1,44 +1,238 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Servidor web, de arquivos e de banco — Código em Sala</title><meta name="description" content="Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos."><link rel="canonical" href="https://codigoemsala.com.br/artigos/tipos-servidores.html"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css"><meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="Servidor web, de arquivos e de banco: qual a diferença?"><meta property="og:description" content="Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos."><meta property="og:url" content="https://codigoemsala.com.br/artigos/tipos-servidores.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-redes.webp"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Servidor web, de arquivos e de banco: qual a diferença?","description":"Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos.","image":["https://codigoemsala.com.br/assets/images/capa-redes.webp"],"datePublished":"2026-08-22",
-"dateModified":"2026-09-01",
-"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/tipos-servidores.html"}}</script></head>
-<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
-<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#redes">Redes e Servidores</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Redes e Infraestrutura</span><h1>Servidor web, de arquivos e de banco: qual a diferença?</h1><div class="article-meta"><span>10 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-08-22">Atualizado em 22 de agosto de 2026</time></div></div></section>
-<article class="content-page"><div class="prose article-body">
-  <figure class="article-cover"><img src="../assets/images/capa-redes.webp" alt="Racks de servidores e cabos em uma sala técnica" width="1440" height="810"><figcaption>Servidores diferentes podem oferecer serviços especializados dentro da mesma rede. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
-  <div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
-  <p>Servidor é um papel desempenhado por um software ou sistema que oferece recursos a clientes por meio de uma rede. Esse serviço pode rodar em uma máquina física, virtual, contêiner ou plataforma de nuvem; portanto, “servidor” não significa apenas um computador potente.</p><aside class="source-note" aria-label="Base bibliográfica do artigo"><strong>Base bibliográfica.</strong> A relação cliente-servidor e o papel dos protocolos de aplicação seguem a abordagem em camadas de <a href="../referencias.html#kurose-ross">Kurose e Ross (2025)</a>. A separação de responsabilidades, a observabilidade e a recuperação de serviços são tratadas segundo as práticas operacionais de <a href="../referencias.html#limoncelli">Limoncelli, Hogan e Chalup (2017)</a>.</aside>
+<head>
+<meta name="google-adsense-account" content="ca-pub-8245234066143632">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous">
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Servidor web, de arquivos e de banco — Código em Sala</title>
+<meta name="description" content="Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/tipos-servidores.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Código em Sala">
+<meta property="og:title" content="Servidor web, de arquivos e de banco: qual a diferença?">
+<meta property="og:description" content="Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos.">
+<meta property="og:url" content="https://codigoemsala.com.br/artigos/tipos-servidores.html">
+<meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-redes.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Servidor web, de arquivos e de banco: qual a diferença?","description":"Compare servidor web, servidor de arquivos e servidor de banco de dados com exemplos práticos.","image":["https://codigoemsala.com.br/assets/images/capa-redes.webp"],"datePublished":"2026-08-22",
+"dateModified":"2026-09-18",
+"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/tipos-servidores.html"}}</script>
+</head>
+<body data-article="true">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="reading-progress" aria-hidden="true">
+<span>
+</span>
+</div>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="../">
+<span class="brand-mark">&lt;/&gt;</span>
+<span>
+<strong>Código</strong> em Sala</span>
+</a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+<nav id="menu-principal" class="main-nav">
+<a href="../">Início</a>
+<a href="../categorias.html">Categorias</a>
+<a href="../sobre.html">Sobre</a>
+<a href="../contato.html">Contato</a>
+</nav>
+</div>
+</header>
+<main id="conteudo">
+<section class="page-hero">
+<div class="container article-head">
+<nav class="breadcrumbs" aria-label="Trilha de navegação">
+<a href="../">Início</a>
+<span>›</span>
+<a href="../categorias.html#redes">Redes e Servidores</a>
+<span>›</span>
+<span>Artigo</span>
+</nav>
+<a class="back-link" href="../#artigos">← Voltar aos artigos</a>
+<span class="eyebrow">Redes e Infraestrutura</span>
+<h1>Servidor web, de arquivos e de banco: qual a diferença?</h1>
+<div class="article-meta">
+<span>13 minutos de leitura</span>
+<span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a>
+</span>
+<time datetime="2026-09-18">Atualizado em 18 de setembro de 2026</time>
+</div>
+</div>
+</section>
+<article class="content-page">
+<div class="prose article-body">
+  <figure class="article-cover">
+<img src="../assets/images/capa-redes.webp" alt="Racks de servidores e cabos em uma sala técnica" width="1440" height="810">
+<figcaption>Servidores diferentes podem oferecer serviços especializados dentro da mesma rede. <a href="../creditos.html">Crédito da foto</a>.</figcaption>
+</figure>
+  <div class="article-tools">
+<span>Compartilhe este conteúdo</span>
+<div class="share-buttons">
+<a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+<a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+<button class="share-button" data-share="native" type="button">Compartilhar</button>
+</div>
+</div>
+  <p>Servidor é um papel desempenhado por um software ou sistema que oferece recursos a clientes por meio de uma rede. Esse serviço pode rodar em uma máquina física, virtual, contêiner ou plataforma de nuvem; portanto, “servidor” não significa apenas um computador potente.</p>
+<aside class="source-note" aria-label="Base bibliográfica do artigo">
+<strong>Base bibliográfica.</strong> A relação cliente-servidor e o papel dos protocolos de aplicação seguem a abordagem em camadas de <a href="../referencias.html#kurose-ross">Kurose e Ross (2025)</a>. A separação de responsabilidades, a observabilidade e a recuperação de serviços são tratadas segundo as práticas operacionais de <a href="../referencias.html#limoncelli">Limoncelli, Hogan e Chalup (2017)</a>.</aside>
   <p>Uma única máquina pode executar vários serviços em ambientes pequenos. Em organizações maiores, separar funções melhora segurança, desempenho, manutenção e capacidade de crescimento.</p>
-  <nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#comparacao">Comparação dos servidores</a></li><li><a href="#separacao">Por que separar serviços</a></li><li><a href="#falhas">Como diagnosticar falhas</a></li><li><a href="#backup">Servidor, RAID e backup</a></li></ul></nav>
+  <nav class="article-toc" aria-label="Neste artigo">
+<strong>Neste artigo</strong>
+<ul>
+<li>
+<a href="#comparacao">Comparação dos servidores</a>
+</li>
+<li>
+<a href="#separacao">Por que separar serviços</a>
+</li>
+<li>
+<a href="#falhas">Como diagnosticar falhas</a>
+</li>
+<li>
+<a href="#backup">Servidor, RAID e backup</a>
+</li>
+</ul>
+</nav>
   <h2 id="comparacao">Três servidores, três responsabilidades</h2>
-  <div class="table-wrap"><table class="compare-table"><thead><tr><th>Tipo</th><th>Função principal</th><th>Exemplo</th></tr></thead><tbody><tr><td>Web</td><td>Entregar páginas e aplicações</td><td>Site da escola</td></tr><tr><td>Arquivos</td><td>Armazenar e compartilhar documentos</td><td>Pasta da secretaria</td></tr><tr><td>Banco de dados</td><td>Organizar e consultar dados estruturados</td><td>Notas dos alunos</td></tr></tbody></table></div>
-  <h3>Servidor web</h3><p>Recebe solicitações por protocolos como HTTP e HTTPS e responde com páginas, arquivos ou dados. Quando você acessa um site, o navegador atua como cliente e conversa com o servidor web.</p>
-  <h3>Servidor de arquivos</h3><p>Centraliza documentos e controla quem pode ler, alterar ou excluir cada pasta. Ele facilita colaboração, padroniza permissões e permite políticas de backup e armazenamento.</p>
-  <h3>Servidor de banco de dados</h3><p>Executa um sistema gerenciador de banco de dados. Ele recebe consultas, controla transações, relaciona informações e aplica regras de acesso. Aplicações normalmente acessam o banco; usuários não deveriam se conectar sem necessidade e autorização.</p>
+  <div class="table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Função principal</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web</td>
+<td>Entregar páginas e aplicações</td>
+<td>Site da escola</td>
+</tr>
+<tr>
+<td>Arquivos</td>
+<td>Armazenar e compartilhar documentos</td>
+<td>Pasta da secretaria</td>
+</tr>
+<tr>
+<td>Banco de dados</td>
+<td>Organizar e consultar dados estruturados</td>
+<td>Notas dos alunos</td>
+</tr>
+</tbody>
+</table>
+</div>
+  <h3>Servidor web</h3>
+<p>Recebe solicitações por protocolos como HTTP e HTTPS e responde com páginas, arquivos ou dados. Quando você acessa um site, o navegador atua como cliente e conversa com o servidor web.</p>
+  <h3>Servidor de arquivos</h3>
+<p>Centraliza documentos e controla quem pode ler, alterar ou excluir cada pasta. Ele facilita colaboração, padroniza permissões e permite políticas de backup e armazenamento.</p>
+  <h3>Servidor de banco de dados</h3>
+<p>Executa um sistema gerenciador de banco de dados. Ele recebe consultas, controla transações, relaciona informações e aplica regras de acesso. Aplicações normalmente acessam o banco; usuários não deveriam se conectar sem necessidade e autorização.</p>
   <h2 id="separacao">Por que separar os serviços?</h2>
   <p>Imagine uma clínica que mantém site, documentos e prontuários em um único computador. Uma falha física pode interromper tudo ao mesmo tempo. Uma infecção pode alcançar todos os dados, e uma tarefa pesada do banco pode deixar o site lento.</p>
   <p>A separação permite dimensionar cada parte conforme sua necessidade. O servidor de arquivos pode priorizar capacidade, enquanto o banco precisa de desempenho, memória e armazenamento confiável. Também facilita atualizações e limita o impacto de incidentes.</p>
-  <div class="callout"><strong>Separar não significa necessariamente comprar três computadores.</strong> Máquinas virtuais, contêineres e serviços em nuvem permitem isolamento lógico, desde que sejam planejados e administrados corretamente.</div>
+  <div class="callout">
+<strong>Separar não significa necessariamente comprar três computadores.</strong> Máquinas virtuais, contêineres e serviços em nuvem permitem isolamento lógico, desde que sejam planejados e administrados corretamente.</div>
   <h2 id="falhas">Como identificar onde está o problema?</h2>
   <p>Durante o lançamento das notas, professores não acessam o sistema, mas o site institucional e as pastas funcionam. Isso sugere falha no banco de dados, na aplicação ou na comunicação entre eles — não uma interrupção geral da rede.</p>
   <p>Antes de reiniciar um servidor, o técnico deve verificar mensagens de erro, conectividade, espaço em disco, uso de memória e processador, serviços ativos e alterações recentes. Reiniciar sem investigar pode apagar pistas importantes e causar nova indisponibilidade.</p>
   <h2 id="backup">Servidor, RAID e backup não são a mesma coisa</h2>
   <p>RAID pode manter o sistema funcionando após a falha de um disco, dependendo da configuração. Ele não protege necessariamente contra exclusão acidental, ransomware, corrupção ou incêndio. O erro pode ser replicado para todos os discos.</p>
   <p>Backup mantém cópias recuperáveis e histórico. Uma política adequada define frequência, retenção, localização, proteção e teste de restauração. Não basta copiar; é preciso comprovar que a recuperação funciona.</p>
-  <div class="exercise"><h3>Estudo de caso</h3><p>Uma escola possui site, pastas administrativas e sistema de notas. Proponha uma organização para os serviços, indique quem deveria acessá-los e descreva uma estratégia básica de backup.</p></div>
+  <div class="exercise">
+<h3>Estudo de caso</h3>
+<p>Uma escola possui site, pastas administrativas e sistema de notas. Proponha uma organização para os serviços, indique quem deveria acessá-los e descreva uma estratégia básica de backup.</p>
+</div>
 
 <h2 id="arquitetura">Estudo de caso: a biblioteca da escola</h2>
 <p>Imagine uma biblioteca que possui catálogo on-line, documentos internos e histórico de empréstimos. O navegador do aluno acessa um servidor web, que recebe a solicitação e entrega a interface. A aplicação consulta um servidor de banco de dados para localizar livros e registrar empréstimos. Manuais e documentos administrativos podem ficar em um servidor de arquivos com acesso restrito.</p>
 <p>Essas funções podem estar em máquinas separadas, em serviços de nuvem diferentes ou, em um ambiente pequeno, na mesma máquina. A separação lógica continua útil porque cada serviço tem permissões, protocolos, carga, backup e riscos próprios. O servidor web não deveria receber acesso irrestrito a todos os documentos; a aplicação deveria usar no banco apenas as operações necessárias; e a pasta de arquivos precisa de política de acesso independente.</p>
-<div class="exercise"><h3>Desenhe o fluxo de uma consulta</h3><ol><li>Comece pelo dispositivo do aluno.</li><li>Mostre a requisição chegando ao servidor web.</li><li>Ligue a aplicação ao banco de dados para pesquisar o livro.</li><li>Represente a resposta voltando ao navegador.</li><li>Marque onde autenticação, logs, backup e criptografia são necessários.</li></ol><p>Depois desenhe o registro de um empréstimo e indique o que muda. Se você não consegue explicar qual componente guarda o dado e qual apenas o apresenta, revise a função de cada servidor.</p></div>
+<div class="exercise">
+<h3>Desenhe o fluxo de uma consulta</h3>
+<ol>
+<li>Comece pelo dispositivo do aluno.</li>
+<li>Mostre a requisição chegando ao servidor web.</li>
+<li>Ligue a aplicação ao banco de dados para pesquisar o livro.</li>
+<li>Represente a resposta voltando ao navegador.</li>
+<li>Marque onde autenticação, logs, backup e criptografia são necessários.</li>
+</ol>
+<p>Depois desenhe o registro de um empréstimo e indique o que muda. Se você não consegue explicar qual componente guarda o dado e qual apenas o apresenta, revise a função de cada servidor.</p>
+</div>
 <p>Acompanhe também o trajeto de rede em <a href="como-internet-funciona.html">como a internet funciona</a> e compare hospedagem local com <a href="computacao-em-nuvem.html">computação em nuvem</a>.</p>
+<h2 id="incidente-servidores">Incidente completo: a página abre, mas o pedido não é salvo</h2>
+<p>Se a página inicial carrega, o servidor web respondeu pelo menos parte da solicitação. Quando o usuário envia o pedido e recebe erro, a falha pode estar na aplicação, na comunicação com o banco, em uma regra de validação ou na indisponibilidade do próprio banco. “O servidor caiu” ainda é uma hipótese ampla.</p>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Sinal</th><th>Camada provável</th><th>Primeira evidência</th></tr></thead><tbody><tr><td>Nenhuma página responde</td><td>Rede, DNS ou servidor web</td><td>Status do serviço e conectividade</td></tr><tr><td>Página abre; login falha</td><td>Aplicação, autenticação ou banco</td><td>Logs e código de resposta</td></tr><tr><td>Arquivos compartilhados indisponíveis</td><td>Servidor de arquivos ou permissões</td><td>Acesso à pasta e eventos do serviço</td></tr><tr><td>Consulta demora, mas site abre</td><td>Banco, aplicação ou recursos</td><td>Tempo da consulta e utilização</td></tr></tbody></table></div>
+<h2 id="mapa-dependencias">Desenhe dependências antes de investigar</h2>
+<p>Represente usuário → DNS → servidor web → aplicação → banco de dados e marque onde arquivos, autenticação e serviços externos participam. Um mapa simples evita testar aleatoriamente e mostra quais componentes são compartilhados por vários sintomas.</p>
+<div class="exercise"><h3>Plano de diagnóstico</h3><p>Receba o relato “ninguém consegue emitir relatório”. Escreva cinco perguntas para delimitar o problema, três evidências que coletaria e a ordem dos testes. Inclua uma hipótese de servidor web, uma de banco e uma de permissão. Explique qual resultado eliminaria cada hipótese.</p></div>
 <h2>Perguntas frequentes</h2>
 
-  <div class="faq"><h3>Um computador comum pode ser servidor?</h3><p>Pode oferecer serviços, especialmente em testes ou ambientes pequenos. Para uso crítico, disponibilidade, segurança, redundância, suporte e capacidade precisam ser avaliados.</p></div>
-  <div class="faq"><h3>Servidor precisa ficar ligado o tempo todo?</h3><p>Depende da necessidade. Um serviço que deve estar sempre disponível precisa de operação contínua e planejamento para manutenção e falhas.</p></div>
-  <section class="article-references" aria-labelledby="referencias-bibliograficas"><h2 id="referencias-bibliograficas">Referências bibliográficas</h2><p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p><ol><li><a href="../referencias.html#kurose-ross"><strong>KUROSE, James F.; ROSS, Keith W.</strong> <cite>Computer Networking: A Top-Down Approach</cite></a>. 9. ed. Pearson, 2025.</li><li><a href="../referencias.html#limoncelli"><strong>LIMONCELLI, Thomas A.; HOGAN, Christina J.; CHALUP, Strata R.</strong> <cite>The Practice of System and Network Administration</cite></a>. 3. ed. Addison-Wesley, 2017.</li></ol><p class="reference-note"><a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p></section><aside class="author-card" aria-label="Autoria"><span class="author-symbol" aria-hidden="true">&lt;/&gt;</span><div><h2>Equipe Código em Sala</h2><p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p></div></aside><nav class="article-nav" aria-label="Navegação entre artigos"><a href="estrutura-for.html"><small>← Artigo anterior</small>Programação</a><a href="crud-banco-dados.html"><small>Próximo artigo →</small>Banco de Dados</a></nav><aside class="related-box"><h2>Continue aprendendo</h2><p>Veja como esses serviços podem ser oferecidos por meio da <a href="computacao-em-nuvem.html">computação em nuvem</a>.</p></aside>
-</div></article></main>
-<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><a href="../privacidade.html">Privacidade</a><a href="../termos.html">Termos de uso</a><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div></footer><script src="../script.js"></script>
-</body></html>
+  <div class="faq">
+<h3>Um computador comum pode ser servidor?</h3>
+<p>Pode oferecer serviços, especialmente em testes ou ambientes pequenos. Para uso crítico, disponibilidade, segurança, redundância, suporte e capacidade precisam ser avaliados.</p>
+</div>
+  <div class="faq">
+<h3>Servidor precisa ficar ligado o tempo todo?</h3>
+<p>Depende da necessidade. Um serviço que deve estar sempre disponível precisa de operação contínua e planejamento para manutenção e falhas.</p>
+</div>
+  <section class="article-references" aria-labelledby="referencias-bibliograficas">
+<h2 id="referencias-bibliograficas">Referências bibliográficas</h2>
+<p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p>
+<ol>
+<li>
+<a href="../referencias.html#kurose-ross">
+<strong>KUROSE, James F.; ROSS, Keith W.</strong> <cite>Computer Networking: A Top-Down Approach</cite>
+</a>. 9. ed. Pearson, 2025.</li>
+<li>
+<a href="../referencias.html#limoncelli">
+<strong>LIMONCELLI, Thomas A.; HOGAN, Christina J.; CHALUP, Strata R.</strong> <cite>The Practice of System and Network Administration</cite>
+</a>. 3. ed. Addison-Wesley, 2017.</li>
+</ol>
+<p class="reference-note">
+<a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p>
+</section>
+<aside class="author-card" aria-label="Autoria">
+<span class="author-symbol" aria-hidden="true">&lt;/&gt;</span>
+<div>
+<h2>Equipe Código em Sala</h2>
+<p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p>
+</div>
+</aside>
+<nav class="article-nav" aria-label="Navegação entre artigos">
+<a href="estrutura-for.html">
+<small>← Artigo anterior</small>Programação</a>
+<a href="crud-banco-dados.html">
+<small>Próximo artigo →</small>Banco de Dados</a>
+</nav>
+<aside class="related-box">
+<h2>Continue aprendendo</h2>
+<p>Veja como esses serviços podem ser oferecidos por meio da <a href="computacao-em-nuvem.html">computação em nuvem</a>.</p>
+</aside>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© 2026 Código em Sala · Equipe Código em Sala</span>
+<div class="legal-links">
+<a href="../privacidade.html">Privacidade</a>
+<a href="../termos.html">Termos de uso</a>
+<button class="cookie-settings" type="button" data-cookie-settings>Cookies</button>
+</div>
+</div>
+</footer>
+<script src="../script.js">
+</script>
+</body>
+</html>

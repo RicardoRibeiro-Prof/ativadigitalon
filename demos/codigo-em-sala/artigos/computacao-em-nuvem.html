@@ -1,43 +1,273 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Computação em nuvem sem mistério — Código em Sala</title><meta name="description" content="Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos."><link rel="canonical" href="https://codigoemsala.com.br/artigos/computacao-em-nuvem.html"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css"><meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="Computação em nuvem sem mistério"><meta property="og:description" content="Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos."><meta property="og:url" content="https://codigoemsala.com.br/artigos/computacao-em-nuvem.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-nuvem.webp"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Computação em nuvem sem mistério","description":"Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos.","image":["https://codigoemsala.com.br/assets/images/capa-nuvem.webp"],"datePublished":"2026-08-22",
-"dateModified":"2026-09-01",
-"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/computacao-em-nuvem.html"}}</script></head>
-<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
-<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#nuvem">Computação em Nuvem</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Computação em Nuvem</span><h1>Computação em nuvem sem mistério</h1><div class="article-meta"><span>10 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-08-22">Atualizado em 22 de agosto de 2026</time></div></div></section>
-<article class="content-page"><div class="prose article-body">
-  <figure class="article-cover"><img src="../assets/images/capa-nuvem.webp" alt="Unidades de servidor em um centro de dados" width="1440" height="810"><figcaption>A nuvem fornece recursos computacionais pela internet conforme a necessidade. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
-  <div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
-  <p>Computação em nuvem é um modelo de fornecimento de recursos computacionais por rede, sob demanda e com capacidade ajustável. Em vez de manter todo o processamento, armazenamento e software no próprio equipamento, pessoas e empresas utilizam serviços operados em centros de dados. A internet é o meio de acesso mais comum, mas ambientes privados também podem usar redes dedicadas.</p><aside class="source-note" aria-label="Base bibliográfica do artigo"><strong>Base bibliográfica.</strong> A classificação de serviços, os mecanismos de virtualização e a responsabilidade distribuída entre fornecedor e cliente seguem a arquitetura descrita por <a href="../referencias.html#erl">Erl e Monroy (2023)</a>. A dependência de conectividade, protocolos e desempenho de rede é analisada à luz de <a href="../referencias.html#kurose-ross">Kurose e Ross (2025)</a>.</aside>
+<head>
+<meta name="google-adsense-account" content="ca-pub-8245234066143632">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous">
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Computação em nuvem sem mistério — Código em Sala</title>
+<meta name="description" content="Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/computacao-em-nuvem.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Código em Sala">
+<meta property="og:title" content="Computação em nuvem sem mistério">
+<meta property="og:description" content="Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos.">
+<meta property="og:url" content="https://codigoemsala.com.br/artigos/computacao-em-nuvem.html">
+<meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-nuvem.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Computação em nuvem sem mistério","description":"Entenda computação em nuvem, SaaS, PaaS e IaaS, vantagens, riscos e exemplos práticos.","image":["https://codigoemsala.com.br/assets/images/capa-nuvem.webp"],"datePublished":"2026-08-22",
+"dateModified":"2026-09-18",
+"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/computacao-em-nuvem.html"}}</script>
+</head>
+<body data-article="true">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="reading-progress" aria-hidden="true">
+<span>
+</span>
+</div>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="../">
+<span class="brand-mark">&lt;/&gt;</span>
+<span>
+<strong>Código</strong> em Sala</span>
+</a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+<nav id="menu-principal" class="main-nav">
+<a href="../">Início</a>
+<a href="../categorias.html">Categorias</a>
+<a href="../sobre.html">Sobre</a>
+<a href="../contato.html">Contato</a>
+</nav>
+</div>
+</header>
+<main id="conteudo">
+<section class="page-hero">
+<div class="container article-head">
+<nav class="breadcrumbs" aria-label="Trilha de navegação">
+<a href="../">Início</a>
+<span>›</span>
+<a href="../categorias.html#nuvem">Computação em Nuvem</a>
+<span>›</span>
+<span>Artigo</span>
+</nav>
+<a class="back-link" href="../#artigos">← Voltar aos artigos</a>
+<span class="eyebrow">Computação em Nuvem</span>
+<h1>Computação em nuvem sem mistério</h1>
+<div class="article-meta">
+<span>13 minutos de leitura</span>
+<span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a>
+</span>
+<time datetime="2026-09-18">Atualizado em 18 de setembro de 2026</time>
+</div>
+</div>
+</section>
+<article class="content-page">
+<div class="prose article-body">
+  <figure class="article-cover">
+<img src="../assets/images/capa-nuvem.webp" alt="Unidades de servidor em um centro de dados" width="1440" height="810">
+<figcaption>A nuvem fornece recursos computacionais pela internet conforme a necessidade. <a href="../creditos.html">Crédito da foto</a>.</figcaption>
+</figure>
+  <div class="article-tools">
+<span>Compartilhe este conteúdo</span>
+<div class="share-buttons">
+<a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+<a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+<button class="share-button" data-share="native" type="button">Compartilhar</button>
+</div>
+</div>
+  <p>Computação em nuvem é um modelo de fornecimento de recursos computacionais por rede, sob demanda e com capacidade ajustável. Em vez de manter todo o processamento, armazenamento e software no próprio equipamento, pessoas e empresas utilizam serviços operados em centros de dados. A internet é o meio de acesso mais comum, mas ambientes privados também podem usar redes dedicadas.</p>
+<aside class="source-note" aria-label="Base bibliográfica do artigo">
+<strong>Base bibliográfica.</strong> A classificação de serviços, os mecanismos de virtualização e a responsabilidade distribuída entre fornecedor e cliente seguem a arquitetura descrita por <a href="../referencias.html#erl">Erl e Monroy (2023)</a>. A dependência de conectividade, protocolos e desempenho de rede é analisada à luz de <a href="../referencias.html#kurose-ross">Kurose e Ross (2025)</a>.</aside>
   <p>Quando você acessa um documento online em diferentes aparelhos, assiste a um vídeo sob demanda ou utiliza um sistema empresarial pelo navegador, provavelmente está consumindo algum serviço em nuvem.</p>
-  <div class="callout"><strong>A nuvem continua sendo física.</strong> Os dados ficam em servidores, conectados por redes e instalados em centros de dados com energia, refrigeração, manutenção e segurança.</div>
-  <nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#modelos">SaaS, PaaS e IaaS</a></li><li><a href="#vantagens">Vantagens e limitações</a></li><li><a href="#responsabilidade">Responsabilidade compartilhada</a></li><li><a href="#escolha">Quando utilizar</a></li></ul></nav>
+  <div class="callout">
+<strong>A nuvem continua sendo física.</strong> Os dados ficam em servidores, conectados por redes e instalados em centros de dados com energia, refrigeração, manutenção e segurança.</div>
+  <nav class="article-toc" aria-label="Neste artigo">
+<strong>Neste artigo</strong>
+<ul>
+<li>
+<a href="#modelos">SaaS, PaaS e IaaS</a>
+</li>
+<li>
+<a href="#vantagens">Vantagens e limitações</a>
+</li>
+<li>
+<a href="#responsabilidade">Responsabilidade compartilhada</a>
+</li>
+<li>
+<a href="#escolha">Quando utilizar</a>
+</li>
+</ul>
+</nav>
   <h2 id="modelos">SaaS, PaaS e IaaS</h2>
-  <div class="table-wrap"><table class="compare-table"><thead><tr><th>Modelo</th><th>O que é entregue</th><th>Exemplo de uso</th></tr></thead><tbody><tr><td>SaaS</td><td>Aplicativo pronto</td><td>E-mail, editor online e CRM</td></tr><tr><td>PaaS</td><td>Plataforma para desenvolver e publicar</td><td>Hospedagem gerenciada de aplicações</td></tr><tr><td>IaaS</td><td>Infraestrutura configurável</td><td>Máquinas virtuais, redes e discos</td></tr></tbody></table></div>
-  <h3>Software como Serviço</h3><p>No SaaS, o usuário utiliza a aplicação pronta. O fornecedor cuida da infraestrutura, atualizações e grande parte da manutenção. A organização ainda precisa administrar usuários, permissões e o uso adequado das informações.</p>
-  <h3>Plataforma como Serviço</h3><p>A PaaS fornece ambiente para criar e executar aplicações. A equipe desenvolve o sistema, enquanto a plataforma automatiza parte da infraestrutura, implantação e escalabilidade.</p>
-  <h3>Infraestrutura como Serviço</h3><p>A IaaS oferece máquinas, armazenamento e redes virtuais. O cliente possui maior controle, mas também assume mais tarefas de configuração, atualização e segurança.</p>
+  <div class="table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Modelo</th>
+<th>O que é entregue</th>
+<th>Exemplo de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SaaS</td>
+<td>Aplicativo pronto</td>
+<td>E-mail, editor online e CRM</td>
+</tr>
+<tr>
+<td>PaaS</td>
+<td>Plataforma para desenvolver e publicar</td>
+<td>Hospedagem gerenciada de aplicações</td>
+</tr>
+<tr>
+<td>IaaS</td>
+<td>Infraestrutura configurável</td>
+<td>Máquinas virtuais, redes e discos</td>
+</tr>
+</tbody>
+</table>
+</div>
+  <h3>Software como Serviço</h3>
+<p>No SaaS, o usuário utiliza a aplicação pronta. O fornecedor cuida da infraestrutura, atualizações e grande parte da manutenção. A organização ainda precisa administrar usuários, permissões e o uso adequado das informações.</p>
+  <h3>Plataforma como Serviço</h3>
+<p>A PaaS fornece ambiente para criar e executar aplicações. A equipe desenvolve o sistema, enquanto a plataforma automatiza parte da infraestrutura, implantação e escalabilidade.</p>
+  <h3>Infraestrutura como Serviço</h3>
+<p>A IaaS oferece máquinas, armazenamento e redes virtuais. O cliente possui maior controle, mas também assume mais tarefas de configuração, atualização e segurança.</p>
   <h2 id="vantagens">Vantagens da computação em nuvem</h2>
-  <ul><li><strong>Escalabilidade:</strong> aumentar ou reduzir capacidade conforme a demanda.</li><li><strong>Acesso:</strong> utilizar serviços de diferentes locais e dispositivos.</li><li><strong>Agilidade:</strong> disponibilizar recursos sem comprar e instalar todos os equipamentos.</li><li><strong>Serviços gerenciados:</strong> usar bancos, filas, armazenamento e ferramentas prontas.</li><li><strong>Automação:</strong> padronizar implantação, monitoramento e recuperação.</li></ul>
+  <ul>
+<li>
+<strong>Escalabilidade:</strong> aumentar ou reduzir capacidade conforme a demanda.</li>
+<li>
+<strong>Acesso:</strong> utilizar serviços de diferentes locais e dispositivos.</li>
+<li>
+<strong>Agilidade:</strong> disponibilizar recursos sem comprar e instalar todos os equipamentos.</li>
+<li>
+<strong>Serviços gerenciados:</strong> usar bancos, filas, armazenamento e ferramentas prontas.</li>
+<li>
+<strong>Automação:</strong> padronizar implantação, monitoramento e recuperação.</li>
+</ul>
   <h2>Limitações e riscos</h2>
   <p>Dependência de conexão, custos sem controle, configurações incorretas, indisponibilidade do fornecedor e dificuldade de migração são pontos que precisam ser considerados. Nuvem não significa custo baixo automaticamente; significa outro modelo de consumo e operação.</p>
   <h2 id="responsabilidade">Segurança é compartilhada</h2>
   <p>O provedor protege centros de dados e a infraestrutura que oferece. O cliente continua responsável por senhas, usuários, permissões, dados, configurações e aplicações, de acordo com o serviço contratado. Um banco de dados exposto por configuração incorreta continua sendo um problema, mesmo em um grande provedor.</p>
   <h2 id="escolha">Quando faz sentido utilizar?</h2>
   <p>A nuvem é útil quando há necessidade de acesso remoto, crescimento variável, rapidez para experimentar soluções ou redução da administração de equipamentos. Sistemas também podem combinar recursos locais e remotos, formando uma arquitetura híbrida.</p>
-  <div class="exercise"><h3>Classifique um serviço</h3><p>Escolha três ferramentas digitais que você utiliza. Classifique cada uma como SaaS, PaaS ou IaaS e explique o que é administrado pelo usuário e pelo fornecedor.</p></div>
+  <div class="exercise">
+<h3>Classifique um serviço</h3>
+<p>Escolha três ferramentas digitais que você utiliza. Classifique cada uma como SaaS, PaaS ou IaaS e explique o que é administrado pelo usuário e pelo fornecedor.</p>
+</div>
 
 <h2 id="decisao">Como decidir se um serviço deve ir para a nuvem</h2>
 <p>“Usar nuvem” não é uma decisão única. Primeiro descreva a necessidade: quantas pessoas acessam, de onde acessam, quais dados estão envolvidos, quanto tempo de indisponibilidade é aceitável e quem será responsável por configuração e suporte. Em seguida, compare pelo menos três alternativas: operar localmente, contratar um serviço pronto (SaaS) ou montar a aplicação sobre infraestrutura e plataforma contratadas.</p>
-<div class="table-wrap"><table class="compare-table"><thead><tr><th>Pergunta</th><th>Por que importa</th></tr></thead><tbody><tr><td>Há dados pessoais ou sigilosos?</td><td>Define requisitos de acesso, criptografia, localização e retenção.</td></tr><tr><td>O uso varia muito?</td><td>Escalabilidade pode ajudar, mas custos precisam de limites e alertas.</td></tr><tr><td>A internet pode falhar?</td><td>O processo precisa de modo alternativo ou tolerância à indisponibilidade.</td></tr><tr><td>É fácil exportar os dados?</td><td>Reduz dependência do fornecedor e facilita migração.</td></tr><tr><td>Quem configura permissões?</td><td>A divisão de responsabilidade não elimina erros do cliente.</td></tr></tbody></table></div>
-<div class="exercise"><h3>Estudo de caso: laboratório escolar</h3><p>Uma escola quer armazenar trabalhos de alunos e permitir colaboração fora da sala. Compare um servidor local e um serviço SaaS. Registre custo inicial, manutenção, controle de acesso, necessidade de internet, backup, recuperação e forma de encerrar o contrato. Não escolha pelo nome da tecnologia: justifique qual opção atende melhor às condições da escola.</p></div>
+<div class="table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Por que importa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Há dados pessoais ou sigilosos?</td>
+<td>Define requisitos de acesso, criptografia, localização e retenção.</td>
+</tr>
+<tr>
+<td>O uso varia muito?</td>
+<td>Escalabilidade pode ajudar, mas custos precisam de limites e alertas.</td>
+</tr>
+<tr>
+<td>A internet pode falhar?</td>
+<td>O processo precisa de modo alternativo ou tolerância à indisponibilidade.</td>
+</tr>
+<tr>
+<td>É fácil exportar os dados?</td>
+<td>Reduz dependência do fornecedor e facilita migração.</td>
+</tr>
+<tr>
+<td>Quem configura permissões?</td>
+<td>A divisão de responsabilidade não elimina erros do cliente.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="exercise">
+<h3>Estudo de caso: laboratório escolar</h3>
+<p>Uma escola quer armazenar trabalhos de alunos e permitir colaboração fora da sala. Compare um servidor local e um serviço SaaS. Registre custo inicial, manutenção, controle de acesso, necessidade de internet, backup, recuperação e forma de encerrar o contrato. Não escolha pelo nome da tecnologia: justifique qual opção atende melhor às condições da escola.</p>
+</div>
 <p>Antes de confiar os arquivos a qualquer serviço, conecte esta decisão ao plano de <a href="backup-3-2-1.html">backup 3-2-1</a>. Sincronização conveniente não substitui uma cópia independente e testada.</p>
+<h2 id="decisao-nuvem">Caso de decisão: o sistema da escola deve ir para a nuvem?</h2>
+<p>Uma escola mantém matrículas em um computador da secretaria. O equipamento funciona, mas o acesso depende daquele local, o backup é irregular e qualquer manutenção interrompe o serviço. Migrar para a nuvem pode melhorar acesso e continuidade, mas cria novas responsabilidades: conexão com a internet, controle de usuários, proteção dos dados e custos recorrentes.</p>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Critério</th><th>Servidor local</th><th>Serviço em nuvem</th><th>Pergunta decisiva</th></tr></thead><tbody><tr><td>Acesso</td><td>Concentrado na rede local</td><td>Disponível pela internet</td><td>Quem realmente precisa acessar de fora?</td></tr><tr><td>Continuidade</td><td>Depende da estrutura da escola</td><td>Depende do provedor e da conexão</td><td>Quanto tempo parado é aceitável?</td></tr><tr><td>Custo</td><td>Compra e manutenção próprias</td><td>Cobrança recorrente por uso ou plano</td><td>Qual é o custo total por três anos?</td></tr><tr><td>Segurança</td><td>Controles locais</td><td>Responsabilidade compartilhada</td><td>Quem administra contas, permissões e cópias?</td></tr></tbody></table></div>
+<p>A decisão não deve começar por “nuvem é moderna”. Primeiro documente requisitos, dados sensíveis, disponibilidade necessária, orçamento e capacidade da equipe. Em seguida, compare alternativas e prepare retorno ou exportação dos dados caso o serviço deixe de atender.</p>
+<h2 id="piloto-nuvem">Como testar antes de migrar</h2>
+<ol><li>Escolha um processo pequeno e reversível, sem transferir imediatamente todos os dados.</li><li>Defina usuários, permissões e responsável por cada conta.</li><li>Meça disponibilidade, velocidade, custo e facilidade de recuperação.</li><li>Exporte uma cópia e confirme se ela pode ser aberta fora da plataforma.</li><li>Registre o que depende do provedor e o que continua sendo obrigação da escola.</li></ol>
+<div class="exercise"><h3>Produza uma recomendação</h3><p>Compare uma agenda compartilhada, um sistema de matrículas e um arquivo confidencial. Para cada caso, escolha SaaS, PaaS, IaaS ou permanência local e justifique com acesso, custo, segurança, suporte e plano de saída. Não existe uma única resposta correta; a qualidade está nos critérios usados.</p></div>
 <h2>Perguntas frequentes</h2>
 
-  <div class="faq"><h3>Guardar um arquivo na nuvem é fazer backup?</h3><p>Sincronização ajuda, mas pode replicar exclusões e alterações. Um backup precisa manter cópias recuperáveis e histórico adequado.</p></div>
-  <div class="faq"><h3>Nuvem é sempre pública?</h3><p>Não. Existem ambientes públicos, privados e híbridos, com diferentes formas de propriedade, acesso e administração.</p></div>
-  <section class="article-references" aria-labelledby="referencias-bibliograficas"><h2 id="referencias-bibliograficas">Referências bibliográficas</h2><p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p><ol><li><a href="../referencias.html#erl"><strong>ERL, Thomas; MONROY, Eric Barceló.</strong> <cite>Cloud Computing: Concepts, Technology, Security, and Architecture</cite></a>. 2. ed. Pearson/Addison-Wesley, 2023.</li><li><a href="../referencias.html#kurose-ross"><strong>KUROSE, James F.; ROSS, Keith W.</strong> <cite>Computer Networking: A Top-Down Approach</cite></a>. 9. ed. Pearson, 2025.</li></ol><p class="reference-note"><a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p></section><aside class="author-card" aria-label="Autoria"><span class="author-symbol" aria-hidden="true">&lt;/&gt;</span><div><h2>Equipe Código em Sala</h2><p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p></div></aside><nav class="article-nav" aria-label="Navegação entre artigos"><a href="como-funciona-computador.html"><small>← Artigo anterior</small>Hardware</a><a href="estrutura-for.html"><small>Próximo artigo →</small>Programação</a></nav><aside class="related-box"><h2>Continue aprendendo</h2><p>Leia também sobre <a href="tipos-servidores.html">servidores web, de arquivos e de banco de dados</a>.</p></aside>
-</div></article></main>
-<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><a href="../privacidade.html">Privacidade</a><a href="../termos.html">Termos de uso</a><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div></footer><script src="../script.js"></script>
-</body></html>
+  <div class="faq">
+<h3>Guardar um arquivo na nuvem é fazer backup?</h3>
+<p>Sincronização ajuda, mas pode replicar exclusões e alterações. Um backup precisa manter cópias recuperáveis e histórico adequado.</p>
+</div>
+  <div class="faq">
+<h3>Nuvem é sempre pública?</h3>
+<p>Não. Existem ambientes públicos, privados e híbridos, com diferentes formas de propriedade, acesso e administração.</p>
+</div>
+  <section class="article-references" aria-labelledby="referencias-bibliograficas">
+<h2 id="referencias-bibliograficas">Referências bibliográficas</h2>
+<p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p>
+<ol>
+<li>
+<a href="../referencias.html#erl">
+<strong>ERL, Thomas; MONROY, Eric Barceló.</strong> <cite>Cloud Computing: Concepts, Technology, Security, and Architecture</cite>
+</a>. 2. ed. Pearson/Addison-Wesley, 2023.</li>
+<li>
+<a href="../referencias.html#kurose-ross">
+<strong>KUROSE, James F.; ROSS, Keith W.</strong> <cite>Computer Networking: A Top-Down Approach</cite>
+</a>. 9. ed. Pearson, 2025.</li>
+</ol>
+<p class="reference-note">
+<a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p>
+</section>
+<aside class="author-card" aria-label="Autoria">
+<span class="author-symbol" aria-hidden="true">&lt;/&gt;</span>
+<div>
+<h2>Equipe Código em Sala</h2>
+<p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p>
+</div>
+</aside>
+<nav class="article-nav" aria-label="Navegação entre artigos">
+<a href="como-funciona-computador.html">
+<small>← Artigo anterior</small>Hardware</a>
+<a href="estrutura-for.html">
+<small>Próximo artigo →</small>Programação</a>
+</nav>
+<aside class="related-box">
+<h2>Continue aprendendo</h2>
+<p>Leia também sobre <a href="tipos-servidores.html">servidores web, de arquivos e de banco de dados</a>.</p>
+</aside>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© 2026 Código em Sala · Equipe Código em Sala</span>
+<div class="legal-links">
+<a href="../privacidade.html">Privacidade</a>
+<a href="../termos.html">Termos de uso</a>
+<button class="cookie-settings" type="button" data-cookie-settings>Cookies</button>
+</div>
+</div>
+</footer>
+<script src="../script.js">
+</script>
+</body>
+</html>

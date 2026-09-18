@@ -1,17 +1,110 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta name="google-adsense-account" content="ca-pub-8245234066143632"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CRUD: as quatro operações fundamentais — Código em Sala</title><meta name="description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade."><link rel="canonical" href="https://codigoemsala.com.br/artigos/crud-banco-dados.html"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml"><link rel="stylesheet" href="../styles.css"><meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Código em Sala"><meta property="og:title" content="CRUD: entenda as quatro operações fundamentais"><meta property="og:description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade."><meta property="og:url" content="https://codigoemsala.com.br/artigos/crud-banco-dados.html"><meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-banco-dados.webp"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CRUD: entenda as quatro operações fundamentais","description":"Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade.","image":["https://codigoemsala.com.br/assets/images/capa-banco-dados.webp"],"datePublished":"2026-08-22",
-"dateModified":"2026-09-01",
-"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/crud-banco-dados.html"}}</script></head>
-<body data-article="true"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span></span></div>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="../"><span class="brand-mark">&lt;/&gt;</span><span><strong>Código</strong> em Sala</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button><nav id="menu-principal" class="main-nav"><a href="../">Início</a><a href="../categorias.html">Categorias</a><a href="../sobre.html">Sobre</a><a href="../contato.html">Contato</a></nav></div></header>
-<main id="conteudo"><section class="page-hero"><div class="container article-head"><nav class="breadcrumbs" aria-label="Trilha de navegação"><a href="../">Início</a><span>›</span><a href="../categorias.html#dados">Banco de Dados</a><span>›</span><span>Artigo</span></nav><a class="back-link" href="../#artigos">← Voltar aos artigos</a><span class="eyebrow">Banco de Dados</span><h1>CRUD: entenda as quatro operações fundamentais</h1><div class="article-meta"><span>12 minutos de leitura</span><span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a></span><time datetime="2026-08-22">Atualizado em 22 de agosto de 2026</time></div></div></section>
-<article class="content-page"><div class="prose article-body">
-  <figure class="article-cover"><img src="../assets/images/capa-banco-dados.webp" alt="Painel de dados com gráficos e indicadores" width="1440" height="810"><figcaption>O CRUD representa o ciclo básico de vida de um registro em um sistema. <a href="../creditos.html">Crédito da foto</a>.</figcaption></figure>
-  <div class="article-tools"><span>Compartilhe este conteúdo</span><div class="share-buttons"><a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a><a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a><button class="share-button" data-share="native" type="button">Compartilhar</button></div></div>
-  <p>CRUD é um modelo usado para representar quatro operações básicas do ciclo de vida dos dados: criar, consultar, atualizar e excluir. Ele não é um comando nem uma linguagem; em bancos relacionais, essas ações costumam ser implementadas com <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code> e <code>DELETE</code>.</p><aside class="source-note" aria-label="Base bibliográfica do artigo"><strong>Base bibliográfica.</strong> <a href="../referencias.html#elmasri-navathe">Elmasri e Navathe (2016)</a> fundamentam o modelo relacional, as restrições de integridade e o papel das transações. <a href="../referencias.html#beaulieu">Beaulieu (2020)</a> orienta a aplicação prática da linguagem SQL. Assim, CRUD é apresentado como um conjunto de operações de aplicação que pode ser implementado com SQL, e não como uma linguagem independente.</aside>
-  <div class="callout"><strong>CRUD significa:</strong> Create, Read, Update e Delete. Em SQL, essas ações normalmente correspondem a INSERT, SELECT, UPDATE e DELETE.</div>
-  <nav class="article-toc" aria-label="Neste artigo"><strong>Neste artigo</strong><ul><li><a href="#preparacao">Preparando a tabela</a></li><li><a href="#operacoes">As quatro operações</a></li><li><a href="#cuidados">Cuidados importantes</a></li><li><a href="#pratica">Atividade completa</a></li></ul></nav>
+<head>
+<meta name="google-adsense-account" content="ca-pub-8245234066143632">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}const codigoEmSalaConsent=localStorage.getItem("codigo-em-sala-cookies")==="aceitos"?"granted":"denied";gtag("consent","default",{ad_storage:codigoEmSalaConsent,ad_user_data:codigoEmSalaConsent,ad_personalization:codigoEmSalaConsent,analytics_storage:codigoEmSalaConsent,wait_for_update:500});gtag("set","ads_data_redaction",true);</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8245234066143632" crossorigin="anonymous">
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRUD: as quatro operações fundamentais — Código em Sala</title>
+<meta name="description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade.">
+<link rel="canonical" href="https://codigoemsala.com.br/artigos/crud-banco-dados.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Código em Sala" href="../feed.xml">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Código em Sala">
+<meta property="og:title" content="CRUD: entenda as quatro operações fundamentais">
+<meta property="og:description" content="Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade.">
+<meta property="og:url" content="https://codigoemsala.com.br/artigos/crud-banco-dados.html">
+<meta property="og:image" content="https://codigoemsala.com.br/assets/images/capa-banco-dados.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CRUD: entenda as quatro operações fundamentais","description":"Entenda CREATE, READ, UPDATE e DELETE no banco de dados com exemplos SQL comentados, cuidados e atividade.","image":["https://codigoemsala.com.br/assets/images/capa-banco-dados.webp"],"datePublished":"2026-08-22",
+"dateModified":"2026-09-18",
+"inLanguage":"pt-BR","author":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/sobre.html"},"publisher":{"@type":"Organization","name":"Equipe Código em Sala","url":"https://codigoemsala.com.br/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://codigoemsala.com.br/artigos/crud-banco-dados.html"}}</script>
+</head>
+<body data-article="true">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="reading-progress" aria-hidden="true">
+<span>
+</span>
+</div>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="../">
+<span class="brand-mark">&lt;/&gt;</span>
+<span>
+<strong>Código</strong> em Sala</span>
+</a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+<nav id="menu-principal" class="main-nav">
+<a href="../">Início</a>
+<a href="../categorias.html">Categorias</a>
+<a href="../sobre.html">Sobre</a>
+<a href="../contato.html">Contato</a>
+</nav>
+</div>
+</header>
+<main id="conteudo">
+<section class="page-hero">
+<div class="container article-head">
+<nav class="breadcrumbs" aria-label="Trilha de navegação">
+<a href="../">Início</a>
+<span>›</span>
+<a href="../categorias.html#dados">Banco de Dados</a>
+<span>›</span>
+<span>Artigo</span>
+</nav>
+<a class="back-link" href="../#artigos">← Voltar aos artigos</a>
+<span class="eyebrow">Banco de Dados</span>
+<h1>CRUD: entenda as quatro operações fundamentais</h1>
+<div class="article-meta">
+<span>14 minutos de leitura</span>
+<span>Por <a href="../sobre.html" style="color:inherit">Equipe Código em Sala</a>
+</span>
+<time datetime="2026-09-18">Atualizado em 18 de setembro de 2026</time>
+</div>
+</div>
+</section>
+<article class="content-page">
+<div class="prose article-body">
+  <figure class="article-cover">
+<img src="../assets/images/capa-banco-dados.webp" alt="Painel de dados com gráficos e indicadores" width="1440" height="810">
+<figcaption>O CRUD representa o ciclo básico de vida de um registro em um sistema. <a href="../creditos.html">Crédito da foto</a>.</figcaption>
+</figure>
+  <div class="article-tools">
+<span>Compartilhe este conteúdo</span>
+<div class="share-buttons">
+<a class="share-button" data-share="whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+<a class="share-button" data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+<button class="share-button" data-share="native" type="button">Compartilhar</button>
+</div>
+</div>
+  <p>CRUD é um modelo usado para representar quatro operações básicas do ciclo de vida dos dados: criar, consultar, atualizar e excluir. Ele não é um comando nem uma linguagem; em bancos relacionais, essas ações costumam ser implementadas com <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code> e <code>DELETE</code>.</p>
+<aside class="source-note" aria-label="Base bibliográfica do artigo">
+<strong>Base bibliográfica.</strong> <a href="../referencias.html#elmasri-navathe">Elmasri e Navathe (2016)</a> fundamentam o modelo relacional, as restrições de integridade e o papel das transações. <a href="../referencias.html#beaulieu">Beaulieu (2020)</a> orienta a aplicação prática da linguagem SQL. Assim, CRUD é apresentado como um conjunto de operações de aplicação que pode ser implementado com SQL, e não como uma linguagem independente.</aside>
+  <div class="callout">
+<strong>CRUD significa:</strong> Create, Read, Update e Delete. Em SQL, essas ações normalmente correspondem a INSERT, SELECT, UPDATE e DELETE.</div>
+  <nav class="article-toc" aria-label="Neste artigo">
+<strong>Neste artigo</strong>
+<ul>
+<li>
+<a href="#preparacao">Preparando a tabela</a>
+</li>
+<li>
+<a href="#operacoes">As quatro operações</a>
+</li>
+<li>
+<a href="#cuidados">Cuidados importantes</a>
+</li>
+<li>
+<a href="#pratica">Atividade completa</a>
+</li>
+</ul>
+</nav>
   <h2 id="preparacao">Antes do CRUD: criando a tabela</h2>
   <p>Usaremos uma tabela simples de alunos em PostgreSQL. O identificador é gerado automaticamente e a coluna de e-mail não permite valores repetidos.</p>
   <pre class="code-block">CREATE TABLE alunos (
@@ -51,14 +144,57 @@ WHERE id = 1;</pre>
 SET ativo = FALSE
 WHERE id = 1;</pre>
   <h2 id="cuidados">Cuidados que evitam problemas</h2>
-  <ul><li>Use WHERE em UPDATE e DELETE quando a intenção não for atingir toda a tabela.</li><li>Valide dados também no servidor, não apenas na tela.</li><li>Utilize parâmetros nas aplicações para reduzir risco de injeção SQL.</li><li>Controle permissões: nem todo usuário deve excluir ou alterar registros.</li><li>Mantenha backup e histórico para dados importantes.</li><li>Use transações quando várias operações precisam acontecer juntas.</li></ul>
+  <ul>
+<li>Use WHERE em UPDATE e DELETE quando a intenção não for atingir toda a tabela.</li>
+<li>Valide dados também no servidor, não apenas na tela.</li>
+<li>Utilize parâmetros nas aplicações para reduzir risco de injeção SQL.</li>
+<li>Controle permissões: nem todo usuário deve excluir ou alterar registros.</li>
+<li>Mantenha backup e histórico para dados importantes.</li>
+<li>Use transações quando várias operações precisam acontecer juntas.</li>
+</ul>
   <h2>CRUD na interface de um sistema</h2>
-  <div class="table-wrap"><table class="compare-table"><thead><tr><th>Ação do usuário</th><th>Operação</th><th>SQL comum</th></tr></thead><tbody><tr><td>Cadastrar</td><td>Create</td><td>INSERT</td></tr><tr><td>Visualizar ou buscar</td><td>Read</td><td>SELECT</td></tr><tr><td>Editar</td><td>Update</td><td>UPDATE</td></tr><tr><td>Remover</td><td>Delete</td><td>DELETE</td></tr></tbody></table></div>
-  <div id="pratica" class="exercise"><h3>Atividade prática</h3><p>Crie uma tabela <strong>livros</strong> com id, título, autor, ano e disponível. Cadastre três livros, consulte apenas os disponíveis em ordem de título, atualize o ano de um registro e marque outro como indisponível. Por último, explique quando seria melhor excluir fisicamente ou apenas alterar o status.</p></div>
+  <div class="table-wrap">
+<table class="compare-table">
+<thead>
+<tr>
+<th>Ação do usuário</th>
+<th>Operação</th>
+<th>SQL comum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cadastrar</td>
+<td>Create</td>
+<td>INSERT</td>
+</tr>
+<tr>
+<td>Visualizar ou buscar</td>
+<td>Read</td>
+<td>SELECT</td>
+</tr>
+<tr>
+<td>Editar</td>
+<td>Update</td>
+<td>UPDATE</td>
+</tr>
+<tr>
+<td>Remover</td>
+<td>Delete</td>
+<td>DELETE</td>
+</tr>
+</tbody>
+</table>
+</div>
+  <div id="pratica" class="exercise">
+<h3>Atividade prática</h3>
+<p>Crie uma tabela <strong>livros</strong> com id, título, autor, ano e disponível. Cadastre três livros, consulte apenas os disponíveis em ordem de título, atualize o ano de um registro e marque outro como indisponível. Por último, explique quando seria melhor excluir fisicamente ou apenas alterar o status.</p>
+</div>
 
 <h2 id="caso-completo">Caso completo: cadastro de tarefas com regras</h2>
 <p>CRUD não é apenas associar quatro verbos a quatro comandos. Cada operação precisa respeitar regras. Em um cadastro de tarefas, uma tarefa pode exigir título, permitir descrição vazia, começar com situação “pendente” e registrar a data de criação. Atualizar somente a situação não deveria apagar o título. Excluir pode significar remoção definitiva ou arquivamento, conforme a necessidade de histórico.</p>
-<pre class="code-block"><code>CREATE TABLE tarefas (
+<pre class="code-block">
+<code>CREATE TABLE tarefas (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   titulo VARCHAR(120) NOT NULL,
   descricao TEXT,
@@ -66,15 +202,99 @@ WHERE id = 1;</pre>
   criada_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT situacao_valida
     CHECK (situacao IN ('pendente', 'fazendo', 'concluida'))
-);</code></pre>
+);</code>
+</pre>
 <p>A restrição impede situações inventadas. Antes de atualizar, consulte a linha pelo identificador; depois da atualização, confira o resultado. Em aplicações reais, use transação quando várias mudanças precisam acontecer juntas e parâmetros fornecidos pelo driver, em vez de concatenar texto recebido do usuário.</p>
-<div class="exercise"><h3>Plano de testes do CRUD</h3><ol><li>Crie uma tarefa válida e confirme o valor padrão.</li><li>Tente criar sem título e observe a rejeição.</li><li>Consulte pelo identificador e por situação.</li><li>Atualize apenas o título e verifique se os outros campos permanecem.</li><li>Tente uma situação inválida.</li><li>Exclua um registro de teste e confirme que o identificador correto foi afetado.</li></ol><p>Execute os testes somente em uma base de estudo. Para aprender a localizar linhas com segurança, pratique <a href="sql-where-order-limit.html">WHERE, ORDER BY e LIMIT</a>.</p></div>
+<div class="exercise">
+<h3>Plano de testes do CRUD</h3>
+<ol>
+<li>Crie uma tarefa válida e confirme o valor padrão.</li>
+<li>Tente criar sem título e observe a rejeição.</li>
+<li>Consulte pelo identificador e por situação.</li>
+<li>Atualize apenas o título e verifique se os outros campos permanecem.</li>
+<li>Tente uma situação inválida.</li>
+<li>Exclua um registro de teste e confirme que o identificador correto foi afetado.</li>
+</ol>
+<p>Execute os testes somente em uma base de estudo. Para aprender a localizar linhas com segurança, pratique <a href="sql-where-order-limit.html">WHERE, ORDER BY e LIMIT</a>.</p>
+</div>
+<h2 id="crud-regra">CRUD real inclui regras, não apenas quatro comandos</h2>
+<p>Em um cadastro de empréstimos, criar um registro só é permitido quando o exemplar está disponível; atualizar a devolução deve mudar também a situação do exemplar; excluir um usuário com empréstimo ativo não deve ser aceito. As operações continuam sendo CRUD, mas precisam respeitar consistência e autorização.</p>
+<div class="table-wrap"><table class="compare-table"><thead><tr><th>Operação</th><th>Regra de exemplo</th><th>Teste negativo</th></tr></thead><tbody><tr><td>Create</td><td>Não repetir identificador</td><td>Tentar cadastrar o mesmo ID</td></tr><tr><td>Read</td><td>Usuário vê apenas dados permitidos</td><td>Consultar registro de outro perfil</td></tr><tr><td>Update</td><td>Alterar somente registro localizado</td><td>Executar condição que não encontra linha</td></tr><tr><td>Delete</td><td>Preservar vínculos obrigatórios</td><td>Excluir registro referenciado</td></tr></tbody></table></div>
+<h2 id="transacao-crud">Quando uma ação exige mais de uma operação</h2>
+<p>Registrar uma venda pode inserir o pedido, inserir itens e reduzir estoque. Se apenas parte for concluída, os dados ficam contraditórios. Sistemas de banco de dados usam transações para tratar esse conjunto como uma unidade: ou todas as etapas válidas são confirmadas, ou nenhuma delas permanece.</p>
+<pre class="code-block"><code>BEGIN;
+
+INSERT INTO emprestimos (usuario_id, exemplar_id, data_retirada)
+VALUES (12, 44, CURRENT_DATE);
+
+UPDATE exemplares
+SET disponivel = false
+WHERE id = 44 AND disponivel = true;
+
+COMMIT;</code></pre>
+<p>O exemplo é didático e ainda precisa verificar se o <code>UPDATE</code> realmente alterou uma linha. Em aplicações reais, validações, restrições e tratamento de erro completam o fluxo.</p>
+<div class="exercise"><h3>Plano de testes do cadastro</h3><p>Para cada operação, crie um caso válido, um inválido e um de fronteira. Registre entrada, resultado esperado, resultado obtido e estado do banco depois da execução. O teste só termina quando você confirma os dados, não quando a interface mostra uma mensagem.</p></div>
 <h2>Perguntas frequentes</h2>
 
-  <div class="faq"><h3>CRUD é uma linguagem?</h3><p>Não. É uma forma de agrupar operações. Elas podem ser implementadas com SQL, APIs, interfaces e diferentes linguagens.</p></div>
-  <div class="faq"><h3>ORDER BY, LIMIT e LIKE fazem parte do CRUD?</h3><p>São recursos usados principalmente na leitura, isto é, no SELECT. Eles organizam, limitam e filtram resultados.</p></div>
-  <div class="faq"><h3>DELETE sempre apaga para sempre?</h3><p>No banco, a linha é removida; ainda pode existir em backups ou históricos. Sistemas também podem usar exclusão lógica em vez de DELETE.</p></div>
-  <section class="article-references" aria-labelledby="referencias-bibliograficas"><h2 id="referencias-bibliograficas">Referências bibliográficas</h2><p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p><ol><li><a href="../referencias.html#elmasri-navathe"><strong>ELMASRI, Ramez; NAVATHE, Shamkant B.</strong> <cite>Fundamentals of Database Systems</cite></a>. 7. ed. Pearson, 2016.</li><li><a href="../referencias.html#beaulieu"><strong>BEAULIEU, Alan.</strong> <cite>Learning SQL</cite></a>. 3. ed. O’Reilly Media, 2020.</li></ol><p class="reference-note"><a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p></section><aside class="author-card" aria-label="Autoria"><span class="author-symbol" aria-hidden="true">&lt;/&gt;</span><div><h2>Equipe Código em Sala</h2><p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p></div></aside><nav class="article-nav" aria-label="Navegação entre artigos"><a href="tipos-servidores.html"><small>← Artigo anterior</small>Redes e Servidores</a><a href="sistemas-operacionais.html"><small>Próximo artigo →</small>Sistemas operacionais</a></nav><aside class="related-box"><h2>Continue aprendendo</h2><p>Conheça também a diferença entre <a href="tipos-servidores.html">servidor web, de arquivos e de banco de dados</a>.</p></aside>
-</div></article></main>
-<footer class="site-footer"><div class="container footer-bottom"><span>© 2026 Código em Sala · Equipe Código em Sala</span><div class="legal-links"><a href="../privacidade.html">Privacidade</a><a href="../termos.html">Termos de uso</a><button class="cookie-settings" type="button" data-cookie-settings>Cookies</button></div></div></footer><script src="../script.js"></script>
-</body></html>
+  <div class="faq">
+<h3>CRUD é uma linguagem?</h3>
+<p>Não. É uma forma de agrupar operações. Elas podem ser implementadas com SQL, APIs, interfaces e diferentes linguagens.</p>
+</div>
+  <div class="faq">
+<h3>ORDER BY, LIMIT e LIKE fazem parte do CRUD?</h3>
+<p>São recursos usados principalmente na leitura, isto é, no SELECT. Eles organizam, limitam e filtram resultados.</p>
+</div>
+  <div class="faq">
+<h3>DELETE sempre apaga para sempre?</h3>
+<p>No banco, a linha é removida; ainda pode existir em backups ou históricos. Sistemas também podem usar exclusão lógica em vez de DELETE.</p>
+</div>
+  <section class="article-references" aria-labelledby="referencias-bibliograficas">
+<h2 id="referencias-bibliograficas">Referências bibliográficas</h2>
+<p class="reference-note">Obras reconhecidas que fundamentam e aprofundam os conceitos apresentados neste artigo.</p>
+<ol>
+<li>
+<a href="../referencias.html#elmasri-navathe">
+<strong>ELMASRI, Ramez; NAVATHE, Shamkant B.</strong> <cite>Fundamentals of Database Systems</cite>
+</a>. 7. ed. Pearson, 2016.</li>
+<li>
+<a href="../referencias.html#beaulieu">
+<strong>BEAULIEU, Alan.</strong> <cite>Learning SQL</cite>
+</a>. 3. ed. O’Reilly Media, 2020.</li>
+</ol>
+<p class="reference-note">
+<a href="../referencias.html">Consulte a bibliografia completa do Código em Sala</a>.</p>
+</section>
+<aside class="author-card" aria-label="Autoria">
+<span class="author-symbol" aria-hidden="true">&lt;/&gt;</span>
+<div>
+<h2>Equipe Código em Sala</h2>
+<p>Conteúdo produzido e revisado por uma equipe editorial dedicada a tornar a tecnologia mais clara, prática e responsável. <a href="../sobre.html">Conheça nosso trabalho</a>.</p>
+</div>
+</aside>
+<nav class="article-nav" aria-label="Navegação entre artigos">
+<a href="tipos-servidores.html">
+<small>← Artigo anterior</small>Redes e Servidores</a>
+<a href="sistemas-operacionais.html">
+<small>Próximo artigo →</small>Sistemas operacionais</a>
+</nav>
+<aside class="related-box">
+<h2>Continue aprendendo</h2>
+<p>Conheça também a diferença entre <a href="tipos-servidores.html">servidor web, de arquivos e de banco de dados</a>.</p>
+</aside>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© 2026 Código em Sala · Equipe Código em Sala</span>
+<div class="legal-links">
+<a href="../privacidade.html">Privacidade</a>
+<a href="../termos.html">Termos de uso</a>
+<button class="cookie-settings" type="button" data-cookie-settings>Cookies</button>
+</div>
+</div>
+</footer>
+<script src="../script.js">
+</script>
+</body>
+</html>
